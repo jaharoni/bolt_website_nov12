@@ -59,136 +59,141 @@ const EssayDetail: React.FC = () => {
   const renderSection = (section: EssaySection, index: number) => {
     const media = sectionMedia[section.id] || [];
 
-    switch (section.section_type) {
-      case 'full-bleed':
-        return (
-          <div key={section.id} className="w-full my-12">
-            {media[0]?.media_item && (
-              <div className="relative aspect-[21/9] overflow-hidden rounded-lg">
-                <img
-                  src={ImageService.getOptimizedUrl(
-                    media[0].media_item.bucket_name,
-                    media[0].media_item.storage_path,
-                    'fullscreen'
+      switch (section.section_type) {
+        case 'full-bleed': {
+          return (
+            <div key={section.id} className="w-full my-12">
+              {media[0]?.media_item && (
+                <div className="relative aspect-[21/9] overflow-hidden rounded-lg">
+                  <img
+                    src={ImageService.getOptimizedUrl(
+                      media[0].media_item.bucket_name,
+                      media[0].media_item.storage_path,
+                      'fullscreen'
+                    )}
+                    alt={media[0].media_item.alt_text || media[0].media_item.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  {media[0].caption && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                      <p className="text-white/90 text-sm italic">{media[0].caption}</p>
+                    </div>
                   )}
-                  alt={media[0].media_item.alt_text || media[0].media_item.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                {media[0].caption && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                    <p className="text-white/90 text-sm italic">{media[0].caption}</p>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        );
+                </div>
+              )}
+            </div>
+          );
+        }
 
-      case 'side-by-side':
-        return (
-          <div key={section.id} className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
-            {media.slice(0, 2).map((item) => (
-              <div key={item.id} className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                {item.media_item && (
-                  <>
-                    <img
-                      src={ImageService.getOptimizedUrl(
-                        item.media_item.bucket_name,
-                        item.media_item.storage_path,
-                        'large'
+        case 'side-by-side': {
+          return (
+            <div key={section.id} className="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
+              {media.slice(0, 2).map((item) => (
+                <div key={item.id} className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                  {item.media_item && (
+                    <>
+                      <img
+                        src={ImageService.getOptimizedUrl(
+                          item.media_item.bucket_name,
+                          item.media_item.storage_path,
+                          'large'
+                        )}
+                        alt={item.media_item.alt_text || item.media_item.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      {item.caption && (
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                          <p className="text-white/90 text-sm italic">{item.caption}</p>
+                        </div>
                       )}
-                      alt={item.media_item.alt_text || item.media_item.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    {item.caption && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                        <p className="text-white/90 text-sm italic">{item.caption}</p>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        );
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          );
+        }
 
-      case 'grid-2x2':
-      case 'grid-3x3':
-        const cols = section.section_type === 'grid-2x2' ? 2 : 3;
-        return (
-          <div
-            key={section.id}
-            className={`grid grid-cols-1 md:grid-cols-${cols} gap-4 my-12`}
-          >
-            {media.map((item) => (
-              <div key={item.id} className="relative aspect-square overflow-hidden rounded-lg">
-                {item.media_item && (
-                  <>
-                    <img
-                      src={ImageService.getOptimizedUrl(
-                        item.media_item.bucket_name,
-                        item.media_item.storage_path,
-                        'medium'
-                      )}
-                      alt={item.media_item.alt_text || item.media_item.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    {item.caption && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-                        <p className="text-white/90 text-xs italic">{item.caption}</p>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        );
-
-      case 'stacked':
-        return (
-          <div key={section.id} className="space-y-8 my-12">
-            {media.map((item) => (
-              <div key={item.id} className="relative aspect-[16/9] overflow-hidden rounded-lg">
-                {item.media_item && (
-                  <>
-                    <img
-                      src={ImageService.getOptimizedUrl(
-                        item.media_item.bucket_name,
-                        item.media_item.storage_path,
-                        'large'
-                      )}
-                      alt={item.media_item.alt_text || item.media_item.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    {item.caption && (
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                        <p className="text-white/90 text-sm italic">{item.caption}</p>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        );
-
-      case 'text-block':
-        return (
-          <div key={section.id} className="my-12 max-w-3xl mx-auto">
+        case 'grid-2x2':
+        case 'grid-3x3': {
+          const cols = section.section_type === 'grid-2x2' ? 2 : 3;
+          return (
             <div
-              className="prose prose-invert prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: section.content.html || section.content.text || '' }}
-            />
-          </div>
-        );
+              key={section.id}
+              className={`grid grid-cols-1 md:grid-cols-${cols} gap-4 my-12`}
+            >
+              {media.map((item) => (
+                <div key={item.id} className="relative aspect-square overflow-hidden rounded-lg">
+                  {item.media_item && (
+                    <>
+                      <img
+                        src={ImageService.getOptimizedUrl(
+                          item.media_item.bucket_name,
+                          item.media_item.storage_path,
+                          'medium'
+                        )}
+                        alt={item.media_item.alt_text || item.media_item.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      {item.caption && (
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                          <p className="text-white/90 text-xs italic">{item.caption}</p>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          );
+        }
 
-      default:
-        return null;
+        case 'stacked': {
+          return (
+            <div key={section.id} className="space-y-8 my-12">
+              {media.map((item) => (
+                <div key={item.id} className="relative aspect-[16/9] overflow-hidden rounded-lg">
+                  {item.media_item && (
+                    <>
+                      <img
+                        src={ImageService.getOptimizedUrl(
+                          item.media_item.bucket_name,
+                          item.media_item.storage_path,
+                          'large'
+                        )}
+                        alt={item.media_item.alt_text || item.media_item.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      {item.caption && (
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                          <p className="text-white/90 text-sm italic">{item.caption}</p>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          );
+        }
+
+        case 'text-block': {
+          return (
+            <div key={section.id} className="my-12 max-w-3xl mx-auto">
+              <div
+                className="prose prose-invert prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: section.content.html || section.content.text || '' }}
+              />
+            </div>
+          );
+        }
+
+        default:
+          return null;
     }
   };
 

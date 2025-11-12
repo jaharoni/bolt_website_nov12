@@ -1,10 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Telescope, Loader2, AlertCircle, ChevronDown, ChevronUp, X, ExternalLink, Search } from "lucide-react";
+import {
+  Telescope,
+  Loader2,
+  AlertCircle,
+  ChevronDown,
+  ChevronUp,
+  X,
+  ExternalLink,
+  Search,
+} from "lucide-react";
 import { searchManager } from "../lib/searchManager";
-import { secureChatService, ChatMessage, ChatServiceError } from '../lib/secureChatService';
-import { useTurnstile } from '../hooks/useTurnstile';
-import ConversationBubble from './ConversationBubble';
+import {
+  secureChatService,
+  ChatMessage,
+  ChatServiceError,
+} from "../lib/secureChatService";
+import { useTurnstile } from "../hooks/useTurnstile";
+import ConversationBubble from "./ConversationBubble";
 
 interface SearchBarProps {
   compact?: boolean;
@@ -12,10 +25,11 @@ interface SearchBarProps {
 
 const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
   const [query, setQuery] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSparkle, setIsSparkle] = useState(false);
-  const [currentPlaceholder, setCurrentPlaceholder] = useState("How can I help you today?");
+  const [currentPlaceholder, setCurrentPlaceholder] = useState(
+    "How can I help you today?",
+  );
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +43,12 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
   const conversationRef = useRef<HTMLDivElement>(null);
   const isAIConfigured = true;
 
-  const { containerRef, token, isReady, reset: resetTurnstile } = useTurnstile((tkn) => {
+  const {
+    containerRef,
+    token,
+    isReady,
+    reset: resetTurnstile,
+  } = useTurnstile((tkn) => {
     setTurnstileToken(tkn);
   });
 
@@ -69,7 +88,7 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
   }, []);
 
   useEffect(() => {
-    const savedConversation = sessionStorage.getItem('chat_conversation');
+    const savedConversation = sessionStorage.getItem("chat_conversation");
     if (savedConversation) {
       try {
         const parsed = JSON.parse(savedConversation);
@@ -78,19 +97,19 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
           setIsMinimized(true);
         }
       } catch (e) {
-        console.error('Failed to load conversation:', e);
+        console.error("Failed to load conversation:", e);
       }
     }
   }, []);
 
   useEffect(() => {
     if (messages.length > 0) {
-      sessionStorage.setItem('chat_conversation', JSON.stringify(messages));
+      sessionStorage.setItem("chat_conversation", JSON.stringify(messages));
     }
   }, [messages]);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -103,50 +122,85 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
     const lowerText = text.toLowerCase().trim();
 
     const simpleKeywords = [
-      'gallery', 'galleries', 'portfolio', 'portfolios',
-      'shop', 'store', 'buy', 'purchase',
-      'about', 'bio', 'biography',
-      'contact', 'email', 'reach',
-      'essay', 'essays', 'writing', 'article', 'articles',
-      'home', 'main'
+      "gallery",
+      "galleries",
+      "portfolio",
+      "portfolios",
+      "shop",
+      "store",
+      "buy",
+      "purchase",
+      "about",
+      "bio",
+      "biography",
+      "contact",
+      "email",
+      "reach",
+      "essay",
+      "essays",
+      "writing",
+      "article",
+      "articles",
+      "home",
+      "main",
     ];
 
-    if (simpleKeywords.some(keyword => lowerText === keyword || lowerText.startsWith(keyword + ' '))) {
+    if (
+      simpleKeywords.some(
+        (keyword) =>
+          lowerText === keyword || lowerText.startsWith(keyword + " "),
+      )
+    ) {
       return false;
     }
 
     const conversationalIndicators = [
-      'how', 'what', 'where', 'when', 'why', 'who',
-      'can you', 'could you', 'would you',
-      'tell me', 'show me', 'find me',
-      'i want', 'i need', 'i am looking',
-      '?'
+      "how",
+      "what",
+      "where",
+      "when",
+      "why",
+      "who",
+      "can you",
+      "could you",
+      "would you",
+      "tell me",
+      "show me",
+      "find me",
+      "i want",
+      "i need",
+      "i am looking",
+      "?",
     ];
 
-    return conversationalIndicators.some(indicator => lowerText.includes(indicator));
+    return conversationalIndicators.some((indicator) =>
+      lowerText.includes(indicator),
+    );
   };
 
   const handleAIChat = async (messageText: string) => {
     if (!turnstileToken) {
-      setError('Security verification in progress. Using basic search instead...');
+      setError(
+        "Security verification in progress. Using basic search instead...",
+      );
       setTimeout(async () => {
         try {
           const searchResult = await searchManager.search(messageText);
           navigate(searchResult.suggestedRoute);
         } catch (error) {
-          navigate('/gallery');
+          navigate("/gallery");
         }
       }, 1000);
       return;
     }
 
     const userMessage: ChatMessage = {
-      role: 'user',
+      role: "user",
       content: messageText,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
     setIsExpanded(true);
     setIsMinimized(false);
     setIsLoading(true);
@@ -155,26 +209,30 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
 
     try {
       const allMessages = [...messages, userMessage].slice(-10);
-      const response = await secureChatService.chat(allMessages, turnstileToken);
+      const response = await secureChatService.chat(
+        allMessages,
+        turnstileToken,
+      );
 
       const assistantMessage: ChatMessage = {
-        role: 'assistant',
+        role: "assistant",
         content: response.message.content,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
 
-      setMessages(prev => [...prev, assistantMessage]);
+      setMessages((prev) => [...prev, assistantMessage]);
       resetTurnstile();
 
       const lowerContent = response.message.content.toLowerCase();
-      if (lowerContent.includes("couldn't find") ||
-          lowerContent.includes("not available on") ||
-          lowerContent.includes("don't have information")) {
+      if (
+        lowerContent.includes("couldn't find") ||
+        lowerContent.includes("not available on") ||
+        lowerContent.includes("don't have information")
+      ) {
         setShowExternalSearch(true);
       }
-
     } catch (err) {
-      console.error('Chat error:', err);
+      console.error("Chat error:", err);
 
       if (err instanceof ChatServiceError) {
         setError(err.getUserFriendlyMessage());
@@ -187,7 +245,7 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
             setMessages([]);
             setIsExpanded(false);
           } catch (error) {
-            navigate('/gallery');
+            navigate("/gallery");
           }
         }, 1500);
       }
@@ -214,14 +272,14 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
         navigate(searchResult.suggestedRoute);
 
         if (searchResult.results.length > 0) {
-          sessionStorage.setItem('searchResults', JSON.stringify(searchResult));
+          sessionStorage.setItem("searchResults", JSON.stringify(searchResult));
         }
 
         setQuery("");
         setIsLoading(false);
       }
     } catch (error) {
-      console.error('Search failed:', error);
+      console.error("Search failed:", error);
       navigate("/gallery");
       setQuery("");
       setIsLoading(false);
@@ -231,11 +289,11 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSearch(e as any);
     }
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       handleMinimize();
     }
   };
@@ -256,14 +314,16 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
     setIsMinimized(false);
     setError(null);
     setShowExternalSearch(false);
-    sessionStorage.removeItem('chat_conversation');
+    sessionStorage.removeItem("chat_conversation");
   };
 
   const handleExternalSearch = () => {
-    const lastUserMessage = [...messages].reverse().find(m => m.role === 'user');
+    const lastUserMessage = [...messages]
+      .reverse()
+      .find((m) => m.role === "user");
     if (lastUserMessage) {
       const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(lastUserMessage.content)}`;
-      window.open(searchUrl, '_blank');
+      window.open(searchUrl, "_blank");
     }
   };
 
@@ -283,22 +343,26 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
       <div className="relative max-w-md">
         <div ref={containerRef} className="hidden" />
         <form onSubmit={handleSearch} className="relative">
-          <div className={`relative flex-1 glass-yellow-subtle search-enhanced ${isSparkle ? 'sparkle-effect' : ''} rounded-full transition-all duration-300`}>
+          <div
+            className={`relative flex-1 glass-yellow-subtle search-enhanced ${isSparkle ? "sparkle-effect" : ""} rounded-full transition-all duration-300`}
+          >
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/60 w-4 h-4" />
             <input
               ref={inputRef}
               type="text"
-              placeholder={currentPlaceholder.length > 25 ? "How can I help?" : currentPlaceholder}
+              placeholder={
+                currentPlaceholder.length > 25
+                  ? "How can I help?"
+                  : currentPlaceholder
+              }
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyPress={handleKeyPress}
               onFocus={() => {
-                setIsFocused(true);
                 if (messages.length > 0 && isMinimized) {
                   handleExpand();
                 }
               }}
-              onBlur={() => setIsFocused(false)}
               className="w-full bg-transparent text-white placeholder-white/60 focus:outline-none transition-all duration-300 rounded-full py-2 pl-10 pr-12"
               disabled={isLoading}
             />
@@ -317,10 +381,12 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
           <div
             ref={conversationRef}
             className="absolute top-full mt-2 left-0 right-0 glass-card rounded-2xl overflow-hidden z-50 animate-in slide-in-from-top-2 duration-300"
-            style={{ maxHeight: '400px' }}
+            style={{ maxHeight: "400px" }}
           >
             <div className="flex items-center justify-between p-3 border-b border-white/10">
-              <span className="text-white text-sm font-medium">AI Assistant</span>
+              <span className="text-white text-sm font-medium">
+                AI Assistant
+              </span>
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleNewConversation}
@@ -339,7 +405,10 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
               </div>
             </div>
 
-            <div className="overflow-y-auto p-3 space-y-2" style={{ maxHeight: '280px' }}>
+            <div
+              className="overflow-y-auto p-3 space-y-2"
+              style={{ maxHeight: "280px" }}
+            >
               {visibleMessages.map((message, index) => (
                 <ConversationBubble key={index} message={message} />
               ))}
@@ -382,7 +451,9 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
             </div>
 
             {!isReady && (
-              <p className="text-xs text-white/40 px-3 pb-2 text-center">Initializing security...</p>
+              <p className="text-xs text-white/40 px-3 pb-2 text-center">
+                Initializing security...
+              </p>
             )}
           </div>
         )}
@@ -394,7 +465,9 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
     <div className="w-full max-w-3xl mx-auto relative">
       <div ref={containerRef} className="hidden" />
       <form onSubmit={handleSearch}>
-        <div className={`relative backdrop-blur-xl bg-white/5 search-enhanced rounded-full px-6 py-4 flex items-center gap-3 transition-all duration-300 glass-hover-yellow ${isSparkle ? 'sparkle-effect' : ''}`}>
+        <div
+          className={`relative backdrop-blur-xl bg-white/5 search-enhanced rounded-full px-6 py-4 flex items-center gap-3 transition-all duration-300 glass-hover-yellow ${isSparkle ? "sparkle-effect" : ""}`}
+        >
           <input
             ref={inputRef}
             type="text"
@@ -403,18 +476,16 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
             onChange={(e) => setQuery(e.target.value)}
             onKeyPress={handleKeyPress}
             onFocus={() => {
-              setIsFocused(true);
               if (messages.length > 0 && isMinimized) {
                 handleExpand();
               }
             }}
-            onBlur={() => setIsFocused(false)}
             className="flex-1 text-white text-lg font-display placeholder-white/60 focus:outline-none"
             style={{
-              background: 'none',
-              backgroundColor: 'transparent',
-              backgroundImage: 'none',
-              boxShadow: 'none'
+              background: "none",
+              backgroundColor: "transparent",
+              backgroundImage: "none",
+              boxShadow: "none",
             }}
             disabled={isLoading}
           />
@@ -446,7 +517,7 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
         <div
           ref={conversationRef}
           className="mt-4 glass-card rounded-2xl overflow-hidden animate-in slide-in-from-top-4 duration-500"
-          style={{ maxHeight: '500px' }}
+          style={{ maxHeight: "500px" }}
         >
           <div className="flex items-center justify-between p-4 border-b border-white/10">
             <span className="text-white font-medium">AI Assistant</span>
@@ -469,7 +540,10 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
             </div>
           </div>
 
-          <div className="overflow-y-auto p-4 space-y-3" style={{ maxHeight: '360px' }}>
+          <div
+            className="overflow-y-auto p-4 space-y-3"
+            style={{ maxHeight: "360px" }}
+          >
             {visibleMessages.map((message, index) => (
               <ConversationBubble key={index} message={message} />
             ))}
@@ -522,7 +596,8 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
       {isAIConfigured && !isExpanded && (
         <div className="text-center mt-3">
           <p className="text-white/40 text-xs">
-            Ask conversational questions for AI assistance, or use keywords to navigate
+            Ask conversational questions for AI assistance, or use keywords to
+            navigate
           </p>
         </div>
       )}

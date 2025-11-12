@@ -8,12 +8,16 @@ interface SearchBarSimpleProps {
   onOpenChat?: (query: string) => void;
 }
 
-const SearchBarSimple: React.FC<SearchBarSimpleProps> = ({ compact = false, onOpenChat }) => {
+const SearchBarSimple: React.FC<SearchBarSimpleProps> = ({
+  compact = false,
+  onOpenChat,
+}) => {
   const [query, setQuery] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSparkle, setIsSparkle] = useState(false);
-  const [currentPlaceholder, setCurrentPlaceholder] = useState("Search portfolio, shop, essays...");
+  const [currentPlaceholder, setCurrentPlaceholder] = useState(
+    "Search portfolio, shop, essays...",
+  );
 
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,12 +51,12 @@ const SearchBarSimple: React.FC<SearchBarSimpleProps> = ({ compact = false, onOp
       navigate(searchResult.suggestedRoute);
 
       if (searchResult.results.length > 0) {
-        sessionStorage.setItem('searchResults', JSON.stringify(searchResult));
+        sessionStorage.setItem("searchResults", JSON.stringify(searchResult));
       }
 
       setQuery("");
     } catch (error) {
-      console.error('Search failed:', error);
+      console.error("Search failed:", error);
       navigate("/gallery");
       setQuery("");
     } finally {
@@ -69,7 +73,7 @@ const SearchBarSimple: React.FC<SearchBarSimpleProps> = ({ compact = false, onOp
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSearch(e as any);
     }
@@ -88,17 +92,21 @@ const SearchBarSimple: React.FC<SearchBarSimpleProps> = ({ compact = false, onOp
     return (
       <div className="relative max-w-md">
         <form onSubmit={handleSearch} className="relative">
-          <div className={`relative flex-1 glass-card search-enhanced ${isSparkle ? 'sparkle-effect' : ''}`}>
+          <div
+            className={`relative flex-1 glass-card search-enhanced ${isSparkle ? "sparkle-effect" : ""}`}
+          >
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/60 w-4 h-4" />
             <input
               ref={inputRef}
               type="text"
-              placeholder={currentPlaceholder.length > 25 ? "Search..." : currentPlaceholder}
+              placeholder={
+                currentPlaceholder.length > 25
+                  ? "Search..."
+                  : currentPlaceholder
+              }
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyPress={handleKeyPress}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
               className="w-full bg-transparent text-white placeholder-white/60 focus:outline-none transition-all duration-300 rounded-full py-2 pl-10 pr-12"
               disabled={isLoading}
             />
@@ -121,7 +129,7 @@ const SearchBarSimple: React.FC<SearchBarSimpleProps> = ({ compact = false, onOp
   return (
     <div className="w-full max-w-3xl mx-auto relative floating-element card-floating">
       <form onSubmit={handleSearch}>
-        <div className={`relative group ${isSparkle ? 'sparkle-effect' : ''}`}>
+        <div className={`relative group ${isSparkle ? "sparkle-effect" : ""}`}>
           <div className="relative glass-card card-hover search-enhanced overflow-hidden">
             <div className="flex items-center">
               <div className="ml-6 text-cream-200 transition-colors duration-300 group-hover:text-mustard-400">
@@ -139,8 +147,6 @@ const SearchBarSimple: React.FC<SearchBarSimpleProps> = ({ compact = false, onOp
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyPress={handleKeyPress}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
                 className="flex-1 bg-transparent py-6 px-6 text-white text-lg text-body placeholder-white/70 focus:outline-none transition-all duration-300"
                 disabled={isLoading}
               />

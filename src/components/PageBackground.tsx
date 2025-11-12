@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { useRandomPageImage } from "../hooks/useRandomPageImage";
 import { backgroundPreloader } from "../lib/backgroundPreloader";
 import { supabase } from "../lib/supabase";
-import { Media } from "../lib/types";
 
 export default function PageBackground() {
   const location = useLocation();

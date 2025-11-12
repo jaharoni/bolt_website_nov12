@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Cloud, Sun, CloudRain, CloudSnow } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Cloud, Sun, CloudRain, CloudSnow } from "lucide-react";
 
 interface WeatherData {
   temperature: number;
@@ -13,7 +13,6 @@ interface WeatherData {
 const WeatherDisplay: React.FC = () => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -23,11 +22,11 @@ const WeatherDisplay: React.FC = () => {
         if (!API_KEY || !navigator.geolocation) {
           setWeather({
             temperature: 72,
-            condition: 'Clear',
+            condition: "Clear",
             humidity: 45,
             windSpeed: 8,
             visibility: 10,
-            icon: 'clear'
+            icon: "clear",
           });
           setLoading(false);
           return;
@@ -38,31 +37,36 @@ const WeatherDisplay: React.FC = () => {
             try {
               const { latitude, longitude } = position.coords;
               const response = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=imperial`
+                `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=imperial`,
               );
 
               if (!response.ok) {
-                throw new Error('Weather API error');
+                throw new Error("Weather API error");
               }
 
               const data = await response.json();
+
               setWeather({
                 temperature: Math.round(data.main.temp),
                 condition: data.weather[0].main,
                 humidity: data.main.humidity,
                 windSpeed: Math.round(data.wind.speed),
                 visibility: Math.round(data.visibility / 1000),
-                icon: data.weather[0].main.toLowerCase()
+                icon: data.weather[0].main.toLowerCase(),
               });
               setLoading(false);
-            } catch (err) {
+            } catch (error) {
+              console.warn(
+                "WeatherDisplay: failed to fetch geolocated weather",
+                error,
+              );
               setWeather({
                 temperature: 72,
-                condition: 'Clear',
+                condition: "Clear",
                 humidity: 45,
                 windSpeed: 8,
                 visibility: 10,
-                icon: 'clear'
+                icon: "clear",
               });
               setLoading(false);
             }
@@ -70,23 +74,24 @@ const WeatherDisplay: React.FC = () => {
           () => {
             setWeather({
               temperature: 68,
-              condition: 'Partly Cloudy',
+              condition: "Partly Cloudy",
               humidity: 52,
               windSpeed: 6,
               visibility: 10,
-              icon: 'clouds'
+              icon: "clouds",
             });
             setLoading(false);
-          }
+          },
         );
-      } catch (err) {
+      } catch (error) {
+        console.warn("WeatherDisplay: fallback weather used", error);
         setWeather({
           temperature: 72,
-          condition: 'Clear',
+          condition: "Clear",
           humidity: 45,
           windSpeed: 8,
           visibility: 10,
-          icon: 'clear'
+          icon: "clear",
         });
         setLoading(false);
       }
@@ -100,17 +105,17 @@ const WeatherDisplay: React.FC = () => {
 
   const getWeatherIcon = (condition: string) => {
     switch (condition.toLowerCase()) {
-      case 'clear':
-      case 'sunny':
+      case "clear":
+      case "sunny":
         return <Sun className="w-4 h-4 text-yellow-400" />;
-      case 'clouds':
-      case 'partly cloudy':
-      case 'cloudy':
+      case "clouds":
+      case "partly cloudy":
+      case "cloudy":
         return <Cloud className="w-4 h-4 text-white/70" />;
-      case 'rain':
-      case 'drizzle':
+      case "rain":
+      case "drizzle":
         return <CloudRain className="w-4 h-4 text-blue-400" />;
-      case 'snow':
+      case "snow":
         return <CloudSnow className="w-4 h-4 text-white" />;
       default:
         return <Cloud className="w-4 h-4 text-white/70" />;
@@ -125,7 +130,7 @@ const WeatherDisplay: React.FC = () => {
     );
   }
 
-  if (error || !weather) {
+  if (!weather) {
     return (
       <div className="text-white/50 text-sm">
         <div>Weather unavailable</div>

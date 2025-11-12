@@ -10,10 +10,11 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
   const [query, setQuery] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSparkle, setIsSparkle] = useState(false);
-  const [currentPlaceholder, setCurrentPlaceholder] = useState("How can I help you today?");
+  const [currentPlaceholder, setCurrentPlaceholder] = useState(
+    "How can I help you today?",
+  );
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatQuery, setChatQuery] = useState("");
   const navigate = useNavigate();
@@ -72,16 +73,17 @@ const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
     "Como posso ajudar-vos?", // Portuguese (formal)
     "Comment puis-je vous aider?", // French Canadian
     "How can I help ya?", // Australian English
-    "Me pēhea au e āwhina ai?" // Māori
+    "Me pēhea au e āwhina ai?", // Māori
   ];
 
   // Function to get next placeholder with USA bias
   const getNextPlaceholder = () => {
     // Every 5th message should be American English
-    if (Math.random() < 0.2) { // 20% chance = roughly every 5th
+    if (Math.random() < 0.2) {
+      // 20% chance = roughly every 5th
       return "How can I help you today?"; // American English
     }
-    
+
     // Otherwise, pick randomly from world languages
     const randomIndex = Math.floor(Math.random() * worldPlaceholders.length);
     return worldPlaceholders[randomIndex];
@@ -101,9 +103,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
       /^(what|how|why|when|where|who|can you|could you|tell me|show me|explain)/i,
       /\?$/,
       /(help|recommend|suggest|advice|tell me about|what do you think)/i,
-      /\b(i want|i need|i'd like|looking for)\b/i
+      /\b(i want|i need|i'd like|looking for)\b/i,
     ];
-    return conversationalPatterns.some(pattern => pattern.test(text)) || text.split(' ').length > 5;
+    return (
+      conversationalPatterns.some((pattern) => pattern.test(text)) ||
+      text.split(" ").length > 5
+    );
   };
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -125,7 +130,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
         navigate(searchResult.suggestedRoute);
 
         if (searchResult.results.length > 0) {
-          sessionStorage.setItem('searchResults', JSON.stringify(searchResult));
+          sessionStorage.setItem("searchResults", JSON.stringify(searchResult));
         }
 
         setQuery("");
@@ -133,7 +138,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
         setTimeout(() => setIsSparkle(false), 800);
       }
     } catch (error) {
-      console.error('Search failed:', error);
+      console.error("Search failed:", error);
       navigate("/gallery");
       setQuery("");
       setIsLoading(false);
@@ -155,17 +160,24 @@ const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
     return (
       <>
         <div className="relative max-w-md">
-          <form onSubmit={handleSearch} className="relative flex items-center gap-2">
-            <div className={`relative flex-1 glass-card search-enhanced ${isSparkle ? 'sparkle-effect' : ''}`}>
+          <form
+            onSubmit={handleSearch}
+            className="relative flex items-center gap-2"
+          >
+            <div
+              className={`relative flex-1 glass-card search-enhanced ${isSparkle ? "sparkle-effect" : ""}`}
+            >
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/60 w-4 h-4" />
               <input
                 ref={inputRef}
                 type="text"
-                placeholder={currentPlaceholder.length > 25 ? "How can I help?" : currentPlaceholder}
+                placeholder={
+                  currentPlaceholder.length > 25
+                    ? "How can I help?"
+                    : currentPlaceholder
+                }
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
                 className="w-full bg-transparent text-white placeholder-white/60 focus:outline-none transition-all duration-300 rounded-full py-2 pl-10 pr-12"
                 disabled={isLoading}
               />
@@ -198,7 +210,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
     <>
       <div className="w-full max-w-3xl mx-auto relative floating-element card-floating">
         <form onSubmit={handleSearch}>
-          <div className={`relative group ${isSparkle ? 'sparkle-effect' : ''}`}>
+          <div
+            className={`relative group ${isSparkle ? "sparkle-effect" : ""}`}
+          >
             <div className="relative glass-card card-hover search-enhanced overflow-hidden">
               <div className="flex items-center">
                 <div className="ml-6 text-cream-200 transition-colors duration-300 group-hover:text-mustard-400">
@@ -215,8 +229,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
                   placeholder={currentPlaceholder}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  onFocus={() => setIsFocused(true)}
-                  onBlur={() => setIsFocused(false)}
                   className="flex-1 bg-transparent py-6 px-6 text-white text-lg text-body placeholder-white/70 focus:outline-none transition-all duration-300"
                   disabled={isLoading}
                 />
@@ -250,7 +262,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ compact = false }) => {
         {isAIConfigured && (
           <div className="text-center mt-3">
             <p className="text-white/40 text-xs">
-              Ask conversational questions for AI chat, or use keywords to navigate
+              Ask conversational questions for AI chat, or use keywords to
+              navigate
             </p>
           </div>
         )}

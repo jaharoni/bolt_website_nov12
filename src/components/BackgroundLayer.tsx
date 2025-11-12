@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { getBGConfig, matchRule, type PageBGRule } from '../lib/backgrounds';
-import { supabase } from '../lib/supabase';
+import { useEffect, useState, useRef, useCallback } from "react";
+import { getBGConfig, matchRule, type PageBGRule } from "../lib/backgrounds";
+import { supabase } from "../lib/supabase";
 
 type BackgroundLayerProps = {
   pageKey: string;
@@ -10,11 +10,16 @@ type BackgroundLayerProps = {
   onPrev?: () => void;
 };
 
-export function BackgroundLayer({ pageKey, onIndexChange, externalIndex, onNext, onPrev }: BackgroundLayerProps) {
+export function BackgroundLayer({
+  pageKey,
+  onIndexChange,
+  externalIndex,
+  onNext,
+  onPrev,
+}: BackgroundLayerProps) {
   const [images, setImages] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [rule, setRule] = useState<PageBGRule | null>(null);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isMountedRef = useRef(true);
   const prevPageKeyRef = useRef<string>(pageKey);
@@ -42,22 +47,22 @@ export function BackgroundLayer({ pageKey, onIndexChange, externalIndex, onNext,
       } else if (pageRule.folders.length > 0) {
         for (const folderSlug of pageRule.folders) {
           const { data: folder } = await supabase
-            .from('media_folders')
-            .select('id, name, slug')
-            .eq('slug', folderSlug)
+            .from("media_folders")
+            .select("id, name, slug")
+            .eq("slug", folderSlug)
             .maybeSingle();
 
           if (folder) {
             const { data: media } = await supabase
-              .from('media_items')
-              .select('public_url')
-              .eq('folder_id', folder.id)
-              .eq('is_active', true)
-              .eq('media_type', 'image')
-              .order('created_at');
+              .from("media_items")
+              .select("public_url")
+              .eq("folder_id", folder.id)
+              .eq("is_active", true)
+              .eq("media_type", "image")
+              .order("created_at");
 
             if (media && media.length > 0) {
-              imageList.push(...media.map(m => m.public_url));
+              imageList.push(...media.map((m) => m.public_url));
             }
           }
         }
@@ -70,26 +75,32 @@ export function BackgroundLayer({ pageKey, onIndexChange, externalIndex, onNext,
         prevPageKeyRef.current = pageKey;
 
         const randomStartIndex = Math.floor(Math.random() * imageList.length);
-        const selectedImage = imageList[randomStartIndex];
 
         if (pageChanged || images.length === 0) {
-          // Preload the image first, then update state
-          const img = new Image();
-          img.onload = () => {
-            if (!isMountedRef.current) return;
-            // Update images array with new list
+          if (typeof window === "undefined") {
             setImages(imageList);
-            // Small delay to ensure DOM is ready, then fade to new image
-            requestAnimationFrame(() => {
-              setCurrentIndex(randomStartIndex);
-              setImagesLoaded(true);
+            setCurrentIndex(randomStartIndex);
+            return;
+          }
+
+          const preloadImage = new Image();
+          preloadImage.onload = () => {
+            if (!isMountedRef.current) return;
+            setImages(imageList);
+            window.requestAnimationFrame(() => {
+              if (isMountedRef.current) {
+                setCurrentIndex(randomStartIndex);
+              }
             });
           };
-          img.src = selectedImage;
+          preloadImage.onerror = () => {
+            if (!isMountedRef.current) return;
+            setImages(imageList);
+            setCurrentIndex(randomStartIndex);
+          };
+          preloadImage.src = imageList[randomStartIndex] ?? "";
         } else {
-          // Same page, just update index
           setCurrentIndex(randomStartIndex);
-          setImagesLoaded(true);
         }
       }
     }
@@ -150,12 +161,12 @@ export function BackgroundLayer({ pageKey, onIndexChange, externalIndex, onNext,
     const handleNext = () => nextImage();
     const handlePrev = () => prevImage();
 
-    window.addEventListener('backgroundNext', handleNext);
-    window.addEventListener('backgroundPrev', handlePrev);
+    window.addEventListener("backgroundNext", handleNext);
+    window.addEventListener("backgroundPrev", handlePrev);
 
     return () => {
-      window.removeEventListener('backgroundNext', handleNext);
-      window.removeEventListener('backgroundPrev', handlePrev);
+      window.removeEventListener("backgroundNext", handleNext);
+      window.removeEventListener("backgroundPrev", handlePrev);
     };
   }, [nextImage, prevImage]);
 
@@ -174,7 +185,10 @@ export function BackgroundLayer({ pageKey, onIndexChange, externalIndex, onNext,
           style={{
             backgroundImage: `url(${img})`,
             opacity: idx === currentIndex ? 1 : 0,
-            willChange: idx === currentIndex || idx === (currentIndex + 1) % images.length ? 'opacity' : 'auto',
+            willChange:
+              idx === currentIndex || idx === (currentIndex + 1) % images.length
+                ? "opacity"
+                : "auto",
           }}
         />
       ))}

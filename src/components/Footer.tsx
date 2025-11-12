@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Instagram, Twitter, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Instagram, Mail, ExternalLink } from 'lucide-react';
 import { useTextBlock } from '../hooks/useTextBlock';
 
 const Footer: React.FC = () => {
