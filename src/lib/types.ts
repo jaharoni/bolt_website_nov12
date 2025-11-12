@@ -1,3 +1,11 @@
+export type JsonValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JsonValue[]
+  | { [key: string]: JsonValue };
+
 export type Media = {
   id: string;
   filename: string;
@@ -38,6 +46,16 @@ export type Essay = {
   published_at?: string | null;
 };
 
+export type ProductVariant = {
+  id?: string;
+  size: string;
+  price: number;
+  label?: string | null;
+  description?: string | null;
+  inventory_count?: number | null;
+  metadata?: Record<string, JsonValue>;
+};
+
 export type Product = {
   id: string;
   title: string;
@@ -45,14 +63,14 @@ export type Product = {
   description: string;
   category: string;
   base_price: number;
-  images: any;
-  variants: any;
+  images: string[];
+  variants: ProductVariant[];
   tags: string[];
   is_active: boolean;
   is_digital: boolean;
   inventory_count?: number | null;
   printful_product_id?: string | null;
-  metadata: Record<string, any>;
+  metadata: Record<string, JsonValue>;
   created_at: string;
   updated_at: string;
 };
@@ -60,7 +78,7 @@ export type Product = {
 export type SiteSettings = {
   id: string;
   key: string;
-  value: any;
+  value: JsonValue;
   category: string;
   description?: string | null;
   is_public: boolean;
@@ -145,7 +163,7 @@ export type Page = {
   page_type: 'standard' | 'portfolio' | 'landing' | 'about' | 'contact' | 'custom';
   template: string;
   hero_media_id?: string | null;
-  content_json: Record<string, any>;
+  content_json: JsonValue;
   meta_title?: string | null;
   meta_description?: string | null;
   is_published: boolean;
@@ -188,8 +206,8 @@ export type Customer = {
   email: string;
   name?: string | null;
   phone?: string | null;
-  default_address?: Record<string, any> | null;
-  metadata: Record<string, any>;
+  default_address?: Record<string, JsonValue> | null;
+  metadata: Record<string, JsonValue>;
   created_at: string;
   updated_at: string;
 };
@@ -200,7 +218,7 @@ export type Order = {
   customer_id?: string | null;
   customer_email: string;
   customer_name: string;
-  shipping_address: Record<string, any>;
+  shipping_address: Record<string, JsonValue>;
   subtotal: number;
   shipping_cost: number;
   tax: number;
@@ -212,7 +230,7 @@ export type Order = {
   tracking_number?: string | null;
   tracking_url?: string | null;
   notes?: string | null;
-  metadata: Record<string, any>;
+  metadata: Record<string, JsonValue>;
   lto_offer_id?: string | null;
   lto_variant_id?: string | null;
   created_at: string;
@@ -241,10 +259,10 @@ export type PrintfulProduct = {
   printful_id: string;
   name: string;
   category?: string | null;
-  sizes: any;
+  sizes: JsonValue;
   base_cost?: number | null;
   shipping_cost?: number | null;
-  product_data: Record<string, any>;
+  product_data: Record<string, JsonValue>;
   last_synced: string;
   is_available: boolean;
   created_at: string;
@@ -300,7 +318,7 @@ export type ChatUsageLog = {
   estimated_cost: number;
   model_used: string;
   moderation_flagged: boolean;
-  moderation_categories?: Record<string, any> | null;
+  moderation_categories?: Record<string, JsonValue> | null;
   turnstile_verified: boolean;
   created_at: string;
 };
@@ -333,7 +351,7 @@ export type ChatModerationLog = {
   session_id: string;
   ip_address: string;
   message_content: string;
-  moderation_result: Record<string, any>;
+  moderation_result: Record<string, JsonValue>;
   categories_flagged?: string[] | null;
   max_score?: number | null;
   action_taken: string;

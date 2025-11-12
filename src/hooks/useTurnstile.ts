@@ -3,13 +3,22 @@ import { useEffect, useRef, useState } from 'react';
 declare global {
   interface Window {
     turnstile?: {
-      render: (container: HTMLElement, options: any) => string;
+      render: (container: HTMLElement, options: TurnstileRenderOptions) => string;
       reset: (widgetId: string) => void;
       remove: (widgetId: string) => void;
       getResponse: (widgetId: string) => string;
     };
     onTurnstileLoad?: () => void;
   }
+}
+
+interface TurnstileRenderOptions {
+  sitekey: string;
+  theme?: 'light' | 'dark' | 'auto';
+  size?: 'compact' | 'normal' | 'flexible';
+  callback?: (token: string) => void;
+  'error-callback'?: () => void;
+  'expired-callback'?: () => void;
 }
 
 export function useTurnstile(onSuccess: (token: string) => void) {
