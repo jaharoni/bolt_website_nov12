@@ -11,7 +11,7 @@ export function useRandomPageImage(pageKey: string) {
 
     async function run() {
       try {
-        const media = await backgroundPreloader.preloadForPage(pageKey, false);
+        const media = await backgroundPreloader.preloadForPage(pageKey, true);
         if (alive) {
           setItem(media);
           setLoading(false);

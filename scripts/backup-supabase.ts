@@ -1,7 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
-import * as fs from 'fs';
-import * as path from 'path';
-import { config } from 'dotenv';
+import { createClient } from "@supabase/supabase-js";
+import * as fs from "fs";
+import * as path from "path";
+import { config } from "dotenv";
 
 config();
 
@@ -9,41 +9,59 @@ const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Missing Supabase environment variables');
+  console.error("Missing Supabase environment variables");
   process.exit(1);
 }
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const TABLES_TO_BACKUP = [
-  'media_items',
-  'media_collections',
-  'media_collection_items',
-  'media_visibility',
-  'media_pricing',
-  'media_upload_batches',
-  'essays',
-  'essay_sections',
-  'essay_media',
-  'products',
-  'product_media',
-  'customers',
-  'orders',
-  'order_items',
-  'gallery_projects',
-  'project_media',
-  'site_settings',
-  'printful_products',
-  'printful_settings',
-];
+  "media_items",
+  "media_collections",
+  "media_collection_items",
+  "media_visibility",
+  "media_pricing",
+  "media_upload_batches",
+  "essays",
+  "essay_sections",
+  "essay_media",
+  "products",
+  "product_media",
+  "customers",
+  "orders",
+  "order_items",
+  "gallery_projects",
+  "project_media",
+  "site_settings",
+  "printful_products",
+  "printful_settings",
+] as const;
 
-async function backupTable(tableName: string) {
+type BackupTable = (typeof TABLES_TO_BACKUP)[number];
+
+type JsonValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JsonValue[]
+  | { [key: string]: JsonValue };
+
+type TableRow = Record<string, JsonValue>;
+
+type BackupTables = Partial<Record<BackupTable, TableRow[]>>;
+
+interface BackupFile {
+  timestamp: string;
+  supabaseUrl: string;
+  tables: BackupTables;
+}
+
+async function backupTable(tableName: BackupTable): Promise<TableRow[] | null> {
   console.log(`Backing up table: ${tableName}`);
 
   try {
-    const { data, error } = await supabase
-      .from(tableName)
-      .select('*');
+    const { data, error } = await supabase.from(tableName).select("*");
 
     if (error) {
       console.error(`Error backing up ${tableName}:`, error);
@@ -51,16 +69,16 @@ async function backupTable(tableName: string) {
     }
 
     console.log(`  ✓ Backed up ${data?.length || 0} rows from ${tableName}`);
-    return data;
-  } catch (err) {
-    console.error(`Exception backing up ${tableName}:`, err);
+    return (data ?? []) as TableRow[];
+  } catch (error) {
+    console.error(`Exception backing up ${tableName}:`, error);
     return null;
   }
 }
 
 async function main() {
-  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const backupDir = path.join(process.cwd(), 'backups', timestamp);
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const backupDir = path.join(process.cwd(), "backups", timestamp);
 
   if (!fs.existsSync(backupDir)) {
     fs.mkdirSync(backupDir, { recursive: true });
@@ -68,7 +86,7 @@ async function main() {
 
   console.log(`Creating backup in: ${backupDir}\n`);
 
-  const backup: Record<string, any> = {
+  const backup: BackupFile = {
     timestamp,
     supabaseUrl,
     tables: {},
@@ -81,20 +99,20 @@ async function main() {
     }
   }
 
-  const backupFile = path.join(backupDir, 'supabase-backup.json');
+  const backupFile = path.join(backupDir, "supabase-backup.json");
   fs.writeFileSync(backupFile, JSON.stringify(backup, null, 2));
 
   console.log(`\n✓ Backup complete!`);
   console.log(`  Location: ${backupFile}`);
   console.log(`  Tables backed up: ${Object.keys(backup.tables).length}`);
 
-  let totalRows = 0;
-  for (const [table, data] of Object.entries(backup.tables)) {
-    totalRows += (data as any[]).length;
-  }
+  const totalRows = Object.values(backup.tables).reduce(
+    (acc, rows) => acc + (rows?.length ?? 0),
+    0,
+  );
   console.log(`  Total rows: ${totalRows}`);
 
-  const summaryFile = path.join(backupDir, 'BACKUP_SUMMARY.txt');
+  const summaryFile = path.join(backupDir, "BACKUP_SUMMARY.txt");
   const summary = `
 Supabase Backup Summary
 ======================
@@ -103,8 +121,8 @@ Supabase URL: ${supabaseUrl}
 
 Tables Backed Up:
 ${Object.entries(backup.tables)
-  .map(([table, data]) => `  - ${table}: ${(data as any[]).length} rows`)
-  .join('\n')}
+  .map(([table, data]) => `  - ${table}: ${data?.length ?? 0} rows`)
+  .join("\n")}
 
 Total Rows: ${totalRows}
 
