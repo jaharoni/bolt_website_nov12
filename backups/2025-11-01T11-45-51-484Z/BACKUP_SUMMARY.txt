@@ -1,0 +1,14 @@
+
+Supabase Backup Summary
+======================
+Created: 11/1/2025, 11:45:53 AM
+Supabase URL: https://omtjqxsuoaebxokpgizt.supabase.co
+
+Tables Backed Up:
+  - media_items: 10 rows
+  - essays: 0 rows
+
+Total Rows: 10
+
+To restore this backup, run:
+  npm run db:restore 2025-11-01T11-45-51-484Z

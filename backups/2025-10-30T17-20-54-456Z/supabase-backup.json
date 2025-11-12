@@ -1,0 +1,4049 @@
+{
+  "timestamp": "2025-10-30T17-20-54-456Z",
+  "supabaseUrl": "https://wiqiaabjqzitegmfvtsn.supabase.co",
+  "tables": {
+    "media_items": [
+      {
+        "id": "9fd05e3a-9c64-407d-80cd-e75488d20993",
+        "filename": "Untitled-1 (5).jpg",
+        "storage_path": "1759346491165-vi69a.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/1759346491165-vi69a.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 3035469,
+        "width": 2048,
+        "height": 1365,
+        "title": "Untitled-1 (5).jpg",
+        "description": null,
+        "alt_text": "Untitled-1 (5).jpg",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-01T19:21:33.741006+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "da22b21a-7241-447b-b326-884d2f984f04",
+        "filename": "Untitled-1 (6).jpg",
+        "storage_path": "1759346492267-wyxqsl.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/1759346492267-wyxqsl.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 3066614,
+        "width": 2048,
+        "height": 1365,
+        "title": "Untitled-1 (6).jpg",
+        "description": null,
+        "alt_text": "Untitled-1 (6).jpg",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-01T19:21:35.186337+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "a4889531-843c-4f89-84ec-9af5000f5aa3",
+        "filename": "Untitled-1 (7).jpg",
+        "storage_path": "1759346493713-fm2rw3.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/1759346493713-fm2rw3.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 3543427,
+        "width": 2048,
+        "height": 1366,
+        "title": "Untitled-1 (7).jpg",
+        "description": null,
+        "alt_text": "Untitled-1 (7).jpg",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-01T19:21:36.504049+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "21a790dc-71a4-4d9b-bfc2-f1b81d9c1171",
+        "filename": "Untitled-1.jpg",
+        "storage_path": "1759346495030-yhxjg4.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/1759346495030-yhxjg4.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 1399381,
+        "width": 2048,
+        "height": 1365,
+        "title": "Untitled-1.jpg",
+        "description": null,
+        "alt_text": "Untitled-1.jpg",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-01T19:21:37.224989+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "52e351fd-dcc2-4445-973e-737ab09ee91d",
+        "filename": "Untitled-1 (2).JPG",
+        "storage_path": "1759350286370-1hhq9f.JPG",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/1759350286370-1hhq9f.JPG",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 1500923,
+        "width": 2048,
+        "height": 1366,
+        "title": "Untitled-1 (2).JPG",
+        "description": "",
+        "alt_text": "Untitled-1 (2).JPG",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-01T20:24:49.638868+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "0c0b4163-9d2a-427d-96e1-b086590217de",
+        "filename": "No_Place_Like_Home.JPG",
+        "storage_path": "1759373878566-t8knhj.JPG",
+        "bucket_name": "shop",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/shop/1759373878566-t8knhj.JPG",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 13864145,
+        "width": 4200,
+        "height": 6600,
+        "title": "No Place Like Home",
+        "description": "An homage to the city that never sleeps",
+        "alt_text": "No Place Like Home",
+        "tags": [
+          "umbrella",
+          "rain",
+          "neon",
+          "NYC",
+          "moody"
+        ],
+        "page_context": "shop",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-02T02:58:05.241293+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "vertical",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "46ae6b6a-047d-4bd5-8eb9-df06a96dd91f",
+        "filename": "20201216-_WTM3754.jpg",
+        "storage_path": "backgrounds/1759457657928-ntbtk8.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/backgrounds/1759457657928-ntbtk8.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 19545110,
+        "width": 9504,
+        "height": 6336,
+        "title": "20201216-_WTM3754",
+        "description": null,
+        "alt_text": "20201216-_WTM3754",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-03T02:14:26.784127+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "f6d538b4-e7cb-45d3-849f-6c22b92e2559",
+        "filename": "20201216-_WTM4181.jpg",
+        "storage_path": "backgrounds/1759457665666-j1bxu.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/backgrounds/1759457665666-j1bxu.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 21573131,
+        "width": 9226,
+        "height": 6151,
+        "title": "20201216-_WTM4181",
+        "description": null,
+        "alt_text": "20201216-_WTM4181",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-03T02:14:36.492175+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "a3b4bf1a-715c-46b2-b22b-2b140f9fe0ea",
+        "filename": "20201216-_WTM4246.jpg",
+        "storage_path": "backgrounds/1759457675366-2pt4t8.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/backgrounds/1759457675366-2pt4t8.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 25585291,
+        "width": 9504,
+        "height": 6336,
+        "title": "20201216-_WTM4246",
+        "description": null,
+        "alt_text": "20201216-_WTM4246",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-03T02:14:49.233065+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "3d960fb0-d9b0-4d0b-8116-2af811f161d3",
+        "filename": "Dominican Nights_(for social and web)_20200223_5.jpg",
+        "storage_path": "backgrounds/1759457847608-ddhxsk.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/backgrounds/1759457847608-ddhxsk.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 375947,
+        "width": 2040,
+        "height": 1360,
+        "title": "Dominican Nights_(for social and web)_20200223_5",
+        "description": null,
+        "alt_text": "Dominican Nights_(for social and web)_20200223_5",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-03T02:17:29.477088+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "388959e4-6acf-4943-967b-ba92d18fc115",
+        "filename": "In the Ruins_(for print)_20200224_19.jpg",
+        "storage_path": "backgrounds/1759457878703-96xjxv.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/backgrounds/1759457878703-96xjxv.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 15797429,
+        "width": 9159,
+        "height": 6106,
+        "title": "In the Ruins_(for print)_20200224_19",
+        "description": null,
+        "alt_text": "In the Ruins_(for print)_20200224_19",
+        "tags": [],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-03T02:18:06.335749+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "0788a4f6-4171-41c6-950a-340f9602f471",
+        "filename": "_JMA4529.jpg",
+        "storage_path": "1759346486567-voo8zb.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/1759346486567-voo8zb.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 8747772,
+        "width": 6829,
+        "height": 3844,
+        "title": "_JMA4529.jpg",
+        "description": null,
+        "alt_text": "Homepage background image",
+        "tags": [
+          "homebg",
+          "sample",
+          "background"
+        ],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-01T19:21:31.058067+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "2f61ca59-0fa0-407f-89bf-2e5aac011534",
+        "filename": "IMG_3369.JPG",
+        "storage_path": "1759346489597-1hpsuh.JPG",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/1759346489597-1hpsuh.JPG",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 619659,
+        "width": 2048,
+        "height": 1152,
+        "title": "IMG_3369.JPG",
+        "description": null,
+        "alt_text": "Homepage background image",
+        "tags": [
+          "homebg",
+          "sample",
+          "background"
+        ],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-01T19:21:31.597475+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      },
+      {
+        "id": "87d65fbd-9d94-4b7c-8198-53122097b9d2",
+        "filename": "Untitled-1 (3).jpg",
+        "storage_path": "1759346490131-nf63u3.jpg",
+        "bucket_name": "backgrounds",
+        "public_url": "https://wiqiaabjqzitegmfvtsn.supabase.co/storage/v1/object/public/backgrounds/1759346490131-nf63u3.jpg",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "file_size": 2926098,
+        "width": 2048,
+        "height": 1366,
+        "title": "Untitled-1 (3).jpg",
+        "description": null,
+        "alt_text": "Homepage background image",
+        "tags": [
+          "homebg",
+          "sample",
+          "background"
+        ],
+        "page_context": "background",
+        "is_active": true,
+        "sort_order": 0,
+        "created_at": "2025-10-01T19:21:32.635864+00:00",
+        "updated_at": "2025-10-30T16:38:04.93642+00:00",
+        "device_orientation": "horizontal",
+        "for_sale": false,
+        "sale_price": null,
+        "print_sizes": [],
+        "inventory_count": -1,
+        "sales_count": 0,
+        "color_palette": [],
+        "exif_data": {},
+        "video_duration": null,
+        "has_audio": false,
+        "processing_status": "completed",
+        "original_filename": null,
+        "file_hash": null,
+        "is_visible": false,
+        "collection_id": null,
+        "upload_batch_id": null,
+        "pricing_enabled": false,
+        "visibility_locations": [],
+        "folder_id": "b7e2210c-3a60-4d54-9a23-9db42861630a"
+      }
+    ],
+    "media_collections": [],
+    "media_collection_items": [],
+    "media_visibility": [],
+    "media_pricing": [],
+    "media_upload_batches": [],
+    "essays": [
+      {
+        "id": "c46da678-732d-4ea0-a3fb-cb9abfdd8deb",
+        "title": "The Weight of Light",
+        "slug": "the-weight-of-light",
+        "subtitle": "How shadows define our brightest moments",
+        "excerpt": "In the quiet hours before dawn, when the world holds its breath between darkness and day, light carries a different weight. It moves through space not as illumination alone, but as a storyteller, painting narratives across every surface it touches.",
+        "featured_image_id": null,
+        "publish_status": "published",
+        "is_featured": true,
+        "tags": [
+          "Photography",
+          "Light",
+          "Philosophy"
+        ],
+        "view_count": 1247,
+        "read_time_minutes": 8,
+        "created_at": "2025-10-13T17:10:47.541679+00:00",
+        "updated_at": "2025-10-13T17:10:47.541679+00:00",
+        "published_at": "2025-10-11T17:10:47.541679+00:00"
+      },
+      {
+        "id": "7f08b2b0-8302-4356-a20a-272c6ea1f371",
+        "title": "Faces We Wear",
+        "slug": "faces-we-wear",
+        "subtitle": "A meditation on identity through portraiture",
+        "excerpt": "Every portrait is a conversation between truth and performance, between who we are and who we wish to be seen as. In each face lies countless stories.",
+        "featured_image_id": null,
+        "publish_status": "published",
+        "is_featured": false,
+        "tags": [
+          "Portrait",
+          "Identity",
+          "Art"
+        ],
+        "view_count": 892,
+        "read_time_minutes": 12,
+        "created_at": "2025-10-13T17:10:47.541679+00:00",
+        "updated_at": "2025-10-13T17:10:47.541679+00:00",
+        "published_at": "2025-10-08T17:10:47.541679+00:00"
+      },
+      {
+        "id": "54c4341b-44de-4736-adcf-5e0782d59089",
+        "title": "Street Symphonies",
+        "slug": "street-symphonies",
+        "subtitle": "Finding rhythm in urban chaos",
+        "excerpt": "The city breathes in rhythms most never notice. But in the dance of strangers and the geometry of intersections, there exists a visual music.",
+        "featured_image_id": null,
+        "publish_status": "published",
+        "is_featured": false,
+        "tags": [
+          "Street Photography",
+          "Urban",
+          "Culture"
+        ],
+        "view_count": 654,
+        "read_time_minutes": 6,
+        "created_at": "2025-10-13T17:10:47.541679+00:00",
+        "updated_at": "2025-10-13T17:10:47.541679+00:00",
+        "published_at": "2025-10-06T17:10:47.541679+00:00"
+      },
+      {
+        "id": "345a0911-5867-4bf9-b0bc-ce9de4788f3e",
+        "title": "Landscapes of Memory",
+        "slug": "landscapes-of-memory",
+        "subtitle": "When places become feelings",
+        "excerpt": "Some landscapes exist only in memory, more vivid than any photograph could capture, more permanent than the ground itself.",
+        "featured_image_id": null,
+        "publish_status": "published",
+        "is_featured": false,
+        "tags": [
+          "Landscape",
+          "Memory",
+          "Nature"
+        ],
+        "view_count": 1056,
+        "read_time_minutes": 10,
+        "created_at": "2025-10-13T17:10:47.541679+00:00",
+        "updated_at": "2025-10-13T17:10:47.541679+00:00",
+        "published_at": "2025-10-03T17:10:47.541679+00:00"
+      },
+      {
+        "id": "4cf03db1-f456-41a4-b6a8-9d19edb63f08",
+        "title": "The Space Between",
+        "slug": "the-space-between",
+        "subtitle": "On negative space and visual breathing room",
+        "excerpt": "What we leave out of the frame is as important as what we include. In the emptiness, the eye finds rest and the mind finds meaning.",
+        "featured_image_id": null,
+        "publish_status": "published",
+        "is_featured": false,
+        "tags": [
+          "Composition",
+          "Minimalism",
+          "Theory"
+        ],
+        "view_count": 723,
+        "read_time_minutes": 7,
+        "created_at": "2025-10-13T17:10:47.541679+00:00",
+        "updated_at": "2025-10-13T17:10:47.541679+00:00",
+        "published_at": "2025-09-29T17:10:47.541679+00:00"
+      },
+      {
+        "id": "7737531e-029b-4166-8a22-35075c2c283b",
+        "title": "Welcome to the Admin System",
+        "slug": "welcome-admin-system",
+        "subtitle": "Getting Started with Content Management",
+        "excerpt": "This is a sample essay to demonstrate the admin system capabilities. You can edit or delete this at any time.",
+        "featured_image_id": "9fd05e3a-9c64-407d-80cd-e75488d20993",
+        "publish_status": "published",
+        "is_featured": true,
+        "tags": [
+          "sample",
+          "admin",
+          "guide"
+        ],
+        "view_count": 0,
+        "read_time_minutes": 5,
+        "created_at": "2025-10-24T19:44:19.670239+00:00",
+        "updated_at": "2025-10-24T19:44:19.670239+00:00",
+        "published_at": null
+      }
+    ],
+    "essay_sections": [],
+    "essay_media": [],
+    "products": [],
+    "product_media": [],
+    "customers": [],
+    "orders": [],
+    "order_items": [],
+    "gallery_projects": [],
+    "project_media": [],
+    "site_settings": [
+      {
+        "id": "fb3c7c05-3461-44e0-83a1-924023bcfa29",
+        "key": "background_rotation_enabled",
+        "value": "true",
+        "description": "Enable automatic background image rotation",
+        "updated_at": "2025-10-01T16:30:27.54403+00:00"
+      },
+      {
+        "id": "36cfe97c-4c26-4321-9ce7-705b9df9c4e7",
+        "key": "background_rotation_interval",
+        "value": 30,
+        "description": "Seconds between background changes",
+        "updated_at": "2025-10-01T16:30:27.54403+00:00"
+      },
+      {
+        "id": "5d4242f3-bb51-468a-9d33-7ec72635443b",
+        "key": "background_transition_duration",
+        "value": 1,
+        "description": "Seconds for background transition animation",
+        "updated_at": "2025-10-01T16:30:27.54403+00:00"
+      },
+      {
+        "id": "e78fdc9d-ec55-4aae-8f5a-c7ca5655ed56",
+        "key": "essays_per_page",
+        "value": 12,
+        "description": "Number of essays to display per page",
+        "updated_at": "2025-10-06T21:52:53.5801+00:00"
+      },
+      {
+        "id": "dd8a8d70-8b0a-4b1f-83b0-2f0da6d34a21",
+        "key": "essays_enabled",
+        "value": true,
+        "description": "Enable or disable the essays section",
+        "updated_at": "2025-10-06T21:52:53.5801+00:00"
+      },
+      {
+        "id": "4043eb75-d3fc-49f0-adcd-8039ae509d92",
+        "key": "shop_enabled",
+        "value": false,
+        "description": "Enable or disable the shop page (shows coming soon banner when false)",
+        "updated_at": "2025-10-06T21:53:05.046004+00:00"
+      },
+      {
+        "id": "eebf302a-6b77-4cda-acbb-03081a8a9f33",
+        "key": "shop_coming_soon_message",
+        "value": "Stay Tuned",
+        "description": "Message to display in shop coming soon banner",
+        "updated_at": "2025-10-06T21:53:05.046004+00:00"
+      },
+      {
+        "id": "d6e7b949-f2f8-4d31-a538-41dc2deb96c2",
+        "key": "pages_enabled",
+        "value": {
+          "home": true,
+          "shop": false,
+          "about": true,
+          "essays": true,
+          "contact": true,
+          "gallery": true
+        },
+        "description": "Page visibility controls for all site pages",
+        "updated_at": "2025-10-06T21:53:05.046004+00:00"
+      },
+      {
+        "id": "5d2fd112-214a-4c05-8d64-c79d6d5288db",
+        "key": "seo_defaults",
+        "value": {
+          "titleSuffix": " | Justin Aharoni",
+          "defaultDescription": ""
+        },
+        "description": "Default SEO settings",
+        "updated_at": "2025-10-24T19:42:58.323052+00:00"
+      },
+      {
+        "id": "aa61ae67-2039-4f3b-a586-d3f020964cad",
+        "key": "home_background_sequence",
+        "value": [],
+        "description": "Ordered array of media IDs for homepage backgrounds",
+        "updated_at": "2025-10-24T19:42:58.323052+00:00"
+      }
+    ],
+    "printful_products": [
+      {
+        "id": "0c0c5564-3456-4827-9f71-244983a8be76",
+        "printful_id": "880",
+        "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810",
+        "category": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810",
+        "sizes": [
+          {
+            "id": 22758,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Khaki / 2XL)",
+            "size": "2XL",
+            "color": "Khaki",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 18.49
+          },
+          {
+            "id": 22764,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Khaki / 3XL)",
+            "size": "3XL",
+            "color": "Khaki",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 20.49
+          },
+          {
+            "id": 22746,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Khaki / L)",
+            "size": "L",
+            "color": "Khaki",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22740,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Khaki / M)",
+            "size": "M",
+            "color": "Khaki",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22734,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Khaki / S)",
+            "size": "S",
+            "color": "Khaki",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22752,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Khaki / XL)",
+            "size": "XL",
+            "color": "Khaki",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22774,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Light Washed Denim / 2XL)",
+            "size": "2XL",
+            "color": "Light Washed Denim",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 18.49
+          },
+          {
+            "id": 22775,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Light Washed Denim / 3XL)",
+            "size": "3XL",
+            "color": "Light Washed Denim",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 20.49
+          },
+          {
+            "id": 22772,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Light Washed Denim / L)",
+            "size": "L",
+            "color": "Light Washed Denim",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22771,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Light Washed Denim / M)",
+            "size": "M",
+            "color": "Light Washed Denim",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22770,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Light Washed Denim / S)",
+            "size": "S",
+            "color": "Light Washed Denim",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22773,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Light Washed Denim / XL)",
+            "size": "XL",
+            "color": "Light Washed Denim",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22759,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Vintage White / 2XL)",
+            "size": "2XL",
+            "color": "Vintage White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 18.49
+          },
+          {
+            "id": 22765,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Vintage White / 3XL)",
+            "size": "3XL",
+            "color": "Vintage White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 20.49
+          },
+          {
+            "id": 22747,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Vintage White / L)",
+            "size": "L",
+            "color": "Vintage White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22741,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Vintage White / M)",
+            "size": "M",
+            "color": "Vintage White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22735,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Vintage White / S)",
+            "size": "S",
+            "color": "Vintage White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22753,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Vintage White / XL)",
+            "size": "XL",
+            "color": "Vintage White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22760,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Black / 2XL)",
+            "size": "2XL",
+            "color": "Washed Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 18.49
+          },
+          {
+            "id": 22766,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Black / 3XL)",
+            "size": "3XL",
+            "color": "Washed Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 20.49
+          },
+          {
+            "id": 22748,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Black / L)",
+            "size": "L",
+            "color": "Washed Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22742,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Black / M)",
+            "size": "M",
+            "color": "Washed Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22736,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Black / S)",
+            "size": "S",
+            "color": "Washed Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22754,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Black / XL)",
+            "size": "XL",
+            "color": "Washed Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22761,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Charcoal / 2XL)",
+            "size": "2XL",
+            "color": "Washed Charcoal",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 18.49
+          },
+          {
+            "id": 22767,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Charcoal / 3XL)",
+            "size": "3XL",
+            "color": "Washed Charcoal",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 20.49
+          },
+          {
+            "id": 22749,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Charcoal / L)",
+            "size": "L",
+            "color": "Washed Charcoal",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22743,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Charcoal / M)",
+            "size": "M",
+            "color": "Washed Charcoal",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22737,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Charcoal / S)",
+            "size": "S",
+            "color": "Washed Charcoal",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22755,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Charcoal / XL)",
+            "size": "XL",
+            "color": "Washed Charcoal",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22780,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Maroon / 2XL)",
+            "size": "2XL",
+            "color": "Washed Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 18.49
+          },
+          {
+            "id": 22781,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Maroon / 3XL)",
+            "size": "3XL",
+            "color": "Washed Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 20.49
+          },
+          {
+            "id": 22778,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Maroon / L)",
+            "size": "L",
+            "color": "Washed Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22777,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Maroon / M)",
+            "size": "M",
+            "color": "Washed Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22776,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Maroon / S)",
+            "size": "S",
+            "color": "Washed Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          },
+          {
+            "id": 22779,
+            "name": "Unisex Oversized Garment-Dyed T-Shirt | Bella + Canvas 4810 (Washed Maroon / XL)",
+            "size": "XL",
+            "color": "Washed Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+            "price": 16.49
+          }
+        ],
+        "base_cost": 18.49,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": "Bella + Canvas",
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/4a/4a39d1dbdc938408787c9e1b12067c0d_l",
+          "model": "4810",
+          "variant_count": 36
+        },
+        "last_synced": "2025-10-03T16:16:49.715+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:30.951484+00:00"
+      },
+      {
+        "id": "3ddd1cb1-5c4f-4440-9887-d3baa4f713ed",
+        "printful_id": "579",
+        "name": "Women's Lace-Up Canvas Shoes",
+        "category": "Women's Lace-Up Canvas Shoes",
+        "sizes": [
+          {
+            "id": 20947,
+            "name": "Women's Lace Up Canvas Shoes (Black / 10)",
+            "size": "10",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20948,
+            "name": "Women's Lace Up Canvas Shoes (Black / 10.5)",
+            "size": "10.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20949,
+            "name": "Women's Lace Up Canvas Shoes (Black / 11)",
+            "size": "11",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20950,
+            "name": "Women's Lace Up Canvas Shoes (Black / 11.5)",
+            "size": "11.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20951,
+            "name": "Women's Lace Up Canvas Shoes (Black / 12)",
+            "size": "12",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20937,
+            "name": "Women's Lace Up Canvas Shoes (Black / 5)",
+            "size": "5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20938,
+            "name": "Women's Lace Up Canvas Shoes (Black / 5.5)",
+            "size": "5.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20939,
+            "name": "Women's Lace Up Canvas Shoes (Black / 6)",
+            "size": "6",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20940,
+            "name": "Women's Lace Up Canvas Shoes (Black / 6.5)",
+            "size": "6.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20941,
+            "name": "Women's Lace Up Canvas Shoes (Black / 7)",
+            "size": "7",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20942,
+            "name": "Women's Lace Up Canvas Shoes (Black / 7.5)",
+            "size": "7.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20943,
+            "name": "Women's Lace Up Canvas Shoes (Black / 8)",
+            "size": "8",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20944,
+            "name": "Women's Lace Up Canvas Shoes (Black / 8.5)",
+            "size": "8.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20945,
+            "name": "Women's Lace Up Canvas Shoes (Black / 9)",
+            "size": "9",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 20946,
+            "name": "Women's Lace Up Canvas Shoes (Black / 9.5)",
+            "size": "9.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14871,
+            "name": "Women's Lace Up Canvas Shoes (White / 10)",
+            "size": "10",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14872,
+            "name": "Women's Lace Up Canvas Shoes (White / 10.5)",
+            "size": "10.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14873,
+            "name": "Women's Lace Up Canvas Shoes (White / 11)",
+            "size": "11",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14874,
+            "name": "Women's Lace Up Canvas Shoes (White / 11.5)",
+            "size": "11.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14875,
+            "name": "Women's Lace Up Canvas Shoes (White / 12)",
+            "size": "12",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14861,
+            "name": "Women's Lace Up Canvas Shoes (White / 5)",
+            "size": "5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14862,
+            "name": "Women's Lace Up Canvas Shoes (White / 5.5)",
+            "size": "5.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14863,
+            "name": "Women's Lace Up Canvas Shoes (White / 6)",
+            "size": "6",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14864,
+            "name": "Women's Lace Up Canvas Shoes (White / 6.5)",
+            "size": "6.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14865,
+            "name": "Women's Lace Up Canvas Shoes (White / 7)",
+            "size": "7",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14866,
+            "name": "Women's Lace Up Canvas Shoes (White / 7.5)",
+            "size": "7.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14867,
+            "name": "Women's Lace Up Canvas Shoes (White / 8)",
+            "size": "8",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14868,
+            "name": "Women's Lace Up Canvas Shoes (White / 8.5)",
+            "size": "8.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14869,
+            "name": "Women's Lace Up Canvas Shoes (White / 9)",
+            "size": "9",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          },
+          {
+            "id": 14870,
+            "name": "Women's Lace Up Canvas Shoes (White / 9.5)",
+            "size": "9.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+            "price": 42
+          }
+        ],
+        "base_cost": 42,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/bf/bf3b8391e9a9b400cf811f701bcc2a13_l",
+          "model": "Women's Lace-Up Canvas Shoes",
+          "variant_count": 30
+        },
+        "last_synced": "2025-10-03T16:16:50.042+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:32.097159+00:00"
+      },
+      {
+        "id": "264bc6f5-e7a8-4de9-8d61-b84b0da4448c",
+        "printful_id": "574",
+        "name": "Men's Slip-On Canvas Shoes",
+        "category": "Men's Slip-On Canvas Shoes",
+        "sizes": [
+          {
+            "id": 20898,
+            "name": "Men's Slip On Canvas Shoes (Black / 10)",
+            "size": "10",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20899,
+            "name": "Men's Slip On Canvas Shoes (Black / 10.5)",
+            "size": "10.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20900,
+            "name": "Men's Slip On Canvas Shoes (Black / 11)",
+            "size": "11",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20901,
+            "name": "Men's Slip On Canvas Shoes (Black / 11.5)",
+            "size": "11.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20902,
+            "name": "Men's Slip On Canvas Shoes (Black / 12)",
+            "size": "12",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20903,
+            "name": "Men's Slip On Canvas Shoes (Black / 12.5)",
+            "size": "12.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20904,
+            "name": "Men's Slip On Canvas Shoes (Black / 13)",
+            "size": "13",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20888,
+            "name": "Men's Slip On Canvas Shoes (Black / 5)",
+            "size": "5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20889,
+            "name": "Men's Slip On Canvas Shoes (Black / 5.5)",
+            "size": "5.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20890,
+            "name": "Men's Slip On Canvas Shoes (Black / 6)",
+            "size": "6",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20891,
+            "name": "Men's Slip On Canvas Shoes (Black / 6.5)",
+            "size": "6.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20892,
+            "name": "Men's Slip On Canvas Shoes (Black / 7)",
+            "size": "7",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20893,
+            "name": "Men's Slip On Canvas Shoes (Black / 7.5)",
+            "size": "7.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20894,
+            "name": "Men's Slip On Canvas Shoes (Black / 8)",
+            "size": "8",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20895,
+            "name": "Men's Slip On Canvas Shoes (Black / 8.5)",
+            "size": "8.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20896,
+            "name": "Men's Slip On Canvas Shoes (Black / 9)",
+            "size": "9",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 20897,
+            "name": "Men's Slip On Canvas Shoes (Black / 9.5)",
+            "size": "9.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14746,
+            "name": "Men's Slip On Canvas Shoes (White / 10)",
+            "size": "10",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14747,
+            "name": "Men's Slip On Canvas Shoes (White / 10.5)",
+            "size": "10.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14748,
+            "name": "Men's Slip On Canvas Shoes (White / 11)",
+            "size": "11",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14749,
+            "name": "Men's Slip On Canvas Shoes (White / 11.5)",
+            "size": "11.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14750,
+            "name": "Men's Slip On Canvas Shoes (White / 12)",
+            "size": "12",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14751,
+            "name": "Men's Slip On Canvas Shoes (White / 12.5)",
+            "size": "12.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14752,
+            "name": "Men's Slip On Canvas Shoes (White / 13)",
+            "size": "13",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14736,
+            "name": "Men's Slip On Canvas Shoes (White / 5)",
+            "size": "5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14737,
+            "name": "Men's Slip On Canvas Shoes (White / 5.5)",
+            "size": "5.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14738,
+            "name": "Men's Slip On Canvas Shoes (White / 6)",
+            "size": "6",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14739,
+            "name": "Men's Slip On Canvas Shoes (White / 6.5)",
+            "size": "6.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14740,
+            "name": "Men's Slip On Canvas Shoes (White / 7)",
+            "size": "7",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14741,
+            "name": "Men's Slip On Canvas Shoes (White / 7.5)",
+            "size": "7.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14742,
+            "name": "Men's Slip On Canvas Shoes (White / 8)",
+            "size": "8",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14743,
+            "name": "Men's Slip On Canvas Shoes (White / 8.5)",
+            "size": "8.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14744,
+            "name": "Men's Slip On Canvas Shoes (White / 9)",
+            "size": "9",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          },
+          {
+            "id": 14745,
+            "name": "Men's Slip On Canvas Shoes (White / 9.5)",
+            "size": "9.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+            "price": 41
+          }
+        ],
+        "base_cost": 41,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/de/de90cebafd7d18cc8d71dfe9b1353104_l",
+          "model": "Men's Slip-On Canvas Shoes",
+          "variant_count": 34
+        },
+        "last_synced": "2025-10-03T16:16:49.579+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:30.180277+00:00"
+      },
+      {
+        "id": "b4d216d9-ad3b-45cb-9fde-0c90f8911b1e",
+        "printful_id": "897",
+        "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711",
+        "category": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711",
+        "sizes": [
+          {
+            "id": 23051,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Athletic Heather / 2XL)",
+            "size": "2XL",
+            "color": "Athletic Heather",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 34.5
+          },
+          {
+            "id": 23052,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Athletic Heather / 3XL)",
+            "size": "3XL",
+            "color": "Athletic Heather",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 36.5
+          },
+          {
+            "id": 23049,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Athletic Heather / L)",
+            "size": "L",
+            "color": "Athletic Heather",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23048,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Athletic Heather / M)",
+            "size": "M",
+            "color": "Athletic Heather",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23047,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Athletic Heather / S)",
+            "size": "S",
+            "color": "Athletic Heather",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23050,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Athletic Heather / XL)",
+            "size": "XL",
+            "color": "Athletic Heather",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23057,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Black / 2XL)",
+            "size": "2XL",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 34.5
+          },
+          {
+            "id": 23058,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Black / 3XL)",
+            "size": "3XL",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 36.5
+          },
+          {
+            "id": 23055,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Black / L)",
+            "size": "L",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23054,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Black / M)",
+            "size": "M",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23053,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Black / S)",
+            "size": "S",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23056,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Black / XL)",
+            "size": "XL",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23063,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Dust / 2XL)",
+            "size": "2XL",
+            "color": "Dust",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 34.5
+          },
+          {
+            "id": 23064,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Dust / 3XL)",
+            "size": "3XL",
+            "color": "Dust",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 36.5
+          },
+          {
+            "id": 23061,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Dust / L)",
+            "size": "L",
+            "color": "Dust",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23060,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Dust / M)",
+            "size": "M",
+            "color": "Dust",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23059,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Dust / S)",
+            "size": "S",
+            "color": "Dust",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23062,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Dust / XL)",
+            "size": "XL",
+            "color": "Dust",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23075,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Maroon / 2XL)",
+            "size": "2XL",
+            "color": "Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 34.5
+          },
+          {
+            "id": 23076,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Maroon / 3XL)",
+            "size": "3XL",
+            "color": "Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 36.5
+          },
+          {
+            "id": 23073,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Maroon / L)",
+            "size": "L",
+            "color": "Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23072,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Maroon / M)",
+            "size": "M",
+            "color": "Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23071,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Maroon / S)",
+            "size": "S",
+            "color": "Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23074,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Maroon / XL)",
+            "size": "XL",
+            "color": "Maroon",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23081,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Navy / 2XL)",
+            "size": "2XL",
+            "color": "Navy",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 34.5
+          },
+          {
+            "id": 23082,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Navy / 3XL)",
+            "size": "3XL",
+            "color": "Navy",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 36.5
+          },
+          {
+            "id": 23079,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Navy / L)",
+            "size": "L",
+            "color": "Navy",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23078,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Navy / M)",
+            "size": "M",
+            "color": "Navy",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23077,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Navy / S)",
+            "size": "S",
+            "color": "Navy",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23080,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Navy / XL)",
+            "size": "XL",
+            "color": "Navy",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23087,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Vintage Black / 2XL)",
+            "size": "2XL",
+            "color": "Vintage Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 34.5
+          },
+          {
+            "id": 23088,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Vintage Black / 3XL)",
+            "size": "3XL",
+            "color": "Vintage Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 36.5
+          },
+          {
+            "id": 23085,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Vintage Black / L)",
+            "size": "L",
+            "color": "Vintage Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23084,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Vintage Black / M)",
+            "size": "M",
+            "color": "Vintage Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23083,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Vintage Black / S)",
+            "size": "S",
+            "color": "Vintage Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23086,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (Vintage Black / XL)",
+            "size": "XL",
+            "color": "Vintage Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23099,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (White / 2XL)",
+            "size": "2XL",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 34.5
+          },
+          {
+            "id": 23100,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (White / 3XL)",
+            "size": "3XL",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 36.5
+          },
+          {
+            "id": 23097,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (White / L)",
+            "size": "L",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23096,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (White / M)",
+            "size": "M",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23095,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (White / S)",
+            "size": "S",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          },
+          {
+            "id": 23098,
+            "name": "Unisex Oversized Heavyweight Sweatshirt | Bella + Canvas 4711 (White / XL)",
+            "size": "XL",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+            "price": 32.5
+          }
+        ],
+        "base_cost": 34.5,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": "Bella + Canvas",
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/d3/d39b5894318b2c4390ef5f28757add22_l",
+          "model": "4711",
+          "variant_count": 42
+        },
+        "last_synced": "2025-10-03T16:16:49.779+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:31.307702+00:00"
+      },
+      {
+        "id": "96a3e9ca-fff7-4235-a6f4-3242c312262b",
+        "printful_id": "575",
+        "name": "Women's Slip-On Canvas Shoes",
+        "category": "Women's Slip-On Canvas Shoes",
+        "sizes": [
+          {
+            "id": 20915,
+            "name": "Women's Slip On Canvas Shoes (Black / 10)",
+            "size": "10",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20916,
+            "name": "Women's Slip On Canvas Shoes (Black / 10.5)",
+            "size": "10.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20917,
+            "name": "Women's Slip On Canvas Shoes (Black / 11)",
+            "size": "11",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20918,
+            "name": "Women's Slip On Canvas Shoes (Black / 11.5)",
+            "size": "11.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20919,
+            "name": "Women's Slip On Canvas Shoes (Black / 12)",
+            "size": "12",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20905,
+            "name": "Women's Slip On Canvas Shoes (Black / 5)",
+            "size": "5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20906,
+            "name": "Women's Slip On Canvas Shoes (Black / 5.5)",
+            "size": "5.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20907,
+            "name": "Women's Slip On Canvas Shoes (Black / 6)",
+            "size": "6",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20908,
+            "name": "Women's Slip On Canvas Shoes (Black / 6.5)",
+            "size": "6.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20909,
+            "name": "Women's Slip On Canvas Shoes (Black / 7)",
+            "size": "7",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20910,
+            "name": "Women's Slip On Canvas Shoes (Black / 7.5)",
+            "size": "7.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20911,
+            "name": "Women's Slip On Canvas Shoes (Black / 8)",
+            "size": "8",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20912,
+            "name": "Women's Slip On Canvas Shoes (Black / 8.5)",
+            "size": "8.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20913,
+            "name": "Women's Slip On Canvas Shoes (Black / 9)",
+            "size": "9",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 20914,
+            "name": "Women's Slip On Canvas Shoes (Black / 9.5)",
+            "size": "9.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14731,
+            "name": "Women's Slip On Canvas Shoes (White / 10)",
+            "size": "10",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14732,
+            "name": "Women's Slip On Canvas Shoes (White / 10.5)",
+            "size": "10.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14733,
+            "name": "Women's Slip On Canvas Shoes (White / 11)",
+            "size": "11",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14734,
+            "name": "Women's Slip On Canvas Shoes (White / 11.5)",
+            "size": "11.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14735,
+            "name": "Women's Slip On Canvas Shoes (White / 12)",
+            "size": "12",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14721,
+            "name": "Women's Slip On Canvas Shoes (White / 5)",
+            "size": "5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14722,
+            "name": "Women's Slip On Canvas Shoes (White / 5.5)",
+            "size": "5.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14723,
+            "name": "Women's Slip On Canvas Shoes (White / 6)",
+            "size": "6",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14724,
+            "name": "Women's Slip On Canvas Shoes (White / 6.5)",
+            "size": "6.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14725,
+            "name": "Women's Slip On Canvas Shoes (White / 7)",
+            "size": "7",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14726,
+            "name": "Women's Slip On Canvas Shoes (White / 7.5)",
+            "size": "7.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14727,
+            "name": "Women's Slip On Canvas Shoes (White / 8)",
+            "size": "8",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14728,
+            "name": "Women's Slip On Canvas Shoes (White / 8.5)",
+            "size": "8.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14729,
+            "name": "Women's Slip On Canvas Shoes (White / 9)",
+            "size": "9",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          },
+          {
+            "id": 14730,
+            "name": "Women's Slip On Canvas Shoes (White / 9.5)",
+            "size": "9.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+            "price": 41
+          }
+        ],
+        "base_cost": 41,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/8e/8e9e82e7d181d462f96bf7d070904398_l",
+          "model": "Women's Slip-On Canvas Shoes",
+          "variant_count": 30
+        },
+        "last_synced": "2025-10-03T16:16:50.141+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:32.502811+00:00"
+      },
+      {
+        "id": "c6b9ea06-e13f-44b0-96b1-8eb54f200934",
+        "printful_id": "19",
+        "name": "Poster",
+        "category": "poster",
+        "sizes": [
+          {
+            "id": 1821,
+            "name": "16x20",
+            "size": "16x20",
+            "color": "",
+            "image": "https://files.cdn.printful.com/products/19/product_1642689969.jpg",
+            "price": 15.95
+          }
+        ],
+        "base_cost": 15.95,
+        "shipping_cost": null,
+        "product_data": {
+          "brand": "Printful",
+          "image": "https://files.cdn.printful.com/products/19/product_1642689969.jpg",
+          "model": "Enhanced Matte Paper Poster",
+          "variant_count": 8
+        },
+        "last_synced": "2025-10-02T14:32:21.292191+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T14:32:21.292191+00:00"
+      },
+      {
+        "id": "09cc08ad-1cd3-41f2-a5a1-f2a6814cb782",
+        "printful_id": "3",
+        "name": "Canvas (in)",
+        "category": "Canvas (in)",
+        "sizes": [
+          {
+            "id": 19296,
+            "name": "Canvas (in) (10″×10″)",
+            "size": "10″×10″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 16.83
+          },
+          {
+            "id": 19297,
+            "name": "Canvas (in) (10″×20″)",
+            "size": "10″×20″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 26.01
+          },
+          {
+            "id": 19298,
+            "name": "Canvas (in) (11″×14″)",
+            "size": "11″×14″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 17.34
+          },
+          {
+            "id": 19299,
+            "name": "Canvas (in) (12″×18″)",
+            "size": "12″×18″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 24.99
+          },
+          {
+            "id": 19300,
+            "name": "Canvas (in) (12″×24″)",
+            "size": "12″×24″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 28.56
+          },
+          {
+            "id": 19301,
+            "name": "Canvas (in) (12″×36″)",
+            "size": "12″×36″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 47.43
+          },
+          {
+            "id": 19302,
+            "name": "Canvas (in) (14″×14″)",
+            "size": "14″×14″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 19.38
+          },
+          {
+            "id": 19303,
+            "name": "Canvas (in) (16″×24″)",
+            "size": "16″×24″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 31.11
+          },
+          {
+            "id": 19304,
+            "name": "Canvas (in) (16″×32″)",
+            "size": "16″×32″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 53.55
+          },
+          {
+            "id": 19305,
+            "name": "Canvas (in) (16″×48″)",
+            "size": "16″×48″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 60.18
+          },
+          {
+            "id": 19306,
+            "name": "Canvas (in) (18″×18″)",
+            "size": "18″×18″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 29.84
+          },
+          {
+            "id": 19307,
+            "name": "Canvas (in) (18″×26″)",
+            "size": "18″×26″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 35.19
+          },
+          {
+            "id": 19308,
+            "name": "Canvas (in) (20″×20″)",
+            "size": "20″×20″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 34.68
+          },
+          {
+            "id": 19309,
+            "name": "Canvas (in) (20″×24″)",
+            "size": "20″×24″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 35.65
+          },
+          {
+            "id": 19310,
+            "name": "Canvas (in) (20″×28″)",
+            "size": "20″×28″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 35.7
+          },
+          {
+            "id": 19311,
+            "name": "Canvas (in) (20″×30″)",
+            "size": "20″×30″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 36.72
+          },
+          {
+            "id": 19312,
+            "name": "Canvas (in) (20″×40″)",
+            "size": "20″×40″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 59.16
+          },
+          {
+            "id": 19313,
+            "name": "Canvas (in) (20″×60″)",
+            "size": "20″×60″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 99.96
+          },
+          {
+            "id": 19314,
+            "name": "Canvas (in) (24″×24″)",
+            "size": "24″×24″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 42.84
+          },
+          {
+            "id": 19315,
+            "name": "Canvas (in) (24″×30″)",
+            "size": "24″×30″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 50.49
+          },
+          {
+            "id": 19316,
+            "name": "Canvas (in) (24″×32″)",
+            "size": "24″×32″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 51
+          },
+          {
+            "id": 19317,
+            "name": "Canvas (in) (24″×48″)",
+            "size": "24″×48″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 69.36
+          },
+          {
+            "id": 19318,
+            "name": "Canvas (in) (26″×26″)",
+            "size": "26″×26″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 55.08
+          },
+          {
+            "id": 19319,
+            "name": "Canvas (in) (26″×40″)",
+            "size": "26″×40″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 88.23
+          },
+          {
+            "id": 19320,
+            "name": "Canvas (in) (28″×28″)",
+            "size": "28″×28″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 56.1
+          },
+          {
+            "id": 19321,
+            "name": "Canvas (in) (28″×40″)",
+            "size": "28″×40″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 68.34
+          },
+          {
+            "id": 19322,
+            "name": "Canvas (in) (30″×30″)",
+            "size": "30″×30″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 61.2
+          },
+          {
+            "id": 19323,
+            "name": "Canvas (in) (30″×40″)",
+            "size": "30″×40″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 64.26
+          },
+          {
+            "id": 19324,
+            "name": "Canvas (in) (30″×60″)",
+            "size": "30″×60″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 114.24
+          },
+          {
+            "id": 19325,
+            "name": "Canvas (in) (32″×32″)",
+            "size": "32″×32″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 55.08
+          },
+          {
+            "id": 19326,
+            "name": "Canvas (in) (32″×48″)",
+            "size": "32″×48″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 90.78
+          },
+          {
+            "id": 19327,
+            "name": "Canvas (in) (36″×36″)",
+            "size": "36″×36″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 88.74
+          },
+          {
+            "id": 19328,
+            "name": "Canvas (in) (37″×37″)",
+            "size": "37″×37″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 137.7
+          },
+          {
+            "id": 19329,
+            "name": "Canvas (in) (40″×55″)",
+            "size": "40″×55″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 120.36
+          },
+          {
+            "id": 19330,
+            "name": "Canvas (in) (40″×60″)",
+            "size": "40″×60″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 137.7
+          },
+          {
+            "id": 19291,
+            "name": "Canvas (in) (6″×6″)",
+            "size": "6″×6″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 13.72
+          },
+          {
+            "id": 19293,
+            "name": "Canvas (in) (8″×10″)",
+            "size": "8″×10″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 15.81
+          },
+          {
+            "id": 19294,
+            "name": "Canvas (in) (8″×12″)",
+            "size": "8″×12″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 16.27
+          },
+          {
+            "id": 19292,
+            "name": "Canvas (in) (8″×8″)",
+            "size": "8″×8″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 15.25
+          },
+          {
+            "id": 19295,
+            "name": "Canvas (in) (9″×12″)",
+            "size": "9″×12″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 16.32
+          },
+          {
+            "id": 823,
+            "name": "Canvas 12″×12″",
+            "size": "12″×12″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 21.93
+          },
+          {
+            "id": 5,
+            "name": "Canvas 12″×16″",
+            "size": "12″×16″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 23.41
+          },
+          {
+            "id": 824,
+            "name": "Canvas 16″×16″",
+            "size": "16″×16″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 28.05
+          },
+          {
+            "id": 6,
+            "name": "Canvas 16″×20″",
+            "size": "16″×20″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 28.56
+          },
+          {
+            "id": 7,
+            "name": "Canvas 18″×24″",
+            "size": "18″×24″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 33.66
+          },
+          {
+            "id": 825,
+            "name": "Canvas 24″×36″",
+            "size": "24″×36″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+            "price": 52.02
+          }
+        ],
+        "base_cost": 16.83,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/products/3/product_1613463725.jpg",
+          "model": "Canvas (in)",
+          "variant_count": 46
+        },
+        "last_synced": "2025-10-03T16:16:49.252+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:27.926765+00:00"
+      },
+      {
+        "id": "c68d5151-97a8-4591-8f72-1db4b6982ad5",
+        "printful_id": "578",
+        "name": "Men's Lace-Up Canvas Shoes",
+        "category": "Men's Lace-Up Canvas Shoes",
+        "sizes": [
+          {
+            "id": 20930,
+            "name": "Men's Lace Up Canvas Shoes (Black / 10)",
+            "size": "10",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20931,
+            "name": "Men's Lace Up Canvas Shoes (Black / 10.5)",
+            "size": "10.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20932,
+            "name": "Men's Lace Up Canvas Shoes (Black / 11)",
+            "size": "11",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20933,
+            "name": "Men's Lace Up Canvas Shoes (Black / 11.5)",
+            "size": "11.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20934,
+            "name": "Men's Lace Up Canvas Shoes (Black / 12)",
+            "size": "12",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20935,
+            "name": "Men's Lace Up Canvas Shoes (Black / 12.5)",
+            "size": "12.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20936,
+            "name": "Men's Lace Up Canvas Shoes (Black / 13)",
+            "size": "13",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20920,
+            "name": "Men's Lace Up Canvas Shoes (Black / 5)",
+            "size": "5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20921,
+            "name": "Men's Lace Up Canvas Shoes (Black / 5.5)",
+            "size": "5.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20922,
+            "name": "Men's Lace Up Canvas Shoes (Black / 6)",
+            "size": "6",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20923,
+            "name": "Men's Lace Up Canvas Shoes (Black / 6.5)",
+            "size": "6.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20924,
+            "name": "Men's Lace Up Canvas Shoes (Black / 7)",
+            "size": "7",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20925,
+            "name": "Men's Lace Up Canvas Shoes (Black / 7.5)",
+            "size": "7.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20926,
+            "name": "Men's Lace Up Canvas Shoes (Black / 8)",
+            "size": "8",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20927,
+            "name": "Men's Lace Up Canvas Shoes (Black / 8.5)",
+            "size": "8.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20928,
+            "name": "Men's Lace Up Canvas Shoes (Black / 9)",
+            "size": "9",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 20929,
+            "name": "Men's Lace Up Canvas Shoes (Black / 9.5)",
+            "size": "9.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14854,
+            "name": "Men's Lace Up Canvas Shoes (White / 10)",
+            "size": "10",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14855,
+            "name": "Men's Lace Up Canvas Shoes (White / 10.5)",
+            "size": "10.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14856,
+            "name": "Men's Lace Up Canvas Shoes (White / 11)",
+            "size": "11",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14857,
+            "name": "Men's Lace Up Canvas Shoes (White / 11.5)",
+            "size": "11.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14858,
+            "name": "Men's Lace Up Canvas Shoes (White / 12)",
+            "size": "12",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14859,
+            "name": "Men's Lace Up Canvas Shoes (White / 12.5)",
+            "size": "12.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14860,
+            "name": "Men's Lace Up Canvas Shoes (White / 13)",
+            "size": "13",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14844,
+            "name": "Men's Lace Up Canvas Shoes (White / 5)",
+            "size": "5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14845,
+            "name": "Men's Lace Up Canvas Shoes (White / 5.5)",
+            "size": "5.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14846,
+            "name": "Men's Lace Up Canvas Shoes (White / 6)",
+            "size": "6",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14847,
+            "name": "Men's Lace Up Canvas Shoes (White / 6.5)",
+            "size": "6.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14848,
+            "name": "Men's Lace Up Canvas Shoes (White / 7)",
+            "size": "7",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14849,
+            "name": "Men's Lace Up Canvas Shoes (White / 7.5)",
+            "size": "7.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14850,
+            "name": "Men's Lace Up Canvas Shoes (White / 8)",
+            "size": "8",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14851,
+            "name": "Men's Lace Up Canvas Shoes (White / 8.5)",
+            "size": "8.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14852,
+            "name": "Men's Lace Up Canvas Shoes (White / 9)",
+            "size": "9",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          },
+          {
+            "id": 14853,
+            "name": "Men's Lace Up Canvas Shoes (White / 9.5)",
+            "size": "9.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+            "price": 42
+          }
+        ],
+        "base_cost": 42,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/95/95d37728d5b9ebc2d9e2dcc10b44f49d_l",
+          "model": "Men's Lace-Up Canvas Shoes",
+          "variant_count": 34
+        },
+        "last_synced": "2025-10-03T16:16:49.513+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:29.598259+00:00"
+      },
+      {
+        "id": "1933fe4b-aa04-4558-9650-58b8a07a8190",
+        "printful_id": "616",
+        "name": "Thin Canvas (in)",
+        "category": "Thin Canvas (in)",
+        "sizes": [
+          {
+            "id": 15701,
+            "name": "Thin Canvas (12″×12″)",
+            "size": "12″×12″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 20.35
+          },
+          {
+            "id": 15702,
+            "name": "Thin Canvas (12″×16″)",
+            "size": "12″×16″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 21.93
+          },
+          {
+            "id": 15703,
+            "name": "Thin Canvas (16″×16″)",
+            "size": "16″×16″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 24.23
+          },
+          {
+            "id": 15704,
+            "name": "Thin Canvas (16″×20″)",
+            "size": "16″×20″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 25.76
+          },
+          {
+            "id": 15705,
+            "name": "Thin Canvas (18″×24″)",
+            "size": "18″×24″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 30.55
+          },
+          {
+            "id": 15706,
+            "name": "Thin Canvas (24″×36″)",
+            "size": "24″×36″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 54.06
+          },
+          {
+            "id": 17621,
+            "name": "Thin Canvas (in) (11″×14″)",
+            "size": "11″×14″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 16.58
+          },
+          {
+            "id": 17622,
+            "name": "Thin Canvas (in) (12″×18″)",
+            "size": "12″×18″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 20.35
+          },
+          {
+            "id": 17624,
+            "name": "Thin Canvas (in) (20″×28″)",
+            "size": "20″×28″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 35.65
+          },
+          {
+            "id": 17626,
+            "name": "Thin Canvas (in) (20″×30″)",
+            "size": "20″×30″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 39.27
+          },
+          {
+            "id": 17625,
+            "name": "Thin Canvas (in) (24″×32″)",
+            "size": "24″×32″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 47.43
+          },
+          {
+            "id": 17620,
+            "name": "Thin Canvas (in) (8″×10″)",
+            "size": "8″×10″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 14.54
+          },
+          {
+            "id": 17623,
+            "name": "Thin Canvas (in) (9″×12″)",
+            "size": "9″×12″",
+            "color": "Default",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+            "price": 15.56
+          }
+        ],
+        "base_cost": 20.35,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/62/62cbc590fd27ad5c88ff36182cb761d3_l",
+          "model": "Thin Canvas (in)",
+          "variant_count": 13
+        },
+        "last_synced": "2025-10-03T16:16:49.651+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:30.548883+00:00"
+      },
+      {
+        "id": "5c319e40-5a67-4317-9d3b-d794192c2f9d",
+        "printful_id": "525",
+        "name": "Women's High Top Canvas Shoes",
+        "category": "Women's High Top Canvas Shoes",
+        "sizes": [
+          {
+            "id": 17477,
+            "name": "Women's High Top Canvas Shoes (Black / 10)",
+            "size": "10",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17478,
+            "name": "Women's High Top Canvas Shoes (Black / 10.5)",
+            "size": "10.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17479,
+            "name": "Women's High Top Canvas Shoes (Black / 11)",
+            "size": "11",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17480,
+            "name": "Women's High Top Canvas Shoes (Black / 11.5)",
+            "size": "11.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17481,
+            "name": "Women's High Top Canvas Shoes (Black / 12)",
+            "size": "12",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17467,
+            "name": "Women's High Top Canvas Shoes (Black / 5)",
+            "size": "5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17468,
+            "name": "Women's High Top Canvas Shoes (Black / 5.5)",
+            "size": "5.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17469,
+            "name": "Women's High Top Canvas Shoes (Black / 6)",
+            "size": "6",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17471,
+            "name": "Women's High Top Canvas Shoes (Black / 6.5)",
+            "size": "6.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17470,
+            "name": "Women's High Top Canvas Shoes (Black / 7)",
+            "size": "7",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17472,
+            "name": "Women's High Top Canvas Shoes (Black / 7.5)",
+            "size": "7.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17473,
+            "name": "Women's High Top Canvas Shoes (Black / 8)",
+            "size": "8",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17474,
+            "name": "Women's High Top Canvas Shoes (Black / 8.5)",
+            "size": "8.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17475,
+            "name": "Women's High Top Canvas Shoes (Black / 9)",
+            "size": "9",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 17476,
+            "name": "Women's High Top Canvas Shoes (Black / 9.5)",
+            "size": "9.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13233,
+            "name": "Women's High Top Canvas Shoes (White / 10)",
+            "size": "10",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13234,
+            "name": "Women's High Top Canvas Shoes (White / 10.5)",
+            "size": "10.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13235,
+            "name": "Women's High Top Canvas Shoes (White / 11)",
+            "size": "11",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13236,
+            "name": "Women's High Top Canvas Shoes (White / 11.5)",
+            "size": "11.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13237,
+            "name": "Women's High Top Canvas Shoes (White / 12)",
+            "size": "12",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13223,
+            "name": "Women's High Top Canvas Shoes (White / 5)",
+            "size": "5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13224,
+            "name": "Women's High Top Canvas Shoes (White / 5.5)",
+            "size": "5.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13225,
+            "name": "Women's High Top Canvas Shoes (White / 6)",
+            "size": "6",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13226,
+            "name": "Women's High Top Canvas Shoes (White / 6.5)",
+            "size": "6.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13227,
+            "name": "Women's High Top Canvas Shoes (White / 7)",
+            "size": "7",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13228,
+            "name": "Women's High Top Canvas Shoes (White / 7.5)",
+            "size": "7.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13229,
+            "name": "Women's High Top Canvas Shoes (White / 8)",
+            "size": "8",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13230,
+            "name": "Women's High Top Canvas Shoes (White / 8.5)",
+            "size": "8.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13231,
+            "name": "Women's High Top Canvas Shoes (White / 9)",
+            "size": "9",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          },
+          {
+            "id": 13232,
+            "name": "Women's High Top Canvas Shoes (White / 9.5)",
+            "size": "9.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+            "price": 43
+          }
+        ],
+        "base_cost": 43,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/53/53882a8d25358ca23019c892cf366de8_l",
+          "model": "Women's High Top Canvas Shoes",
+          "variant_count": 30
+        },
+        "last_synced": "2025-10-03T16:16:49.965+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:31.697226+00:00"
+      },
+      {
+        "id": "acd9dc9d-f564-4ac3-8618-4cf23bc1681d",
+        "printful_id": "614",
+        "name": "Framed Canvas (in)",
+        "category": "Framed Canvas (in)",
+        "sizes": [
+          {
+            "id": 16034,
+            "name": "Framed Canvas (Black / 12″×12″)",
+            "size": "12″×12″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 46.92
+          },
+          {
+            "id": 16035,
+            "name": "Framed Canvas (Black / 12″×16″)",
+            "size": "12″×16″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 51
+          },
+          {
+            "id": 16036,
+            "name": "Framed Canvas (Black / 16″×16″)",
+            "size": "16″×16″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 57.12
+          },
+          {
+            "id": 16037,
+            "name": "Framed Canvas (Black / 16″×20″)",
+            "size": "16″×20″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 61.2
+          },
+          {
+            "id": 16038,
+            "name": "Framed Canvas (Black / 18″×24″)",
+            "size": "18″×24″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 71.4
+          },
+          {
+            "id": 16039,
+            "name": "Framed Canvas (Black / 24″×36″)",
+            "size": "24″×36″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 99.96
+          },
+          {
+            "id": 16040,
+            "name": "Framed Canvas (Brown / 12″×12″)",
+            "size": "12″×12″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 46.92
+          },
+          {
+            "id": 16041,
+            "name": "Framed Canvas (Brown / 12″×16″)",
+            "size": "12″×16″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 51
+          },
+          {
+            "id": 16042,
+            "name": "Framed Canvas (Brown / 16″×16″)",
+            "size": "16″×16″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 57.12
+          },
+          {
+            "id": 16043,
+            "name": "Framed Canvas (Brown / 16″×20″)",
+            "size": "16″×20″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 61.2
+          },
+          {
+            "id": 16044,
+            "name": "Framed Canvas (Brown / 18″×24″)",
+            "size": "18″×24″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 71.4
+          },
+          {
+            "id": 16045,
+            "name": "Framed Canvas (Brown / 24″×36″)",
+            "size": "24″×36″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 99.96
+          },
+          {
+            "id": 17629,
+            "name": "Framed Canvas (in) (Black / 11″×14″)",
+            "size": "11″×14″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 34.94
+          },
+          {
+            "id": 17630,
+            "name": "Framed Canvas (in) (Black / 12″×18″)",
+            "size": "12″×18″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 45.14
+          },
+          {
+            "id": 17631,
+            "name": "Framed Canvas (in) (Black / 20″×28″)",
+            "size": "20″×28″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 71.4
+          },
+          {
+            "id": 17633,
+            "name": "Framed Canvas (in) (Black / 20″×30″)",
+            "size": "20″×30″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 76.5
+          },
+          {
+            "id": 17632,
+            "name": "Framed Canvas (in) (Black / 24″×32″)",
+            "size": "24″×32″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 81.6
+          },
+          {
+            "id": 17627,
+            "name": "Framed Canvas (in) (Black / 8″×10″)",
+            "size": "8″×10″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 27.8
+          },
+          {
+            "id": 17628,
+            "name": "Framed Canvas (in) (Black / 9″×12″)",
+            "size": "9″×12″",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 30.55
+          },
+          {
+            "id": 17636,
+            "name": "Framed Canvas (in) (Brown / 11″×14″)",
+            "size": "11″×14″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 34.94
+          },
+          {
+            "id": 17637,
+            "name": "Framed Canvas (in) (Brown / 12″×18″)",
+            "size": "12″×18″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 45.14
+          },
+          {
+            "id": 17638,
+            "name": "Framed Canvas (in) (Brown / 20″×28″)",
+            "size": "20″×28″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 71.4
+          },
+          {
+            "id": 17640,
+            "name": "Framed Canvas (in) (Brown / 20″×30″)",
+            "size": "20″×30″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 76.5
+          },
+          {
+            "id": 17639,
+            "name": "Framed Canvas (in) (Brown / 24″×32″)",
+            "size": "24″×32″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 81.6
+          },
+          {
+            "id": 17634,
+            "name": "Framed Canvas (in) (Brown / 8″×10″)",
+            "size": "8″×10″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 27.8
+          },
+          {
+            "id": 17635,
+            "name": "Framed Canvas (in) (Brown / 9″×12″)",
+            "size": "9″×12″",
+            "color": "Brown",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 30.55
+          },
+          {
+            "id": 17643,
+            "name": "Framed Canvas (in) (White / 11″×14″)",
+            "size": "11″×14″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 34.94
+          },
+          {
+            "id": 17644,
+            "name": "Framed Canvas (in) (White / 12″×18″)",
+            "size": "12″×18″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 45.14
+          },
+          {
+            "id": 17645,
+            "name": "Framed Canvas (in) (White / 20″×28″)",
+            "size": "20″×28″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 71.4
+          },
+          {
+            "id": 17647,
+            "name": "Framed Canvas (in) (White / 20″×30″)",
+            "size": "20″×30″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 76.5
+          },
+          {
+            "id": 17646,
+            "name": "Framed Canvas (in) (White / 24″×32″)",
+            "size": "24″×32″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 81.6
+          },
+          {
+            "id": 17641,
+            "name": "Framed Canvas (in) (White / 8″×10″)",
+            "size": "8″×10″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 27.8
+          },
+          {
+            "id": 17642,
+            "name": "Framed Canvas (in) (White / 9″×12″)",
+            "size": "9″×12″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 30.55
+          },
+          {
+            "id": 15695,
+            "name": "Framed Canvas (White / 12″×12″)",
+            "size": "12″×12″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 46.92
+          },
+          {
+            "id": 15696,
+            "name": "Framed Canvas (White / 12″×16″)",
+            "size": "12″×16″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 51
+          },
+          {
+            "id": 15697,
+            "name": "Framed Canvas (White / 16″×16″)",
+            "size": "16″×16″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 57.12
+          },
+          {
+            "id": 15698,
+            "name": "Framed Canvas (White / 16″×20″)",
+            "size": "16″×20″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 61.2
+          },
+          {
+            "id": 15699,
+            "name": "Framed Canvas (White / 18″×24″)",
+            "size": "18″×24″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 71.4
+          },
+          {
+            "id": 15700,
+            "name": "Framed Canvas (White / 24″×36″)",
+            "size": "24″×36″",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+            "price": 99.96
+          }
+        ],
+        "base_cost": 46.92,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/6e/6ed851bb13949c3f4af7c7a266cc50d1_l",
+          "model": "Framed Canvas (in)",
+          "variant_count": 39
+        },
+        "last_synced": "2025-10-03T16:16:49.394+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:28.585238+00:00"
+      },
+      {
+        "id": "6702acb6-a55f-4893-9037-69688c7fccef",
+        "printful_id": "513",
+        "name": "Men's High Top Canvas Shoes",
+        "category": "Men's High Top Canvas Shoes",
+        "sizes": [
+          {
+            "id": 17460,
+            "name": "Men's High Top Canvas Shoes (Black / 10)",
+            "size": "10",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17461,
+            "name": "Men's High Top Canvas Shoes (Black / 10.5)",
+            "size": "10.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17462,
+            "name": "Men's High Top Canvas Shoes (Black / 11)",
+            "size": "11",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17463,
+            "name": "Men's High Top Canvas Shoes (Black / 11.5)",
+            "size": "11.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17464,
+            "name": "Men's High Top Canvas Shoes (Black / 12)",
+            "size": "12",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17465,
+            "name": "Men's High Top Canvas Shoes (Black / 12.5)",
+            "size": "12.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17466,
+            "name": "Men's High Top Canvas Shoes (Black / 13)",
+            "size": "13",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17450,
+            "name": "Men's High Top Canvas Shoes (Black / 5)",
+            "size": "5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17451,
+            "name": "Men's High Top Canvas Shoes (Black / 5.5)",
+            "size": "5.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17452,
+            "name": "Men's High Top Canvas Shoes (Black / 6)",
+            "size": "6",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17453,
+            "name": "Men's High Top Canvas Shoes (Black / 6.5)",
+            "size": "6.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17454,
+            "name": "Men's High Top Canvas Shoes (Black / 7)",
+            "size": "7",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17455,
+            "name": "Men's High Top Canvas Shoes (Black / 7.5)",
+            "size": "7.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17456,
+            "name": "Men's High Top Canvas Shoes (Black / 8)",
+            "size": "8",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17457,
+            "name": "Men's High Top Canvas Shoes (Black / 8.5)",
+            "size": "8.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17458,
+            "name": "Men's High Top Canvas Shoes (Black / 9)",
+            "size": "9",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 17459,
+            "name": "Men's High Top Canvas Shoes (Black / 9.5)",
+            "size": "9.5",
+            "color": "Black",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12913,
+            "name": "Men's High Top Canvas Shoes (White / 10)",
+            "size": "10",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12914,
+            "name": "Men's High Top Canvas Shoes (White / 10.5)",
+            "size": "10.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12915,
+            "name": "Men's High Top Canvas Shoes (White / 11)",
+            "size": "11",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12916,
+            "name": "Men's High Top Canvas Shoes (White / 11.5)",
+            "size": "11.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12918,
+            "name": "Men's High Top Canvas Shoes (White / 12)",
+            "size": "12",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12919,
+            "name": "Men's High Top Canvas Shoes (White / 12.5)",
+            "size": "12.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12920,
+            "name": "Men's High Top Canvas Shoes (White / 13)",
+            "size": "13",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12903,
+            "name": "Men's High Top Canvas Shoes (White / 5)",
+            "size": "5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12904,
+            "name": "Men's High Top Canvas Shoes (White / 5.5)",
+            "size": "5.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12905,
+            "name": "Men's High Top Canvas Shoes (White / 6)",
+            "size": "6",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12906,
+            "name": "Men's High Top Canvas Shoes (White / 6.5)",
+            "size": "6.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12907,
+            "name": "Men's High Top Canvas Shoes (White / 7)",
+            "size": "7",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12908,
+            "name": "Men's High Top Canvas Shoes (White / 7.5)",
+            "size": "7.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12909,
+            "name": "Men's High Top Canvas Shoes (White / 8)",
+            "size": "8",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12910,
+            "name": "Men's High Top Canvas Shoes (White / 8.5)",
+            "size": "8.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12911,
+            "name": "Men's High Top Canvas Shoes (White / 9)",
+            "size": "9",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          },
+          {
+            "id": 12912,
+            "name": "Men's High Top Canvas Shoes (White / 9.5)",
+            "size": "9.5",
+            "color": "White",
+            "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+            "price": 43
+          }
+        ],
+        "base_cost": 43,
+        "shipping_cost": 0,
+        "product_data": {
+          "brand": null,
+          "image": "https://files.cdn.printful.com/o/upload/product-catalog-img/88/885db0018c7dc97a35fab7e3d182af0c_l",
+          "model": "Men's High Top Canvas Shoes",
+          "variant_count": 34
+        },
+        "last_synced": "2025-10-03T16:16:49.457+00:00",
+        "is_available": true,
+        "created_at": "2025-10-02T18:36:28.958842+00:00"
+      }
+    ],
+    "printful_settings": [
+      {
+        "id": "b30c8c19-4ada-4fe3-a121-4bea024d8b40",
+        "setting_key": "allowed_product_ids",
+        "setting_value": [
+          19,
+          3,
+          12,
+          27,
+          28,
+          301
+        ],
+        "description": "List of allowed Printful product IDs for syncing (wall art only)",
+        "updated_at": "2025-10-06T20:10:34.27328+00:00",
+        "created_at": "2025-10-06T20:10:34.27328+00:00"
+      },
+      {
+        "id": "1e9186b3-2455-4efb-a203-b70f9e60f989",
+        "setting_key": "wall_art_categories",
+        "setting_value": [
+          "poster",
+          "posters",
+          "canvas",
+          "framed",
+          "framed prints",
+          "wall art",
+          "metal prints",
+          "wood prints",
+          "art prints",
+          "fine art"
+        ],
+        "description": "List of category keywords that identify wall art products",
+        "updated_at": "2025-10-06T20:10:34.27328+00:00",
+        "created_at": "2025-10-06T20:10:34.27328+00:00"
+      },
+      {
+        "id": "fff954fd-8139-4674-96ce-1c0d2e5207e7",
+        "setting_key": "excluded_categories",
+        "setting_value": [
+          "apparel",
+          "clothing",
+          "shirt",
+          "shoes",
+          "hat",
+          "bag",
+          "pillow",
+          "mug",
+          "phone case",
+          "sticker"
+        ],
+        "description": "List of category keywords to exclude from syncing",
+        "updated_at": "2025-10-06T20:10:34.27328+00:00",
+        "created_at": "2025-10-06T20:10:34.27328+00:00"
+      },
+      {
+        "id": "364cd468-b540-4503-ae67-9b1465d0c871",
+        "setting_key": "wall_art_only_mode",
+        "setting_value": true,
+        "description": "When enabled, only sync wall art products and exclude all other categories",
+        "updated_at": "2025-10-06T20:10:34.27328+00:00",
+        "created_at": "2025-10-06T20:10:34.27328+00:00"
+      }
+    ]
+  }
+}

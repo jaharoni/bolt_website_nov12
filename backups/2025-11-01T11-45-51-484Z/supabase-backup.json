@@ -1,0 +1,229 @@
+{
+  "timestamp": "2025-11-01T11-45-51-484Z",
+  "supabaseUrl": "https://omtjqxsuoaebxokpgizt.supabase.co",
+  "tables": {
+    "media_items": [
+      {
+        "id": "716187b9-dbf4-4253-91aa-b5b1adc844c0",
+        "title": "Urban Architecture",
+        "alt_text": "Modern urban architecture background",
+        "bucket_name": "backgrounds",
+        "storage_path": "urban-architecture.jpg",
+        "public_url": "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "urban"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "bbab27c0-7b67-4c8c-88a4-7291f6f53584",
+        "title": "Golden Hour Portrait",
+        "alt_text": "Golden hour natural light background",
+        "bucket_name": "backgrounds",
+        "storage_path": "golden-hour.jpg",
+        "public_url": "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "portrait"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "2c43a4e2-52a9-4dab-a4d7-fec454f92897",
+        "title": "Minimalist Space",
+        "alt_text": "Clean minimalist interior background",
+        "bucket_name": "backgrounds",
+        "storage_path": "minimalist-space.jpg",
+        "public_url": "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "minimal"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "a4a6c990-cefb-47f1-9c65-410cebb249da",
+        "title": "Night Market",
+        "alt_text": "Cultural night market atmosphere",
+        "bucket_name": "backgrounds",
+        "storage_path": "night-market.jpg",
+        "public_url": "https://images.pexels.com/photos/3184394/pexels-photo-3184394.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "street"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "6590b55f-12ff-423d-aadc-63bd0a7c91f0",
+        "title": "Modern Architecture",
+        "alt_text": "Contemporary architectural photography",
+        "bucket_name": "backgrounds",
+        "storage_path": "modern-architecture.jpg",
+        "public_url": "https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "architecture"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "5ea14278-122d-4846-aa18-148fe08a8616",
+        "title": "Fashion Editorial",
+        "alt_text": "Fashion photography background",
+        "bucket_name": "backgrounds",
+        "storage_path": "fashion-editorial.jpg",
+        "public_url": "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "fashion"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "f560a32d-5a96-4877-8d55-bdbab95a3f9c",
+        "title": "Event Atmosphere",
+        "alt_text": "Professional event photography background",
+        "bucket_name": "backgrounds",
+        "storage_path": "event-atmosphere.jpg",
+        "public_url": "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "event"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "0174061f-6053-4501-a2ed-bd0b3087bf72",
+        "title": "Brand Campaign",
+        "alt_text": "Commercial brand photography backdrop",
+        "bucket_name": "backgrounds",
+        "storage_path": "brand-campaign.jpg",
+        "public_url": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "commercial"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "f3db6e07-954d-48e6-a797-a8c489bf8182",
+        "title": "Art Gallery",
+        "alt_text": "Contemporary art gallery setting",
+        "bucket_name": "backgrounds",
+        "storage_path": "art-gallery.jpg",
+        "public_url": "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "gallery"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      },
+      {
+        "id": "55631848-5853-4420-8761-a280611096db",
+        "title": "Culinary Arts",
+        "alt_text": "Food and culinary photography background",
+        "bucket_name": "backgrounds",
+        "storage_path": "culinary-arts.jpg",
+        "public_url": "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1920",
+        "media_type": "image",
+        "file_size": null,
+        "width": null,
+        "height": null,
+        "page_context": "background",
+        "tags": [
+          "background",
+          "homebg",
+          "food"
+        ],
+        "is_active": true,
+        "folder_id": "3d01a7a1-7767-4b47-8c0e-0727c4c96184",
+        "created_at": "2025-10-30T23:15:36.656321+00:00",
+        "updated_at": "2025-10-30T23:15:36.656321+00:00"
+      }
+    ],
+    "essays": []
+  }
+}
