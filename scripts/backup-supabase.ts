@@ -89,7 +89,7 @@ async function main() {
   console.log(`  Tables backed up: ${Object.keys(backup.tables).length}`);
 
   let totalRows = 0;
-  for (const [table, data] of Object.entries(backup.tables)) {
+  for (const [, data] of Object.entries(backup.tables)) {
     totalRows += (data as any[]).length;
   }
   console.log(`  Total rows: ${totalRows}`);

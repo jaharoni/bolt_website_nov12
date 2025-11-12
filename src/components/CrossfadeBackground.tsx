@@ -12,24 +12,34 @@ export default function CrossfadeBackground({ src, alt = "", className = "" }: P
   const [back, setBack] = useState<string | null>(null);
   const flipping = useRef(false);
 
-  useEffect(() => {
-    if (!src) return;
-    let alive = true;
+    useEffect(() => {
+      if (!src) return;
+      let alive = true;
 
-    (async () => {
-      if (front === src || back === src) return;
+      (async () => {
+        if (front === src || back === src) return;
 
-      flipping.current = true;
-      setBack(src);
-      try { await preloadDecode(src); } catch {}
-      if (!alive) return;
+        flipping.current = true;
+        setBack(src);
+        try {
+          await preloadDecode(src);
+        } catch (error) {
+          console.warn('Failed to preload background image', error);
+        }
 
-      setFront(src);
-      setTimeout(() => { if (alive) setBack(null); flipping.current = false; }, 450);
-    })();
+        if (!alive) return;
 
-    return () => { alive = false; };
-  }, [src, front, back]);
+        setFront(src);
+        setTimeout(() => {
+          if (alive) setBack(null);
+          flipping.current = false;
+        }, 450);
+      })();
+
+      return () => {
+        alive = false;
+      };
+    }, [src, front, back]);
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`} style={{ contain: "paint", willChange: "opacity" }}>
