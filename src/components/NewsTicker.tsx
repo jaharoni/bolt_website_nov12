@@ -39,6 +39,7 @@ const NewsTicker: React.FC = () => {
           setNews(newsItems);
           setLoading(false);
         } catch (err) {
+          console.warn('Failed to fetch live news feed; falling back to mock headlines.', err);
           // Fallback to mock Onion-style headlines if RSS fails
           const mockHeadlines = [
             "Local Man Still Hasn't Figured Out What He Wants To Do With His Life",

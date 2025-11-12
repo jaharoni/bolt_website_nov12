@@ -10,12 +10,34 @@ interface SearchBarProps {
   compact?: boolean;
 }
 
+const DEFAULT_PLACEHOLDER = "How can I help you today?";
+
+const WORLD_PLACEHOLDERS = [
+  "我能帮你什么吗？",
+  "¿Cómo puedo ayudarte?",
+  "How can I help you today?",
+  "كيف يمكنني المساعدة؟",
+  "मैं कैसे मदद कर सकता हूँ?",
+  "Como posso ajudar?",
+  "Как я могу помочь?",
+  "どのようにお手伝いできますか？",
+  "Comment puis-je vous aider?",
+  "Wie kann ich Ihnen helfen?",
+];
+
+const getNextPlaceholder = () => {
+  if (Math.random() < 0.2) {
+    return DEFAULT_PLACEHOLDER;
+  }
+  const randomIndex = Math.floor(Math.random() * WORLD_PLACEHOLDERS.length);
+  return WORLD_PLACEHOLDERS[randomIndex];
+};
+
 const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
   const [query, setQuery] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSparkle, setIsSparkle] = useState(false);
-  const [currentPlaceholder, setCurrentPlaceholder] = useState("How can I help you today?");
+  const [currentPlaceholder, setCurrentPlaceholder] = useState(DEFAULT_PLACEHOLDER);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,27 +60,6 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
       setTurnstileToken(token);
     }
   }, [token]);
-
-  const worldPlaceholders = [
-    "我能帮你什么吗？",
-    "¿Cómo puedo ayudarte?",
-    "How can I help you today?",
-    "كيف يمكنني المساعدة؟",
-    "मैं कैसे मदद कर सकता हूँ?",
-    "Como posso ajudar?",
-    "Как я могу помочь?",
-    "どのようにお手伝いできますか？",
-    "Comment puis-je vous aider?",
-    "Wie kann ich Ihnen helfen?",
-  ];
-
-  const getNextPlaceholder = () => {
-    if (Math.random() < 0.2) {
-      return "How can I help you today?";
-    }
-    const randomIndex = Math.floor(Math.random() * worldPlaceholders.length);
-    return worldPlaceholders[randomIndex];
-  };
 
   useEffect(() => {
     const placeholderTimer = setInterval(() => {
@@ -133,7 +134,7 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
         try {
           const searchResult = await searchManager.search(messageText);
           navigate(searchResult.suggestedRoute);
-        } catch (error) {
+        } catch {
           navigate('/gallery');
         }
       }, 1000);
@@ -173,35 +174,33 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
         setShowExternalSearch(true);
       }
 
-    } catch (err) {
-      console.error('Chat error:', err);
+      } catch (err) {
+        console.error('Chat error:', err);
 
-      if (err instanceof ChatServiceError) {
-        setError(err.getUserFriendlyMessage());
-      } else {
-        setError("AI assistant unavailable. Using basic search...");
-        setTimeout(async () => {
-          try {
-            const searchResult = await searchManager.search(messageText);
-            navigate(searchResult.suggestedRoute);
-            setMessages([]);
-            setIsExpanded(false);
-          } catch (error) {
-            navigate('/gallery');
-          }
-        }, 1500);
+        if (err instanceof ChatServiceError) {
+          setError(err.getUserFriendlyMessage());
+        } else {
+          setError("AI assistant unavailable. Using basic search...");
+          setTimeout(async () => {
+            try {
+              const searchResult = await searchManager.search(messageText);
+              navigate(searchResult.suggestedRoute);
+              setMessages([]);
+              setIsExpanded(false);
+            } catch {
+              navigate('/gallery');
+            }
+          }, 1500);
+        }
+
+        resetTurnstile();
+      } finally {
+        setIsLoading(false);
       }
-
-      resetTurnstile();
-    } finally {
-      setIsLoading(false);
-    }
   };
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const executeSearch = async () => {
     if (!query.trim()) return;
-
     setIsSparkle(true);
 
     try {
@@ -230,10 +229,15 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
     }
   };
 
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await executeSearch();
+  };
+
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      handleSearch(e as any);
+      void executeSearch();
     }
     if (e.key === 'Escape') {
       handleMinimize();
@@ -293,12 +297,10 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
               onChange={(e) => setQuery(e.target.value)}
               onKeyPress={handleKeyPress}
               onFocus={() => {
-                setIsFocused(true);
                 if (messages.length > 0 && isMinimized) {
                   handleExpand();
                 }
               }}
-              onBlur={() => setIsFocused(false)}
               className="w-full bg-transparent text-white placeholder-white/60 focus:outline-none transition-all duration-300 rounded-full py-2 pl-10 pr-12"
               disabled={isLoading}
             />
@@ -402,13 +404,11 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyPress={handleKeyPress}
-            onFocus={() => {
-              setIsFocused(true);
-              if (messages.length > 0 && isMinimized) {
-                handleExpand();
-              }
-            }}
-            onBlur={() => setIsFocused(false)}
+              onFocus={() => {
+                if (messages.length > 0 && isMinimized) {
+                  handleExpand();
+                }
+              }}
             className="flex-1 text-white text-lg font-display placeholder-white/60 focus:outline-none"
             style={{
               background: 'none',
