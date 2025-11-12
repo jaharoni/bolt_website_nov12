@@ -18,39 +18,46 @@ export function useTurnstile(onSuccess: (token: string) => void) {
   const widgetIdRef = useRef<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (typeof window.turnstile !== 'undefined') {
-      setIsReady(true);
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-    script.async = true;
-    script.defer = true;
-
-    window.onTurnstileLoad = () => {
-      setIsReady(true);
-    };
-
-    script.onload = () => {
+    useEffect(() => {
       if (typeof window.turnstile !== 'undefined') {
         setIsReady(true);
+        return;
       }
-    };
 
-    document.head.appendChild(script);
+      const existing = document.querySelector<HTMLScriptElement>('script[data-turnstile="true"]');
+      if (existing) {
+        existing.addEventListener('load', () => setIsReady(true), { once: true });
+        return;
+      }
 
-    return () => {
-      if (widgetIdRef.current && window.turnstile) {
-        try {
-          window.turnstile.remove(widgetIdRef.current);
-        } catch (e) {
-          console.warn('Error removing Turnstile widget:', e);
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true;
+      script.defer = true;
+      script.dataset.turnstile = 'true';
+
+      window.onTurnstileLoad = () => {
+        setIsReady(true);
+      };
+
+      script.onload = () => {
+        if (typeof window.turnstile !== 'undefined') {
+          setIsReady(true);
         }
-      }
-    };
-  }, []);
+      };
+
+      document.head.appendChild(script);
+
+      return () => {
+        if (widgetIdRef.current && window.turnstile) {
+          try {
+            window.turnstile.remove(widgetIdRef.current);
+          } catch (e) {
+            console.warn('Error removing Turnstile widget:', e);
+          }
+        }
+      };
+    }, []);
 
   useEffect(() => {
     if (!isReady || !containerRef.current || widgetIdRef.current || !window.turnstile) {
