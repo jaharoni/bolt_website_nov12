@@ -129,6 +129,7 @@ export type ZoneConfig = {
   limit?: number;
   weights?: Record<string, number>;
   refreshSec?: number;
+  randomization_enabled?: boolean;
 };
 
 export type TextBlock = {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { supabase } from "../lib/supabase";
 
 type FilterOperator = "eq" | "ilike" | "contains" | "is" | "gt" | "lt" | "gte" | "lte";
@@ -21,12 +21,17 @@ export default function useSupabaseTable<T = any>(opts: Options<T>) {
   const [items, setItems] = useState<T[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
+  const schemaReloadAttempted = useRef(false);
+
+  useEffect(() => {
+    schemaReloadAttempted.current = false;
+  }, [opts.table]);
 
   const fetchAll = useCallback(async () => {
     setLoading(true);
     setError(null);
 
-    try {
+      try {
       let query = supabase.from(opts.table).select(opts.select ?? "*");
 
       if (opts.filters) {
@@ -68,7 +73,28 @@ export default function useSupabaseTable<T = any>(opts: Options<T>) {
         query = query.limit(opts.limit);
       }
 
-      const { data, error } = await query;
+        let { data, error } = await query;
+
+        if (
+          error &&
+          !schemaReloadAttempted.current &&
+          (
+            (typeof error.message === "string" && error.message.includes("schema cache")) ||
+            (typeof error.message === "string" && error.message.includes("'randomization_enabled'"))
+          )
+        ) {
+          schemaReloadAttempted.current = true;
+          try {
+            await supabase.rpc('reload_schema_cache');
+          } catch {
+            // ignore failure; fall through to retry
+          }
+
+          // Retry the original query after attempting schema reload
+          const retry = await supabase.from(opts.table).select(opts.select ?? "*");
+          data = retry.data;
+          error = retry.error;
+        }
 
       if (error) {
         setError(error);

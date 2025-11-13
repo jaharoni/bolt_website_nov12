@@ -22,20 +22,32 @@ const Footer: React.FC = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  const socialLinks = [
-    {
-      name: 'Instagram',
-      icon: <Instagram className="w-5 h-5" />,
-      url: 'https://instagram.com/justinaharoni',
-      color: 'hover:text-pink-400'
-    },
-    {
-      name: 'Email',
-      icon: <Mail className="w-5 h-5" />,
-      url: 'mailto:contact@jaharoni.com',
-      color: 'hover:text-green-400'
-    }
-  ];
+    const socialLinks = [
+      {
+        name: 'Instagram',
+        icon: <Instagram className="w-5 h-5" />,
+        url: 'https://instagram.com/justinaharoni',
+        color: 'hover:text-pink-400',
+      },
+      {
+        name: 'Twitter',
+        icon: <Twitter className="w-5 h-5" />,
+        url: 'https://x.com/justinaharoni',
+        color: 'hover:text-sky-400',
+      },
+      {
+        name: 'LinkedIn',
+        icon: <Linkedin className="w-5 h-5" />,
+        url: 'https://www.linkedin.com/in/justinaharoni',
+        color: 'hover:text-blue-400',
+      },
+      {
+        name: 'Email',
+        icon: <Mail className="w-5 h-5" />,
+        url: 'mailto:contact@jaharoni.com',
+        color: 'hover:text-green-400',
+      },
+    ];
 
   return (
     <footer

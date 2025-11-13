@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { getBGConfig, matchRule, type PageBGRule } from '../lib/backgrounds';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 type BackgroundLayerProps = {
   pageKey: string;
@@ -14,10 +14,10 @@ export function BackgroundLayer({ pageKey, onIndexChange, externalIndex, onNext,
   const [images, setImages] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [rule, setRule] = useState<PageBGRule | null>(null);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isMountedRef = useRef(true);
   const prevPageKeyRef = useRef<string>(pageKey);
+  const previousImageCountRef = useRef<number>(0);
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -27,81 +27,100 @@ export function BackgroundLayer({ pageKey, onIndexChange, externalIndex, onNext,
   }, []);
 
   useEffect(() => {
-    async function loadBackground() {
+    let cancelled = false;
+
+    const loadBackground = async () => {
       const config = await getBGConfig();
       const pageRule = matchRule(config, pageKey);
 
-      if (!isMountedRef.current) return;
+      if (!isMountedRef.current || cancelled) return;
 
       setRule(pageRule);
 
       let imageList: string[] = [];
 
-      if (pageRule.mode === "specific" && pageRule.images.length > 0) {
+      if (pageRule.mode === 'specific' && pageRule.images.length > 0) {
         imageList = pageRule.images;
       } else if (pageRule.folders.length > 0) {
-        for (const folderSlug of pageRule.folders) {
-          const { data: folder } = await supabase
-            .from('media_folders')
-            .select('id, name, slug')
-            .eq('slug', folderSlug)
-            .maybeSingle();
+        if (!isSupabaseConfigured) {
+          console.warn('[BackgroundLayer] Supabase not configured; skipping folder-based background preload.');
+        } else {
+          for (const folderSlug of pageRule.folders) {
+            const { data: folder } = await supabase
+              .from('media_folders')
+              .select('id, name, slug')
+              .eq('slug', folderSlug)
+              .maybeSingle();
 
-          if (folder) {
-            const { data: media } = await supabase
-              .from('media_items')
-              .select('public_url')
-              .eq('folder_id', folder.id)
-              .eq('is_active', true)
-              .eq('media_type', 'image')
-              .order('created_at');
+            if (!isMountedRef.current || cancelled) return;
 
-            if (media && media.length > 0) {
-              imageList.push(...media.map(m => m.public_url));
+            if (folder) {
+              const { data: media } = await supabase
+                .from('media_items')
+                .select('public_url')
+                .eq('folder_id', folder.id)
+                .eq('is_active', true)
+                .eq('media_type', 'image')
+                .order('created_at');
+
+              if (!isMountedRef.current || cancelled) return;
+
+              if (Array.isArray(media) && media.length > 0) {
+                imageList.push(...media.map((m) => m.public_url));
+              }
             }
           }
         }
       }
 
-      if (!isMountedRef.current) return;
+      if (!isMountedRef.current || cancelled) return;
 
-      if (imageList.length > 0) {
-        const pageChanged = prevPageKeyRef.current !== pageKey;
+      const previousCount = previousImageCountRef.current;
+      const pageChanged = prevPageKeyRef.current !== pageKey;
+
+      if (imageList.length === 0) {
+        setImages([]);
+        setCurrentIndex(0);
+        previousImageCountRef.current = 0;
         prevPageKeyRef.current = pageKey;
-
-        const randomStartIndex = Math.floor(Math.random() * imageList.length);
-        const selectedImage = imageList[randomStartIndex];
-
-        if (pageChanged || images.length === 0) {
-          // Preload the image first, then update state
-          const img = new Image();
-          img.onload = () => {
-            if (!isMountedRef.current) return;
-            // Update images array with new list
-            setImages(imageList);
-            // Small delay to ensure DOM is ready, then fade to new image
-            requestAnimationFrame(() => {
-              setCurrentIndex(randomStartIndex);
-              setImagesLoaded(true);
-            });
-          };
-          img.src = selectedImage;
-        } else {
-          // Same page, just update index
-          setCurrentIndex(randomStartIndex);
-          setImagesLoaded(true);
-        }
+        return;
       }
-    }
+
+      const randomStartIndex = Math.floor(Math.random() * imageList.length);
+      const selectedImage = imageList[randomStartIndex];
+
+      const commitImages = () => {
+        if (!isMountedRef.current || cancelled) return;
+        setImages(imageList);
+        setCurrentIndex(randomStartIndex);
+      };
+
+      const shouldPreload = pageChanged || previousCount === 0;
+      previousImageCountRef.current = imageList.length;
+      prevPageKeyRef.current = pageKey;
+
+      if (shouldPreload) {
+        const img = new Image();
+        img.onload = commitImages;
+        img.onerror = commitImages;
+        img.src = selectedImage;
+      } else {
+        commitImages();
+      }
+    };
 
     loadBackground();
+
+    return () => {
+      cancelled = true;
+    };
   }, [pageKey]);
 
   useEffect(() => {
     if (externalIndex !== undefined && externalIndex !== currentIndex) {
       setCurrentIndex(externalIndex);
     }
-  }, [externalIndex]);
+  }, [externalIndex, currentIndex]);
 
   useEffect(() => {
     if (onIndexChange) {

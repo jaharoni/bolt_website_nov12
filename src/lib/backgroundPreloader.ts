@@ -1,4 +1,4 @@
-import { supabase } from "./supabase";
+import { supabase, isSupabaseConfigured } from "./supabase";
 import { Media } from "./types";
 
 interface CachedBackground {
@@ -11,7 +11,7 @@ class BackgroundPreloader {
   private cache = new Map<string, CachedBackground>();
   private loadingQueue = new Set<string>();
   private readonly CACHE_TTL = 30 * 60 * 1000;
-  private zoneConfigCache: Map<string, any> = new Map();
+  private zoneConfigCache: Map<string, ZoneConfig | null> = new Map();
   private mediaQueryCache: Map<string, Media[]> = new Map();
   private sessionId: string;
 
@@ -24,9 +24,12 @@ class BackgroundPreloader {
   }
 
   async preloadForPage(pageKey: string, forceRefresh: boolean = false): Promise<Media | null> {
+    const zoneConfig = await this.resolveZoneConfig(pageKey, forceRefresh);
+    const randomizationEnabled = zoneConfig?.randomization_enabled !== false;
     const cached = this.cache.get(pageKey);
-    if (!forceRefresh && cached && Date.now() - cached.timestamp < this.CACHE_TTL) {
-      console.log(`Using cached background for ${pageKey}`);
+    const cacheValid = cached && Date.now() - cached.timestamp < this.CACHE_TTL;
+
+    if (!randomizationEnabled && !forceRefresh && cacheValid && cached) {
       return cached.media;
     }
 
@@ -41,10 +44,13 @@ class BackgroundPreloader {
     this.loadingQueue.add(pageKey);
 
     try {
-      const media = await this.fetchMediaForPage(pageKey, forceRefresh);
+      const excludeIds = randomizationEnabled && cached ? [cached.media.id] : [];
+      const media = await this.fetchMediaForPage(pageKey, zoneConfig, forceRefresh, excludeIds);
       if (media) {
         await this.decodeAndCache(pageKey, media);
-        await this.recordBackgroundView(pageKey, media.id);
+        if (randomizationEnabled) {
+          await this.recordBackgroundView(pageKey, media.id);
+        }
         return media;
       }
     } catch (error) {
@@ -85,25 +91,14 @@ class BackgroundPreloader {
     }
   }
 
-  private async fetchMediaForPage(pageKey: string, forceRefresh: boolean = false): Promise<Media | null> {
-    const zoneKey = pageKey === "home" ? "home.background" : `page.${pageKey}.background`;
-
-    let zoneConfig = this.zoneConfigCache.get(zoneKey);
-    if (!zoneConfig || forceRefresh) {
-      const { data: zone } = await supabase
-        .from("site_zones")
-        .select("*")
-        .eq("key", zoneKey)
-        .maybeSingle();
-
-      if (zone) {
-        zoneConfig = {
-          randomization_enabled: zone.randomization_enabled ?? true,
-          static_media_id: zone.static_media_id,
-          ...zone.config_json
-        };
-        this.zoneConfigCache.set(zoneKey, zoneConfig);
-      }
+  private async fetchMediaForPage(
+    pageKey: string,
+    zoneConfig: ZoneConfig | null,
+    forceRefresh: boolean = false,
+    extraExcludeIds: string[] = []
+  ): Promise<Media | null> {
+    if (!isSupabaseConfigured) {
+      return null;
     }
 
     if (zoneConfig?.randomization_enabled === false && zoneConfig?.static_media_id) {
@@ -119,6 +114,7 @@ class BackgroundPreloader {
     }
 
     const recentIds = await this.getRecentBackgroundIds(pageKey);
+    const excludeIds = Array.from(new Set([...recentIds, ...extraExcludeIds]));
 
     if (zoneConfig?.source) {
       const cfg = zoneConfig.source;
@@ -138,7 +134,7 @@ class BackgroundPreloader {
           }
         }
 
-        return this.pickRandomExcluding(mediaList, recentIds);
+          return this.pickRandomExcluding(mediaList, excludeIds);
       } else if (cfg.type === "folder") {
         const cacheKey = `folder:${cfg.value}`;
         let mediaList = this.mediaQueryCache.get(cacheKey);
@@ -155,7 +151,7 @@ class BackgroundPreloader {
           }
         }
 
-        return this.pickRandomExcluding(mediaList, recentIds);
+          return this.pickRandomExcluding(mediaList, excludeIds);
       } else if (cfg.type === "tag") {
         const cacheKey = `tag:${cfg.value}`;
         let mediaList = this.mediaQueryCache.get(cacheKey);
@@ -172,7 +168,7 @@ class BackgroundPreloader {
           }
         }
 
-        return this.pickRandomExcluding(mediaList, recentIds);
+          return this.pickRandomExcluding(mediaList, excludeIds);
       }
     }
 
@@ -190,8 +186,8 @@ class BackgroundPreloader {
         .eq("is_active", true)
         .or(`page_context.eq.${pageKey},page_context.eq.background`);
 
-      if (legacy?.length) {
-        return this.pickRandomExcluding(legacy as Media[], recentIds);
+        if (legacy?.length) {
+          return this.pickRandomExcluding(legacy as Media[], excludeIds);
       }
     }
 
@@ -201,8 +197,8 @@ class BackgroundPreloader {
       .eq("is_active", true)
       .contains("tags", [pageKey]);
 
-    if (tagMatch?.length) {
-      return this.pickRandomExcluding(tagMatch as Media[], recentIds);
+      if (tagMatch?.length) {
+        return this.pickRandomExcluding(tagMatch as Media[], excludeIds);
     }
 
     const { data: homebg } = await supabase
@@ -211,10 +207,13 @@ class BackgroundPreloader {
       .eq("is_active", true)
       .contains("tags", ["homebg"]);
 
-    return this.pickRandomExcluding((homebg ?? []) as Media[], recentIds);
+      return this.pickRandomExcluding((homebg ?? []) as Media[], excludeIds);
   }
 
   private async getRecentBackgroundIds(pageKey: string): Promise<string[]> {
+    if (!isSupabaseConfigured) {
+      return [];
+    }
     try {
       const { data, error } = await supabase.rpc('get_recent_backgrounds', {
         p_page_key: pageKey,
@@ -234,6 +233,9 @@ class BackgroundPreloader {
   }
 
   private async recordBackgroundView(pageKey: string, mediaId: string): Promise<void> {
+    if (!isSupabaseConfigured) {
+      return;
+    }
     try {
       await supabase.rpc('record_background_view', {
         p_page_key: pageKey,
@@ -280,23 +282,75 @@ class BackgroundPreloader {
 
   clearPageCache(pageKey: string): void {
     this.cache.delete(pageKey);
+    this.zoneConfigCache.delete(this.getZoneKey(pageKey));
   }
 
   refreshZoneConfig(pageKey?: string): void {
     if (pageKey) {
-      const zoneKey = pageKey === "home" ? "home.background" : `page.${pageKey}.background`;
-      this.zoneConfigCache.delete(zoneKey);
+      this.zoneConfigCache.delete(this.getZoneKey(pageKey));
     } else {
       this.zoneConfigCache.clear();
     }
   }
 
+  private getZoneKey(pageKey: string): string {
+    return pageKey === "home" ? "home.background" : `page.${pageKey}.background`;
+  }
+
+  private async resolveZoneConfig(pageKey: string, forceRefresh = false): Promise<ZoneConfig | null> {
+    const zoneKey = this.getZoneKey(pageKey);
+
+    if (!isSupabaseConfigured) {
+      return null;
+    }
+
+    let config = this.zoneConfigCache.get(zoneKey) ?? null;
+    if (!config || forceRefresh) {
+      const { data: zone, error } = await supabase
+        .from("site_zones")
+        .select("randomization_enabled, static_media_id, config_json")
+        .eq("key", zoneKey)
+        .maybeSingle();
+
+      if (error) {
+        console.warn(`Error fetching zone config for ${zoneKey}:`, error);
+      }
+
+      if (zone) {
+        config = {
+          randomization_enabled: zone.randomization_enabled ?? true,
+          static_media_id: zone.static_media_id ?? null,
+          ...(zone.config_json ?? {}),
+        } as ZoneConfig;
+      } else {
+        config = null;
+      }
+
+      this.zoneConfigCache.set(zoneKey, config);
+    }
+
+    return config;
+  }
+
   prefetchAllPages(): void {
+    if (!isSupabaseConfigured) {
+      return;
+    }
     const allPages = ["home", "about", "gallery", "essays", "shop", "contact"];
     requestIdleCallback(() => {
       this.preloadMultiple(allPages);
     }, { timeout: 5000 });
   }
+}
+
+interface ZoneConfig {
+  randomization_enabled?: boolean;
+  static_media_id?: string | null;
+  source?: {
+    type: "gallery" | "folder" | "tag";
+    value: string;
+  };
+  [key: string]: any;
 }
 
 export const backgroundPreloader = new BackgroundPreloader();

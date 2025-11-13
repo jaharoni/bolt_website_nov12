@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
 import { useRandomPageImage } from "../hooks/useRandomPageImage";
 
+type DecodableImage = HTMLImageElement & {
+  decoding?: 'sync' | 'async' | 'auto';
+  decode?: () => Promise<void>;
+};
+
 async function decodeImage(url: string): Promise<void> {
   try {
-    const img = new Image();
-    (img as any).decoding = "async";
+    const img = new Image() as DecodableImage;
+    img.decoding = 'async';
     img.src = url;
-    if ((img as any).decode) {
-      await (img as any).decode();
+
+    if (typeof img.decode === 'function') {
+      await img.decode();
     } else {
       await new Promise<void>((resolve, reject) => {
         img.onload = () => resolve();
-        img.onerror = () => reject(new Error("Image load failed"));
+        img.onerror = () => reject(new Error('Image load failed'));
       });
     }
   } catch (error) {
-    console.warn("Image decode error:", error);
+    console.warn('Image decode error:', error);
   }
 }
 
@@ -31,7 +37,6 @@ export default function RandomizedPageBackground({
   const { item, loading } = useRandomPageImage(pageKey);
   const [frontUrl, setFrontUrl] = useState<string | null>(null);
   const [backUrl, setBackUrl] = useState<string | null>(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     if (!item) {
@@ -43,10 +48,10 @@ export default function RandomizedPageBackground({
     const url = item.public_url;
 
     let alive = true;
+    let timeout: ReturnType<typeof setTimeout> | null = null;
 
     (async () => {
       setBackUrl(url);
-      setIsTransitioning(true);
 
       await decodeImage(url);
 
@@ -54,18 +59,20 @@ export default function RandomizedPageBackground({
 
       setFrontUrl(url);
 
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         if (alive) {
           setBackUrl(null);
-          setIsTransitioning(false);
         }
       }, 400);
     })();
 
     return () => {
       alive = false;
+      if (timeout) {
+        clearTimeout(timeout);
+      }
     };
-  }, [item?.id]);
+  }, [item]);
 
   if (loading && !frontUrl) {
     return (

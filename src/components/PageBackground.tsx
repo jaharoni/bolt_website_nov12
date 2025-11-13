@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useRandomPageImage } from "../hooks/useRandomPageImage";
 import { backgroundPreloader } from "../lib/backgroundPreloader";
-import { supabase } from "../lib/supabase";
-import { Media } from "../lib/types";
+import { supabase, isSupabaseConfigured } from "../lib/supabase";
 
 export default function PageBackground() {
   const location = useLocation();
@@ -19,6 +18,10 @@ export default function PageBackground() {
   useEffect(() => {
     async function loadCarouselConfig() {
       if (pageKey === "home") {
+        if (!isSupabaseConfigured) {
+          setCarouselEnabled(false);
+          return;
+        }
         const zoneKey = "home.background";
         const { data: zone } = await supabase
           .from("site_zones")
@@ -71,7 +74,7 @@ export default function PageBackground() {
     }, 50);
 
     return () => clearTimeout(transitionTimer);
-  }, [item?.id]);
+  }, [item]);
 
   if (loading && !displayUrl) {
     return (

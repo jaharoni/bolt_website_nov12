@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+const PAGE_SEQUENCE = ['/', '/gallery', '/about', '/contact', '/shop'];
+
 interface PageScrollHandlerProps {
   children: React.ReactNode;
 }
@@ -13,8 +15,6 @@ const PageScrollHandler: React.FC<PageScrollHandlerProps> = ({ children }) => {
   const lastScrollTimeRef = useRef(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const pageSequence = ['/', '/gallery', '/about', '/contact', '/shop'];
-
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (isNavigatingRef.current || isTransitioning) return;
@@ -26,37 +26,37 @@ const PageScrollHandler: React.FC<PageScrollHandlerProps> = ({ children }) => {
 
       const isAtBottom = scrollTop + windowHeight >= documentHeight - 200;
       const isAtTop = scrollTop <= 200;
-      const currentIndex = pageSequence.indexOf(location.pathname);
+      const currentIndex = PAGE_SEQUENCE.indexOf(location.pathname);
 
       if (currentIndex === -1) return;
 
-      if (now - lastScrollTimeRef.current > 1000) {
-        scrollAccumulatorRef.current = 0;
-      }
-      lastScrollTimeRef.current = now;
-
-      const scrollingDown = e.deltaY > 0;
-      const scrollingUp = e.deltaY < 0;
-
-      if (scrollingDown && isAtBottom && currentIndex < pageSequence.length - 1) {
-        scrollAccumulatorRef.current += e.deltaY;
-
-        if (scrollAccumulatorRef.current > 500) {
-          e.preventDefault();
-          navigateToPage(pageSequence[currentIndex + 1]);
+        if (now - lastScrollTimeRef.current > 1000) {
           scrollAccumulatorRef.current = 0;
         }
-      } else if (scrollingUp && isAtTop && currentIndex > 0) {
-        scrollAccumulatorRef.current += Math.abs(e.deltaY);
+        lastScrollTimeRef.current = now;
 
-        if (scrollAccumulatorRef.current > 500) {
-          e.preventDefault();
-          navigateToPage(pageSequence[currentIndex - 1]);
+        const scrollingDown = e.deltaY > 0;
+        const scrollingUp = e.deltaY < 0;
+
+        if (scrollingDown && isAtBottom && currentIndex < PAGE_SEQUENCE.length - 1) {
+          scrollAccumulatorRef.current += e.deltaY;
+
+          if (scrollAccumulatorRef.current > 500) {
+            e.preventDefault();
+            navigateToPage(PAGE_SEQUENCE[currentIndex + 1]);
+            scrollAccumulatorRef.current = 0;
+          }
+        } else if (scrollingUp && isAtTop && currentIndex > 0) {
+          scrollAccumulatorRef.current += Math.abs(e.deltaY);
+
+          if (scrollAccumulatorRef.current > 500) {
+            e.preventDefault();
+            navigateToPage(PAGE_SEQUENCE[currentIndex - 1]);
+            scrollAccumulatorRef.current = 0;
+          }
+        } else {
           scrollAccumulatorRef.current = 0;
         }
-      } else {
-        scrollAccumulatorRef.current = 0;
-      }
     };
 
     const navigateToPage = (nextPage: string) => {

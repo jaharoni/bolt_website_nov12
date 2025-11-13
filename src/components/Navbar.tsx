@@ -225,10 +225,10 @@ function Navbar() {
   ];
 
   // Handle nav item click: scroll to top and close menu immediately
-  const handleNavClick = (path: string) => {
+  const handleNavClick = (targetPath: string) => {
     window.scrollTo(0, 0);
     setIsMenuOpen(false);
-    setSelectedNavItem(null);
+    setSelectedNavItem(targetPath);
   };
 
   // Handle logo click: scroll to top

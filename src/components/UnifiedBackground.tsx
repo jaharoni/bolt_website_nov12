@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import ImageService from '../lib/imageService';
 import { useDeviceDetection, getImageOrientationForDevice } from '../hooks/useDeviceDetection';
 
@@ -37,24 +37,45 @@ export default function UnifiedBackground({
   const location = useLocation();
   const requiredOrientation = getImageOrientationForDevice(deviceInfo);
   const currentCacheKey = `${pageContext}_${requiredOrientation}`;
+  const onBackgroundsLoadedRef = useRef(onBackgroundsLoaded);
+
+  useEffect(() => {
+    onBackgroundsLoadedRef.current = onBackgroundsLoaded;
+  }, [onBackgroundsLoaded]);
 
   useEffect(() => {
     if (externalIndex !== undefined && externalIndex !== currentIndex) {
       setCurrentIndex(externalIndex);
     }
-  }, [externalIndex]);
+  }, [externalIndex, currentIndex]);
 
   useEffect(() => {
+    const cachedBackgrounds = globalBackgroundCache[currentCacheKey];
+    if (cachedBackgrounds && cachedBackgrounds.length > 0) {
+      setBackgrounds(cachedBackgrounds);
+      setHasError(false);
+      setIsReady(true);
+      onBackgroundsLoadedRef.current?.(cachedBackgrounds);
+      return;
+    }
+
+    if (!isSupabaseConfigured) {
+      console.warn('[UnifiedBackground] Supabase not configured; using gradient fallback.');
+      setBackgrounds([]);
+      setHasError(true);
+      setIsReady(true);
+      return;
+    }
+
     const loadBackgrounds = async () => {
       try {
-        // Get the backgrounds folder ID first
-        const { data: folderData } = await supabase
+        const { data: folderData, error: folderError } = await supabase
           .from('media_folders')
           .select('id')
           .eq('slug', 'backgrounds')
           .maybeSingle();
 
-        if (!folderData) {
+        if (folderError || !folderData) {
           console.warn('Backgrounds folder not found');
           setHasError(true);
           setIsReady(true);
@@ -63,42 +84,25 @@ export default function UnifiedBackground({
 
         const backgroundsFolderId = folderData.id;
 
-        // Try 1: Specific page context + orientation
-        let { data, error } = await supabase
-          .from('media_items')
-          .select('id, public_url, storage_path, bucket_name, title, alt_text, folder_id')
-          .eq('folder_id', backgroundsFolderId)
-          .eq('page_context', pageContext)
-          .eq('is_active', true)
-          .in('device_orientation', [requiredOrientation, 'both'])
-          .order('sort_order', { ascending: true })
-          .limit(10);
-
-        // Try 2: If no results, try without orientation filter
-        if (!data || data.length === 0) {
-          const result = await supabase
+        const selectBase = () =>
+          supabase
             .from('media_items')
             .select('id, public_url, storage_path, bucket_name, title, alt_text, folder_id')
             .eq('folder_id', backgroundsFolderId)
-            .eq('page_context', pageContext)
             .eq('is_active', true)
             .order('sort_order', { ascending: true })
             .limit(10);
-          data = result.data;
-          error = result.error;
+
+        let { data, error } = await selectBase()
+          .eq('page_context', pageContext)
+          .in('device_orientation', [requiredOrientation, 'both']);
+
+        if (!error && (!data || data.length === 0)) {
+          ({ data, error } = await selectBase().eq('page_context', pageContext));
         }
 
-        // Try 3: If still no results, try any image in backgrounds folder
-        if (!data || data.length === 0) {
-          const result = await supabase
-            .from('media_items')
-            .select('id, public_url, storage_path, bucket_name, title, alt_text, folder_id')
-            .eq('folder_id', backgroundsFolderId)
-            .eq('is_active', true)
-            .order('sort_order', { ascending: true })
-            .limit(10);
-          data = result.data;
-          error = result.error;
+        if (!error && (!data || data.length === 0)) {
+          ({ data, error } = await selectBase());
         }
 
         if (error) {
@@ -111,19 +115,18 @@ export default function UnifiedBackground({
         if (data && data.length > 0) {
           globalBackgroundCache[currentCacheKey] = data;
           setBackgrounds(data);
+          setHasError(false);
 
-          if (externalIndex === undefined && data.length > 0) {
+          if (externalIndex === undefined) {
             const randomIndex = Math.floor(Math.random() * data.length);
             setCurrentIndex(randomIndex);
           }
 
-          if (onBackgroundsLoaded) {
-            onBackgroundsLoaded(data);
-          }
-
+          onBackgroundsLoadedRef.current?.(data);
           await preloadAllImages(data);
         } else {
           console.warn(`No background images found for context: ${pageContext}`);
+          setBackgrounds([]);
           setHasError(true);
           setIsReady(true);
         }
@@ -135,7 +138,7 @@ export default function UnifiedBackground({
     };
 
     loadBackgrounds();
-  }, [currentCacheKey, pageContext, location.pathname]);
+  }, [currentCacheKey, pageContext, requiredOrientation, externalIndex, location.pathname]);
 
   const preloadAllImages = async (imagesToPreload: BackgroundImage[]) => {
     const preloadPromises = imagesToPreload.map((bg) => {

@@ -51,11 +51,29 @@ export default function ZonesManager() {
 
   const pageConfig = PAGE_CONFIGS.find(p => p.key === activeKey);
 
+  const randomizationColumnAvailable = useMemo(() => {
+    if (zQ.items.length > 0) {
+      const sample = zQ.items[0] as Partial<SiteZone>;
+      return Object.prototype.hasOwnProperty.call(sample, "randomization_enabled");
+    }
+    const errMessage = typeof zQ.error?.message === "string" ? zQ.error.message : "";
+    if (errMessage.includes("randomization_enabled") || errMessage.includes("schema cache")) {
+      return false;
+    }
+    return true;
+  }, [zQ.items, zQ.error]);
+
   const zone = useMemo(() => {
     const existing = zQ.items.find((z) => z.key === activeKey);
     if (existing) {
-      console.log('[ZonesManager] Zone found:', { key: activeKey, zone: existing });
-      return existing;
+      const derivedRandomization = randomizationColumnAvailable
+        ? (existing.randomization_enabled ?? true)
+        : ((existing.config_json?.randomization_enabled ?? true));
+      console.log('[ZonesManager] Zone found:', { key: activeKey, zone: existing, derivedRandomization, randomizationColumnAvailable });
+      return {
+        ...existing,
+        randomization_enabled: derivedRandomization,
+      };
     }
 
     console.log('[ZonesManager] Zone not found, using defaults for:', activeKey);
@@ -109,15 +127,46 @@ export default function ZonesManager() {
     setSaving(true);
     try {
       const existing = zQ.items.find((z) => z.key === activeKey);
+      const updatesForDb: Partial<SiteZone> = { ...updates };
+
+      if (!randomizationColumnAvailable && updatesForDb.randomization_enabled !== undefined) {
+        const desiredRandomization = updatesForDb.randomization_enabled;
+        delete (updatesForDb as any).randomization_enabled;
+        const baseConfig = {
+          ...(existing?.config_json ?? {}),
+          randomization_enabled: desiredRandomization,
+        };
+        updatesForDb.config_json = {
+          ...baseConfig,
+          ...(updatesForDb.config_json ?? {}),
+        } as ZoneConfig;
+      }
+
+      if (!randomizationColumnAvailable && updatesForDb.config_json) {
+        updatesForDb.config_json = {
+          randomization_enabled,
+          ...updatesForDb.config_json,
+        } as ZoneConfig;
+      }
+
       if (existing) {
-        const { error } = await supabase.from("site_zones").update(updates).eq("id", existing.id);
+        const { error } = await supabase.from("site_zones").update(updatesForDb).eq("id", existing.id);
         if (error) {
           console.error("Error updating zone:", error);
           addToast(`Error updating zone: ${error.message}`, 'error');
           return;
         }
       } else {
-        const { error } = await supabase.from("site_zones").insert({ key: activeKey, ...updates });
+        const insertPayload: Partial<SiteZone> = { key: activeKey, ...updatesForDb };
+        if (!randomizationColumnAvailable && !insertPayload.config_json) {
+          insertPayload.config_json = {
+            mode: "random",
+            source: { type: "tag", value: "homebg" },
+            limit: 10,
+            randomization_enabled: randomizationEnabled,
+          } as ZoneConfig;
+        }
+        const { error } = await supabase.from("site_zones").insert(insertPayload);
         if (error) {
           console.error("Error creating zone:", error);
           addToast(`Error creating zone: ${error.message}`, 'error');
@@ -136,7 +185,13 @@ export default function ZonesManager() {
   }
 
   async function saveConfig(newConfig: ZoneConfig) {
-    await saveZone({ config_json: newConfig });
+    const configToPersist: ZoneConfig = {
+      ...newConfig,
+    };
+    if (!randomizationColumnAvailable) {
+      configToPersist.randomization_enabled = randomizationEnabled;
+    }
+    await saveZone({ config_json: configToPersist });
   }
 
   async function toggleRandomization(enabled: boolean) {
@@ -265,6 +320,11 @@ export default function ZonesManager() {
     <div className="p-8 space-y-6 max-w-7xl mx-auto">
       <header className="flex items-center gap-4">
         <div className="text-2xl font-semibold text-white">Page Backgrounds</div>
+        {!randomizationColumnAvailable && (
+          <div className="ml-4 text-xs text-amber-400 bg-amber-500/10 border border-amber-400/40 px-3 py-2 rounded-lg">
+            Schema cache was out of date. Randomization settings will sync automatically after reload.
+          </div>
+        )}
         <select
           className="ml-auto px-4 py-2.5 bg-zinc-900 border border-white/20 rounded-lg text-white hover:bg-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-white/30"
           value={activeKey}
