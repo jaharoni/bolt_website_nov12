@@ -6,6 +6,7 @@ export type PageBGRule = {
   folders: string[];
   slideshow?: boolean;
   intervalMs?: number;
+  randomizationEnabled?: boolean;
 };
 
 export type BGConfig = {
@@ -45,7 +46,6 @@ export async function refresh(): Promise<BGConfig>{
     if (zones) {
       for (const zone of zones) {
         const config = zone.config_json as any;
-        // Remove .background suffix if present
         const pageKey = zone.key.replace(/\.background$/, '').replace('zone_', '');
 
         if (pageKey === 'global' || pageKey === 'fallback') {
@@ -54,7 +54,8 @@ export async function refresh(): Promise<BGConfig>{
             images: config.images || [],
             folders: config.folders || ["media"],
             slideshow: config.slideshow,
-            intervalMs: config.intervalMs || 6000
+            intervalMs: config.intervalMs || 6000,
+            randomizationEnabled: zone.randomization_enabled ?? false
           };
         } else {
           cfg.pages[pageKey] = {
@@ -62,7 +63,8 @@ export async function refresh(): Promise<BGConfig>{
             images: config.images || [],
             folders: config.folders || [],
             slideshow: config.slideshow,
-            intervalMs: config.intervalMs || 6000
+            intervalMs: config.intervalMs || 6000,
+            randomizationEnabled: zone.randomization_enabled ?? false
           };
         }
       }

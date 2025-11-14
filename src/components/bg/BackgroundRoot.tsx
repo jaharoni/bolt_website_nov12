@@ -40,6 +40,35 @@ export function BackgroundRoot() {
     }, 500);
   };
 
+  const navigateToNext = () => {
+    if (currentUrlsRef.current.length <= 1) return;
+    currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
+    const nextUrl = currentUrlsRef.current[currentIndexRef.current];
+    selectedImageRef.current = nextUrl;
+    instantSwapImage(nextUrl);
+  };
+
+  const navigateToPrev = () => {
+    if (currentUrlsRef.current.length <= 1) return;
+    currentIndexRef.current = (currentIndexRef.current - 1 + currentUrlsRef.current.length) % currentUrlsRef.current.length;
+    const prevUrl = currentUrlsRef.current[currentIndexRef.current];
+    selectedImageRef.current = prevUrl;
+    instantSwapImage(prevUrl);
+  };
+
+  useEffect(() => {
+    const handleNext = () => navigateToNext();
+    const handlePrev = () => navigateToPrev();
+
+    window.addEventListener('backgroundNext', handleNext);
+    window.addEventListener('backgroundPrev', handlePrev);
+
+    return () => {
+      window.removeEventListener('backgroundNext', handleNext);
+      window.removeEventListener('backgroundPrev', handlePrev);
+    };
+  }, []);
+
   useEffect(() => {
     const pageKey = location.pathname.slice(1) || 'home';
     const pageName = pageKey.split('/')[0];
@@ -88,7 +117,11 @@ export function BackgroundRoot() {
 
           let selectedUrl: string;
 
-          if (selectedImageRef.current && resolved.urls.includes(selectedImageRef.current)) {
+          if (resolved.randomizationEnabled) {
+            const randomIndex = Math.floor(Math.random() * resolved.urls.length);
+            currentIndexRef.current = randomIndex;
+            selectedUrl = resolved.urls[randomIndex];
+          } else if (selectedImageRef.current && resolved.urls.includes(selectedImageRef.current)) {
             selectedUrl = selectedImageRef.current;
             currentIndexRef.current = resolved.urls.indexOf(selectedUrl);
           } else {
@@ -177,12 +210,15 @@ export function BackgroundRoot() {
                 : imageLoaded
                   ? 'opacity 300ms ease-in'
                   : 'none',
+            willChange: isTransitioning ? 'opacity' : 'auto',
           }}
         >
           <img
             src={currentImage}
             alt=""
             className="hidden"
+            loading="eager"
+            decoding="async"
             onLoad={() => setImageLoaded(true)}
           />
         </div>
@@ -193,8 +229,17 @@ export function BackgroundRoot() {
           style={{
             backgroundImage: `url(${nextImage})`,
             opacity: isTransitioning ? 1 : 0,
+            willChange: 'opacity',
           }}
-        />
+        >
+          <img
+            src={nextImage}
+            alt=""
+            className="hidden"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
       )}
       <div className="absolute inset-0 bg-black/30" />
     </div>

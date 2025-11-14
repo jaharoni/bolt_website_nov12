@@ -5,26 +5,38 @@ export type ResolvedBackground = {
   urls: string[];
   slideshow: boolean;
   intervalMs: number;
+  randomizationEnabled: boolean;
 };
 
 const pageCache = new Map<string, { resolved: ResolvedBackground; timestamp: number }>();
 const CACHE_TTL = 30000; // 30 seconds
 
 export async function resolveBackgroundsForPage(pageKey: string): Promise<ResolvedBackground> {
+  const config = await getBGConfig();
+  const rule = matchRule(config, pageKey);
+
+  if (rule.randomizationEnabled) {
+    const urls = await resolveUrls(rule);
+    return {
+      urls,
+      slideshow: rule.slideshow || false,
+      intervalMs: rule.intervalMs || 6000,
+      randomizationEnabled: true
+    };
+  }
+
   const cached = pageCache.get(pageKey);
   if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
     return cached.resolved;
   }
-
-  const config = await getBGConfig();
-  const rule = matchRule(config, pageKey);
 
   const urls = await resolveUrls(rule);
 
   const resolved = {
     urls,
     slideshow: rule.slideshow || false,
-    intervalMs: rule.intervalMs || 6000
+    intervalMs: rule.intervalMs || 6000,
+    randomizationEnabled: false
   };
 
   pageCache.set(pageKey, { resolved, timestamp: Date.now() });
