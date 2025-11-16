@@ -4,7 +4,6 @@ import SearchBar from "./SearchBarNew";
 import WeatherDisplay from "./WeatherDisplay";
 import NewsTicker from "./NewsTicker";
 import { useTextBlock } from "../hooks/useTextBlock";
-import { usePrefetchOnHover } from "../hooks/useBackgroundPrefetch";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +16,6 @@ function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const navBrandName = useTextBlock("nav.brand", "Justin Aharoni");
-  const prefetchBackground = usePrefetchOnHover();
 
   // Top 50 world languages with weighted USA frequency
   const worldLanguages = [
@@ -340,8 +338,6 @@ function Navbar() {
                   key={item.path}
                   to={item.path}
                   onClick={() => handleNavClick(item.path)}
-                  onMouseEnter={() => prefetchBackground(item.key)}
-                  onMouseDown={() => prefetchBackground(item.key)}
                   className={`block glass-button px-6 py-4 text-center transition-all duration-200 hover:scale-105 text-white ${
                     location.pathname === item.path
                       ? 'glass-yellow !text-yellow-100'

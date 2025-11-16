@@ -1,27 +1,45 @@
-import { getBGConfig, matchRule, type PageBGRule } from '../backgrounds';
-import { supabase } from '../supabase';
+import { supabase, isSupabaseConfigured } from '../supabase';
 
 export type ResolvedBackground = {
   urls: string[];
-  slideshow: boolean;
-  intervalMs: number;
+  carouselEnabled: boolean;
+  carouselIntervalMs: number;
   randomizationEnabled: boolean;
 };
 
 const pageCache = new Map<string, { resolved: ResolvedBackground; timestamp: number }>();
-const CACHE_TTL = 30000; // 30 seconds
+const CACHE_TTL = 30000;
 
 export async function resolveBackgroundsForPage(pageKey: string): Promise<ResolvedBackground> {
-  const config = await getBGConfig();
-  const rule = matchRule(config, pageKey);
+  if (!isSupabaseConfigured) {
+    return {
+      urls: [],
+      carouselEnabled: false,
+      carouselIntervalMs: 7000,
+      randomizationEnabled: true
+    };
+  }
 
-  if (rule.randomizationEnabled) {
-    const urls = await resolveUrls(rule);
+  const zoneKey = pageKey === 'home' ? 'home.background' : `page.${pageKey}.background`;
+
+  const { data: zone } = await supabase
+    .from('site_zones')
+    .select('carousel_enabled, carousel_interval_ms, randomization_enabled, config_json')
+    .eq('key', zoneKey)
+    .maybeSingle();
+
+  const carouselEnabled = zone?.carousel_enabled ?? false;
+  const carouselIntervalMs = zone?.carousel_interval_ms ?? 7000;
+  const randomizationEnabled = zone?.randomization_enabled ?? true;
+  const configJson = (zone?.config_json as any) || {};
+
+  if (randomizationEnabled || carouselEnabled) {
+    const urls = await resolveUrls(pageKey, configJson);
     return {
       urls,
-      slideshow: rule.slideshow || false,
-      intervalMs: rule.intervalMs || 6000,
-      randomizationEnabled: true
+      carouselEnabled,
+      carouselIntervalMs,
+      randomizationEnabled
     };
   }
 
@@ -30,12 +48,12 @@ export async function resolveBackgroundsForPage(pageKey: string): Promise<Resolv
     return cached.resolved;
   }
 
-  const urls = await resolveUrls(rule);
+  const urls = await resolveUrls(pageKey, configJson);
 
   const resolved = {
     urls,
-    slideshow: rule.slideshow || false,
-    intervalMs: rule.intervalMs || 6000,
+    carouselEnabled: false,
+    carouselIntervalMs,
     randomizationEnabled: false
   };
 
@@ -44,31 +62,51 @@ export async function resolveBackgroundsForPage(pageKey: string): Promise<Resolv
   return resolved;
 }
 
-async function resolveUrls(rule: PageBGRule): Promise<string[]> {
+async function resolveUrls(pageKey: string, configJson: any): Promise<string[]> {
   let imageList: string[] = [];
 
-  if (rule.mode === "specific" && rule.images.length > 0) {
-    imageList = rule.images;
-  } else if (rule.folders.length > 0) {
-    for (const folderSlug of rule.folders) {
-      const { data: folder } = await supabase
-        .from('media_folders')
-        .select('id, name, slug')
-        .eq('slug', folderSlug)
-        .maybeSingle();
+  const folders = configJson.folders || ['backgrounds'];
 
-      if (folder) {
-        const { data: media } = await supabase
-          .from('media_items')
-          .select('public_url')
-          .eq('folder_id', folder.id)
-          .eq('is_active', true)
-          .eq('media_type', 'image')
-          .order('created_at');
+  for (const folderSlug of folders) {
+    const { data: folder } = await supabase
+      .from('media_folders')
+      .select('id, name, slug')
+      .eq('slug', folderSlug)
+      .maybeSingle();
 
-        if (media && media.length > 0) {
-          imageList.push(...media.map(m => m.public_url));
-        }
+    if (folder) {
+      const { data: media } = await supabase
+        .from('media_items')
+        .select('public_url')
+        .eq('folder_id', folder.id)
+        .eq('is_active', true)
+        .eq('media_type', 'image')
+        .order('created_at');
+
+      if (media && media.length > 0) {
+        imageList.push(...media.map(m => m.public_url));
+      }
+    }
+  }
+
+  if (imageList.length === 0) {
+    const { data: fallbackFolder } = await supabase
+      .from('media_folders')
+      .select('id')
+      .eq('slug', 'backgrounds')
+      .maybeSingle();
+
+    if (fallbackFolder) {
+      const { data: fallbackMedia } = await supabase
+        .from('media_items')
+        .select('public_url')
+        .eq('folder_id', fallbackFolder.id)
+        .eq('is_active', true)
+        .eq('media_type', 'image')
+        .order('created_at');
+
+      if (fallbackMedia && fallbackMedia.length > 0) {
+        imageList.push(...fallbackMedia.map(m => m.public_url));
       }
     }
   }

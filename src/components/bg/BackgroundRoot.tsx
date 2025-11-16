@@ -2,30 +2,20 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { resolveBackgroundsForPage } from '../../lib/bg/resolveBackgrounds';
 import { backgroundService } from '../../lib/bg/BackgroundService';
-import { supabase, isSupabaseConfigured } from '../../lib/supabase';
 
 export function BackgroundRoot() {
   const location = useLocation();
   const [currentImage, setCurrentImage] = useState<string>('');
   const [nextImage, setNextImage] = useState<string>('');
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const currentPageRef = useRef<string>('');
   const currentUrlsRef = useRef<string[]>([]);
   const currentIndexRef = useRef<number>(0);
-  const isSlideshowRef = useRef<boolean>(false);
-  const isLoadingRef = useRef<boolean>(false);
-  const selectedImageRef = useRef<string>('');
-  const navTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const carouselEnabledRef = useRef<boolean>(false);
   const carouselIntervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const instantSwapImage = (url: string) => {
-    if (url === currentImage) return;
-    setCurrentImage(url);
-    setImageLoaded(true);
-  };
+  const carouselIntervalMsRef = useRef<number>(7000);
+  const isLoadingRef = useRef<boolean>(false);
 
   const transitionToImage = (url: string) => {
     if (url === currentImage || url === nextImage) return;
@@ -37,24 +27,70 @@ export function BackgroundRoot() {
       setCurrentImage(url);
       setIsTransitioning(false);
       setNextImage('');
-      setImageLoaded(true);
-    }, 500);
+    }, 600);
   };
 
   const navigateToNext = () => {
     if (currentUrlsRef.current.length <= 1) return;
+
+    if (carouselIntervalRef.current) {
+      clearInterval(carouselIntervalRef.current);
+      carouselIntervalRef.current = null;
+    }
+
     currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
     const nextUrl = currentUrlsRef.current[currentIndexRef.current];
-    selectedImageRef.current = nextUrl;
-    instantSwapImage(nextUrl);
+
+    backgroundService.preload(nextUrl).then(() => {
+      transitionToImage(nextUrl);
+    }).catch(() => {
+      transitionToImage(nextUrl);
+    });
+
+    if (carouselEnabledRef.current) {
+      startCarousel();
+    }
   };
 
   const navigateToPrev = () => {
     if (currentUrlsRef.current.length <= 1) return;
+
+    if (carouselIntervalRef.current) {
+      clearInterval(carouselIntervalRef.current);
+      carouselIntervalRef.current = null;
+    }
+
     currentIndexRef.current = (currentIndexRef.current - 1 + currentUrlsRef.current.length) % currentUrlsRef.current.length;
     const prevUrl = currentUrlsRef.current[currentIndexRef.current];
-    selectedImageRef.current = prevUrl;
-    instantSwapImage(prevUrl);
+
+    backgroundService.preload(prevUrl).then(() => {
+      transitionToImage(prevUrl);
+    }).catch(() => {
+      transitionToImage(prevUrl);
+    });
+
+    if (carouselEnabledRef.current) {
+      startCarousel();
+    }
+  };
+
+  const startCarousel = () => {
+    if (carouselIntervalRef.current) {
+      clearInterval(carouselIntervalRef.current);
+    }
+
+    carouselIntervalRef.current = setInterval(() => {
+      if (currentUrlsRef.current.length <= 1) return;
+
+      currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
+      const nextUrl = currentUrlsRef.current[currentIndexRef.current];
+
+      backgroundService.preload(nextUrl).then(() => {
+        transitionToImage(nextUrl);
+      }).catch(() => {
+        transitionToImage(nextUrl);
+      });
+    }, carouselIntervalMsRef.current);
   };
 
   useEffect(() => {
@@ -74,10 +110,6 @@ export function BackgroundRoot() {
     const pageKey = location.pathname.slice(1) || 'home';
     const pageName = pageKey.split('/')[0];
 
-    if (navTimeoutRef.current) {
-      clearTimeout(navTimeoutRef.current);
-    }
-
     if (isLoadingRef.current) {
       return;
     }
@@ -88,82 +120,63 @@ export function BackgroundRoot() {
 
     const loadPageBackground = async () => {
       try {
-          const resolved = await resolveBackgroundsForPage(pageName);
-
-          if (resolved.urls.length === 0) {
-            isLoadingRef.current = false;
-            return;
-          }
-
-          currentUrlsRef.current = resolved.urls;
-          isSlideshowRef.current = resolved.slideshow;
-
-          const randomIndex = Math.floor(Math.random() * resolved.urls.length);
-          currentIndexRef.current = randomIndex;
-          const selectedUrl = resolved.urls[randomIndex];
-
-          selectedImageRef.current = selectedUrl;
-
-          if (selectedUrl === currentImage && !pageChanged) {
-            isLoadingRef.current = false;
-            return;
-          }
-
-          backgroundService.preload(selectedUrl).then(() => {
-            if (!currentImage) {
-              setCurrentImage(selectedUrl);
-              setImageLoaded(true);
-            } else {
-              instantSwapImage(selectedUrl);
-            }
-          }).catch(err => {
-            console.error('[BackgroundRoot] Preload failed:', err);
-            if (!currentImage) {
-              setCurrentImage(selectedUrl);
-              setImageLoaded(true);
-            } else {
-              instantSwapImage(selectedUrl);
-            }
-          });
-
-          if (resolved.urls.length > 1) {
-            backgroundService.preloadMultiple(resolved.urls.slice(0, 6));
-          }
-
-          if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
-          }
-
-          if (carouselIntervalRef.current) {
-            clearInterval(carouselIntervalRef.current);
-            carouselIntervalRef.current = null;
-          }
-
-          isLoadingRef.current = false;
-        } catch (error) {
-          console.error('[BackgroundRoot] Error loading background:', error);
-          isLoadingRef.current = false;
+        if (carouselIntervalRef.current) {
+          clearInterval(carouselIntervalRef.current);
+          carouselIntervalRef.current = null;
         }
-      };
 
-      loadPageBackground();
+        const resolved = await resolveBackgroundsForPage(pageName);
+
+        if (resolved.urls.length === 0) {
+          isLoadingRef.current = false;
+          return;
+        }
+
+        currentUrlsRef.current = resolved.urls;
+        carouselEnabledRef.current = resolved.carouselEnabled;
+        carouselIntervalMsRef.current = resolved.carouselIntervalMs;
+
+        const randomIndex = Math.floor(Math.random() * resolved.urls.length);
+        currentIndexRef.current = randomIndex;
+        const selectedUrl = resolved.urls[randomIndex];
+
+        if (selectedUrl === currentImage && !pageChanged) {
+          isLoadingRef.current = false;
+          return;
+        }
+
+        await backgroundService.preload(selectedUrl);
+
+        if (!currentImage || pageChanged) {
+          setCurrentImage(selectedUrl);
+        } else {
+          transitionToImage(selectedUrl);
+        }
+
+        if (resolved.urls.length > 1) {
+          backgroundService.preloadMultiple(resolved.urls.slice(0, 6));
+        }
+
+        if (resolved.carouselEnabled && resolved.urls.length > 1) {
+          startCarousel();
+        }
+
+        isLoadingRef.current = false;
+      } catch (error) {
+        console.error('[BackgroundRoot] Error loading background:', error);
+        isLoadingRef.current = false;
+      }
+    };
+
+    loadPageBackground();
 
     return () => {
-      if (navTimeoutRef.current) {
-        clearTimeout(navTimeoutRef.current);
-        navTimeoutRef.current = null;
-      }
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
       if (carouselIntervalRef.current) {
         clearInterval(carouselIntervalRef.current);
         carouselIntervalRef.current = null;
       }
     };
-  }, [location.pathname, currentImage]);
+  }, [location.pathname]);
 
   if (!currentImage && !nextImage) {
     return (
@@ -179,7 +192,7 @@ export function BackgroundRoot() {
           style={{
             backgroundImage: `url(${currentImage})`,
             opacity: isTransitioning ? 0 : 1,
-            transition: isTransitioning ? 'opacity 500ms ease-in-out' : 'none',
+            transition: 'opacity 600ms ease-in-out',
             willChange: isTransitioning ? 'opacity' : 'auto',
           }}
         >
@@ -189,16 +202,16 @@ export function BackgroundRoot() {
             className="hidden"
             loading="eager"
             decoding="async"
-            onLoad={() => setImageLoaded(true)}
           />
         </div>
       )}
       {nextImage && (
         <div
-          className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url(${nextImage})`,
             opacity: isTransitioning ? 1 : 0,
+            transition: 'opacity 600ms ease-in-out',
             willChange: 'opacity',
           }}
         >
