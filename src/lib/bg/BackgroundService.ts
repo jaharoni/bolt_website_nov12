@@ -6,7 +6,7 @@ type CacheEntry = {
 
 class BackgroundService {
   private cache: Map<string, CacheEntry> = new Map();
-  private maxCacheSize = 10;
+  private maxCacheSize = 20;
   private preloadQueue: Set<string> = new Set();
   private listeners: Set<(pageKey: string, imageUrl: string) => void> = new Set();
 
@@ -91,8 +91,8 @@ class BackgroundService {
   }
 
   async preloadMultiple(urls: string[]): Promise<void> {
-    const promises = urls.slice(0, 4).map(url =>
-      this.preload(url).catch(err => console.warn(`Failed to preload ${url}:`, err))
+    const promises = urls.slice(0, 8).map(url =>
+      this.preload(url).catch(err => {})
     );
     await Promise.all(promises);
   }

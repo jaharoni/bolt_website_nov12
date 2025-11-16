@@ -28,7 +28,7 @@ export function BackgroundRoot() {
       setCurrentImage(url);
       setIsTransitioning(false);
       setNextImage('');
-    }, 600);
+    }, 800);
   };
 
   const navigateToNext = () => {
@@ -42,11 +42,7 @@ export function BackgroundRoot() {
     currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
     const nextUrl = currentUrlsRef.current[currentIndexRef.current];
 
-    backgroundService.preload(nextUrl).then(() => {
-      transitionToImage(nextUrl);
-    }).catch(() => {
-      transitionToImage(nextUrl);
-    });
+    transitionToImage(nextUrl);
 
     if (carouselEnabledRef.current) {
       startCarousel();
@@ -64,15 +60,18 @@ export function BackgroundRoot() {
     currentIndexRef.current = (currentIndexRef.current - 1 + currentUrlsRef.current.length) % currentUrlsRef.current.length;
     const prevUrl = currentUrlsRef.current[currentIndexRef.current];
 
-    backgroundService.preload(prevUrl).then(() => {
-      transitionToImage(prevUrl);
-    }).catch(() => {
-      transitionToImage(prevUrl);
-    });
+    transitionToImage(prevUrl);
 
     if (carouselEnabledRef.current) {
       startCarousel();
     }
+  };
+
+  const preloadNextCarouselImage = () => {
+    if (currentUrlsRef.current.length <= 1) return;
+    const nextIndex = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
+    const nextUrl = currentUrlsRef.current[nextIndex];
+    backgroundService.preload(nextUrl).catch(() => {});
   };
 
   const startCarousel = () => {
@@ -80,17 +79,16 @@ export function BackgroundRoot() {
       clearInterval(carouselIntervalRef.current);
     }
 
+    preloadNextCarouselImage();
+
     carouselIntervalRef.current = setInterval(() => {
       if (currentUrlsRef.current.length <= 1) return;
 
       currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
       const nextUrl = currentUrlsRef.current[currentIndexRef.current];
 
-      backgroundService.preload(nextUrl).then(() => {
-        transitionToImage(nextUrl);
-      }).catch(() => {
-        transitionToImage(nextUrl);
-      });
+      transitionToImage(nextUrl);
+      preloadNextCarouselImage();
     }, carouselIntervalMsRef.current);
   };
 
@@ -150,16 +148,15 @@ export function BackgroundRoot() {
           return;
         }
 
-        await backgroundService.preload(selectedUrl);
-
         if (!currentImage || pageChanged) {
+          await backgroundService.preload(selectedUrl);
           setCurrentImage(selectedUrl);
         } else {
           transitionToImage(selectedUrl);
         }
 
         if (resolved.urls.length > 1) {
-          backgroundService.preloadMultiple(resolved.urls.slice(0, 6));
+          backgroundService.preloadMultiple(resolved.urls.slice(0, 10));
         }
 
         if (resolved.carouselEnabled && resolved.urls.length > 1) {
@@ -204,7 +201,7 @@ export function BackgroundRoot() {
           style={{
             backgroundImage: `url(${currentImage})`,
             opacity: isTransitioning ? 0 : 1,
-            transition: 'opacity 600ms ease-in-out',
+            transition: 'opacity 800ms ease-in-out',
             willChange: isTransitioning ? 'opacity' : 'auto',
           }}
         >
@@ -223,7 +220,7 @@ export function BackgroundRoot() {
           style={{
             backgroundImage: `url(${nextImage})`,
             opacity: isTransitioning ? 1 : 0,
-            transition: 'opacity 600ms ease-in-out',
+            transition: 'opacity 800ms ease-in-out',
             willChange: 'opacity',
           }}
         >
