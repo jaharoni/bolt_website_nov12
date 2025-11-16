@@ -135,38 +135,9 @@ export function BackgroundRoot() {
             intervalRef.current = null;
           }
 
-          if (resolved.slideshow && resolved.urls.length > 1) {
-            intervalRef.current = setInterval(() => {
-              currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
-              const nextUrl = currentUrlsRef.current[currentIndexRef.current];
-              selectedImageRef.current = nextUrl;
-
-              instantSwapImage(nextUrl);
-            }, resolved.intervalMs);
-          }
-
           if (carouselIntervalRef.current) {
             clearInterval(carouselIntervalRef.current);
             carouselIntervalRef.current = null;
-          }
-
-          if (pageName === 'home' && isSupabaseConfigured) {
-            const { data: zone } = await supabase
-              .from('site_zones')
-              .select('carousel_enabled, carousel_interval_ms')
-              .eq('key', 'home.background')
-              .maybeSingle();
-
-            if (zone?.carousel_enabled && resolved.urls.length > 1) {
-              const carouselInterval = zone.carousel_interval_ms || 8000;
-
-              carouselIntervalRef.current = setInterval(() => {
-                currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
-                const nextUrl = currentUrlsRef.current[currentIndexRef.current];
-                selectedImageRef.current = nextUrl;
-                instantSwapImage(nextUrl);
-              }, carouselInterval);
-            }
           }
 
           isLoadingRef.current = false;
