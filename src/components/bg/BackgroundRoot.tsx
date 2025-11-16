@@ -23,7 +23,7 @@ export function BackgroundRoot() {
   const instantSwapImage = (url: string) => {
     if (url === currentImage) return;
     setCurrentImage(url);
-    setImageLoaded(false);
+    setImageLoaded(true);
   };
 
   const transitionToImage = (url: string) => {
@@ -36,7 +36,7 @@ export function BackgroundRoot() {
       setCurrentImage(url);
       setIsTransitioning(false);
       setNextImage('');
-      setImageLoaded(false);
+      setImageLoaded(true);
     }, 500);
   };
 
@@ -81,29 +81,34 @@ export function BackgroundRoot() {
       clearTimeout(navTimeoutRef.current);
     }
 
-    navTimeoutRef.current = setTimeout(() => {
-      if (isLoadingRef.current) {
-        return;
-      }
+    if (isLoadingRef.current) {
+      return;
+    }
 
-      currentPageRef.current = pageName;
-      isLoadingRef.current = true;
+    currentPageRef.current = pageName;
+    isLoadingRef.current = true;
 
-      const loadPageBackground = async () => {
-        try {
-          const cachedImage = pageImageCacheRef.current.get(pageName);
-          if (cachedImage && selectedImageRef.current === '') {
-            selectedImageRef.current = cachedImage;
+    const loadPageBackground = async () => {
+      try {
+        const cachedImage = pageImageCacheRef.current.get(pageName);
+        if (cachedImage) {
+          selectedImageRef.current = cachedImage;
 
-            if (!currentImage) {
-              setCurrentImage(cachedImage);
-            } else {
-              transitionToImage(cachedImage);
-            }
-
+          if (cachedImage === currentImage) {
             isLoadingRef.current = false;
             return;
           }
+
+          if (!currentImage) {
+            setCurrentImage(cachedImage);
+            setImageLoaded(true);
+          } else {
+            instantSwapImage(cachedImage);
+          }
+
+          isLoadingRef.current = false;
+          return;
+        }
 
           const resolved = await resolveBackgroundsForPage(pageName);
 
@@ -133,18 +138,25 @@ export function BackgroundRoot() {
           selectedImageRef.current = selectedUrl;
           pageImageCacheRef.current.set(pageName, selectedUrl);
 
+          if (selectedUrl === currentImage) {
+            isLoadingRef.current = false;
+            return;
+          }
+
           backgroundService.preload(selectedUrl).then(() => {
             if (!currentImage) {
               setCurrentImage(selectedUrl);
+              setImageLoaded(true);
             } else {
-              transitionToImage(selectedUrl);
+              instantSwapImage(selectedUrl);
             }
           }).catch(err => {
             console.error('[BackgroundRoot] Preload failed:', err);
             if (!currentImage) {
               setCurrentImage(selectedUrl);
+              setImageLoaded(true);
             } else {
-              transitionToImage(selectedUrl);
+              instantSwapImage(selectedUrl);
             }
           });
 
@@ -175,7 +187,6 @@ export function BackgroundRoot() {
       };
 
       loadPageBackground();
-    }, 50);
 
     return () => {
       if (navTimeoutRef.current) {
@@ -187,7 +198,7 @@ export function BackgroundRoot() {
         intervalRef.current = null;
       }
     };
-  }, [location.pathname]);
+  }, [location.pathname, currentImage]);
 
   if (!currentImage && !nextImage) {
     return (
@@ -202,14 +213,8 @@ export function BackgroundRoot() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url(${currentImage})`,
-            opacity: isTransitioning ? 0 : (imageLoaded ? 1 : 0.95),
-            transition: isSlideshowRef.current
-              ? 'none'
-              : isTransitioning
-                ? 'opacity 500ms ease-in-out'
-                : imageLoaded
-                  ? 'opacity 300ms ease-in'
-                  : 'none',
+            opacity: isTransitioning ? 0 : 1,
+            transition: isTransitioning ? 'opacity 500ms ease-in-out' : 'none',
             willChange: isTransitioning ? 'opacity' : 'auto',
           }}
         >
