@@ -16,7 +16,7 @@ export function BackgroundRoot() {
   const carouselEnabledRef = useRef<boolean>(false);
   const carouselIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const carouselIntervalMsRef = useRef<number>(7000);
-  const isLoadingRef = useRef<boolean>(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   const transitionToImage = (url: string) => {
     if (url === currentImage || url === nextImage) return;
@@ -28,7 +28,7 @@ export function BackgroundRoot() {
       setCurrentImage(url);
       setIsTransitioning(false);
       setNextImage('');
-    }, 800);
+    }, 600);
   };
 
   const navigateToNext = () => {
@@ -67,11 +67,14 @@ export function BackgroundRoot() {
     }
   };
 
-  const preloadNextCarouselImage = () => {
+  const preloadCarouselImages = () => {
     if (currentUrlsRef.current.length <= 1) return;
+
     const nextIndex = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
-    const nextUrl = currentUrlsRef.current[nextIndex];
-    backgroundService.preload(nextUrl).catch(() => {});
+    const nextNextIndex = (currentIndexRef.current + 2) % currentUrlsRef.current.length;
+
+    backgroundService.preload(currentUrlsRef.current[nextIndex]).catch(() => {});
+    backgroundService.preload(currentUrlsRef.current[nextNextIndex]).catch(() => {});
   };
 
   const startCarousel = () => {
@@ -79,7 +82,7 @@ export function BackgroundRoot() {
       clearInterval(carouselIntervalRef.current);
     }
 
-    preloadNextCarouselImage();
+    preloadCarouselImages();
 
     carouselIntervalRef.current = setInterval(() => {
       if (currentUrlsRef.current.length <= 1) return;
@@ -88,7 +91,7 @@ export function BackgroundRoot() {
       const nextUrl = currentUrlsRef.current[currentIndexRef.current];
 
       transitionToImage(nextUrl);
-      preloadNextCarouselImage();
+      preloadCarouselImages();
     }, carouselIntervalMsRef.current);
   };
 
@@ -108,14 +111,14 @@ export function BackgroundRoot() {
   useEffect(() => {
     const pageKey = location.pathname.slice(1) || 'home';
     const pageName = pageKey.split('/')[0];
-
-    if (isLoadingRef.current) {
-      return;
-    }
-
     const pageChanged = pageName !== currentPageRef.current;
+
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = new AbortController();
+
     currentPageRef.current = pageName;
-    isLoadingRef.current = true;
 
     const loadPageBackground = async () => {
       try {
@@ -126,10 +129,13 @@ export function BackgroundRoot() {
 
         const resolved = await resolveBackgroundsForPage(pageName);
 
+        if (abortControllerRef.current?.signal.aborted) {
+          return;
+        }
+
         if (resolved.urls.length === 0) {
           console.warn('[BackgroundRoot] No background images found for page:', pageName);
           setHasError(true);
-          isLoadingRef.current = false;
           return;
         }
 
@@ -144,30 +150,33 @@ export function BackgroundRoot() {
         const selectedUrl = resolved.urls[randomIndex];
 
         if (selectedUrl === currentImage && !pageChanged) {
-          isLoadingRef.current = false;
           return;
         }
 
         if (!currentImage || pageChanged) {
-          await backgroundService.preload(selectedUrl);
           setCurrentImage(selectedUrl);
+          backgroundService.preload(selectedUrl).catch(() => {});
         } else {
           transitionToImage(selectedUrl);
         }
 
         if (resolved.urls.length > 1) {
-          backgroundService.preloadMultiple(resolved.urls.slice(0, 10));
+          backgroundService.preloadMultiple(resolved.urls.slice(0, 8));
         }
 
         if (resolved.carouselEnabled && resolved.urls.length > 1) {
-          startCarousel();
+          setTimeout(() => {
+            if (!abortControllerRef.current?.signal.aborted) {
+              startCarousel();
+            }
+          }, 100);
         }
-
-        isLoadingRef.current = false;
       } catch (error) {
+        if (abortControllerRef.current?.signal.aborted) {
+          return;
+        }
         console.error('[BackgroundRoot] Error loading background:', error);
         setHasError(true);
-        isLoadingRef.current = false;
       }
     };
 
@@ -177,6 +186,9 @@ export function BackgroundRoot() {
       if (carouselIntervalRef.current) {
         clearInterval(carouselIntervalRef.current);
         carouselIntervalRef.current = null;
+      }
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
       }
     };
   }, [location.pathname]);
@@ -196,42 +208,32 @@ export function BackgroundRoot() {
   return (
     <div className="fixed inset-0 -z-10">
       {currentImage && (
-        <div
-          className="absolute inset-0 bg-cover bg-center"
+        <img
+          src={currentImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out"
           style={{
-            backgroundImage: `url(${currentImage})`,
             opacity: isTransitioning ? 0 : 1,
-            transition: 'opacity 800ms ease-in-out',
-            willChange: isTransitioning ? 'opacity' : 'auto',
+            willChange: 'opacity',
+            transform: 'translateZ(0)',
           }}
-        >
-          <img
-            src={currentImage}
-            alt=""
-            className="hidden"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
+          loading="eager"
+          decoding="async"
+        />
       )}
       {nextImage && (
-        <div
-          className="absolute inset-0 bg-cover bg-center"
+        <img
+          src={nextImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out"
           style={{
-            backgroundImage: `url(${nextImage})`,
             opacity: isTransitioning ? 1 : 0,
-            transition: 'opacity 800ms ease-in-out',
             willChange: 'opacity',
+            transform: 'translateZ(0)',
           }}
-        >
-          <img
-            src={nextImage}
-            alt=""
-            className="hidden"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
+          loading="eager"
+          decoding="async"
+        />
       )}
       <div className="absolute inset-0 bg-black/30" />
     </div>

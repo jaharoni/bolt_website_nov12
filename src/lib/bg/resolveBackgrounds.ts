@@ -7,8 +7,8 @@ export type ResolvedBackground = {
   randomizationEnabled: boolean;
 };
 
-const pageCache = new Map<string, { resolved: ResolvedBackground; timestamp: number }>();
-const CACHE_TTL = 30000;
+const configCache = new Map<string, { config: any; timestamp: number }>();
+const CONFIG_CACHE_TTL = 60000;
 
 export async function resolveBackgroundsForPage(pageKey: string): Promise<ResolvedBackground> {
   if (!isSupabaseConfigured) {
@@ -22,44 +22,38 @@ export async function resolveBackgroundsForPage(pageKey: string): Promise<Resolv
 
   const zoneKey = pageKey === 'home' ? 'home.background' : `page.${pageKey}.background`;
 
-  const { data: zone } = await supabase
-    .from('site_zones')
-    .select('carousel_enabled, carousel_interval_ms, randomization_enabled, config_json')
-    .eq('key', zoneKey)
-    .maybeSingle();
+  const cached = configCache.get(zoneKey);
+  const now = Date.now();
+
+  let zone;
+  if (cached && (now - cached.timestamp) < CONFIG_CACHE_TTL) {
+    zone = cached.config;
+  } else {
+    const { data } = await supabase
+      .from('site_zones')
+      .select('carousel_enabled, carousel_interval_ms, randomization_enabled, config_json')
+      .eq('key', zoneKey)
+      .maybeSingle();
+
+    zone = data;
+    if (zone) {
+      configCache.set(zoneKey, { config: zone, timestamp: now });
+    }
+  }
 
   const carouselEnabled = zone?.carousel_enabled ?? false;
   const carouselIntervalMs = zone?.carousel_interval_ms ?? 7000;
   const randomizationEnabled = zone?.randomization_enabled ?? true;
   const configJson = (zone?.config_json as any) || {};
 
-  if (randomizationEnabled || carouselEnabled) {
-    const urls = await resolveUrls(pageKey, configJson);
-    return {
-      urls,
-      carouselEnabled,
-      carouselIntervalMs,
-      randomizationEnabled
-    };
-  }
-
-  const cached = pageCache.get(pageKey);
-  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
-    return cached.resolved;
-  }
-
   const urls = await resolveUrls(pageKey, configJson);
 
-  const resolved = {
+  return {
     urls,
-    carouselEnabled: false,
+    carouselEnabled,
     carouselIntervalMs,
-    randomizationEnabled: false
+    randomizationEnabled
   };
-
-  pageCache.set(pageKey, { resolved, timestamp: Date.now() });
-
-  return resolved;
 }
 
 async function resolveUrls(pageKey: string, configJson: any): Promise<string[]> {
@@ -127,4 +121,8 @@ async function resolveUrls(pageKey: string, configJson: any): Promise<string[]> 
   }
 
   return imageList;
+}
+
+export function clearBackgroundCache() {
+  configCache.clear();
 }
