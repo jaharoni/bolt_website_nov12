@@ -14,7 +14,7 @@ export type BGConfig = {
   fallback: PageBGRule;
 };
 
-const CACHE = "bg-config-v1";
+const CACHE = "bg-config-v2";
 let mem: BGConfig | null = null;
 
 export async function getBGConfig(): Promise<BGConfig>{
@@ -27,6 +27,13 @@ export async function getBGConfig(): Promise<BGConfig>{
     }
   }catch{}
   return await refresh();
+}
+
+export function clearBGCache(): void {
+  mem = null;
+  try {
+    localStorage.removeItem(CACHE);
+  } catch {}
 }
 
 export async function refresh(): Promise<BGConfig>{
@@ -102,13 +109,15 @@ function normalizeCfg(cfg: BGConfig): BGConfig{
       images: (r.images||[]).map(fixUrl),
       folders: (r.folders||[]).map(fixFolder),
       slideshow: !!r.slideshow,
-      intervalMs: typeof r.intervalMs==="number" ? r.intervalMs : 6000
+      intervalMs: typeof r.intervalMs==="number" ? r.intervalMs : 6000,
+      randomizationEnabled: r.randomizationEnabled ?? true
     };
   }
   out.fallback = {
     mode: out.fallback.mode || "random",
     images: (out.fallback.images||[]).map(fixUrl),
-    folders: (out.fallback.folders||[]).map(fixFolder)
+    folders: (out.fallback.folders||[]).map(fixFolder),
+    randomizationEnabled: out.fallback.randomizationEnabled ?? true
   };
   return out;
 }

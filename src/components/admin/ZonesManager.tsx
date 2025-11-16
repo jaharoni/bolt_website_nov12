@@ -10,12 +10,12 @@ import { useToast } from "../../hooks/useToast";
 import { Toast } from "../Toast";
 
 const PAGE_CONFIGS = [
-  { key: "home.background", label: "Homepage", supportsCarousel: true, defaultCarousel: true },
-  { key: "page.about.background", label: "About Page", supportsCarousel: true, defaultCarousel: false },
-  { key: "page.essays.background", label: "Essays Page", supportsCarousel: true, defaultCarousel: false },
-  { key: "page.gallery.background", label: "Gallery Page", supportsCarousel: true, defaultCarousel: false },
-  { key: "page.shop.background", label: "Shop Page", supportsCarousel: true, defaultCarousel: false },
-  { key: "page.contact.background", label: "Contact Page", supportsCarousel: true, defaultCarousel: false },
+  { key: "home.background", label: "Homepage", supportsCarousel: true, defaultCarousel: true, defaultRandomization: false },
+  { key: "about.background", label: "About Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "essays.background", label: "Essays Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "gallery.background", label: "Gallery Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "shop.background", label: "Shop Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "contact.background", label: "Contact Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
 ];
 
 export default function ZonesManager() {
@@ -77,17 +77,18 @@ export default function ZonesManager() {
     }
 
     console.log('[ZonesManager] Zone not found, using defaults for:', activeKey);
+    const pageDefaults = PAGE_CONFIGS.find(p => p.key === activeKey);
     return {
       id: "new",
       key: activeKey,
-      randomization_enabled: true,
-      carousel_enabled: false,
+      randomization_enabled: pageDefaults?.defaultRandomization ?? true,
+      carousel_enabled: pageDefaults?.defaultCarousel ?? false,
       carousel_interval_ms: 8000,
       carousel_transition: "fade",
       static_media_id: null,
       config_json: {
         mode: "random" as const,
-        source: { type: "tag" as const, value: "homebg" },
+        source: { type: "folder" as const, value: "" },
         limit: 10,
       },
       updated_at: new Date().toISOString(),
