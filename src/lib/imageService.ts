@@ -56,6 +56,11 @@ export class ImageService {
     size: ImageSize = 'medium',
     customOptions?: ImageTransformOptions
   ): string {
+    if (!bucket || !path) {
+      console.warn('[ImageService] Missing bucket or path:', { bucket, path });
+      return '';
+    }
+
     const options = customOptions || SIZE_PRESETS[size];
 
     if (Object.keys(options).length === 0) {
@@ -65,13 +70,21 @@ export class ImageService {
       return data.publicUrl;
     }
 
-    const { data } = supabase.storage
-      .from(bucket)
-      .getPublicUrl(path, {
-        transform: options
-      });
+    try {
+      const { data } = supabase.storage
+        .from(bucket)
+        .getPublicUrl(path, {
+          transform: options
+        });
 
-    return data.publicUrl;
+      return data.publicUrl;
+    } catch (error) {
+      console.warn('[ImageService] Transform failed, falling back to public URL:', error);
+      const { data } = supabase.storage
+        .from(bucket)
+        .getPublicUrl(path);
+      return data.publicUrl;
+    }
   }
 
   static getAllOptimizedUrls(bucket: string, path: string): OptimizedImageUrls {

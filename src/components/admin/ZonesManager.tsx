@@ -11,11 +11,11 @@ import { Toast } from "../Toast";
 
 const PAGE_CONFIGS = [
   { key: "home.background", label: "Homepage", supportsCarousel: true, defaultCarousel: true, defaultRandomization: false },
-  { key: "about.background", label: "About Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
-  { key: "essays.background", label: "Essays Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
-  { key: "gallery.background", label: "Gallery Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
-  { key: "shop.background", label: "Shop Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
-  { key: "contact.background", label: "Contact Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "page.about.background", label: "About Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "page.essays.background", label: "Essays Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "page.gallery.background", label: "Gallery Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "page.shop.background", label: "Shop Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
+  { key: "page.contact.background", label: "Contact Page", supportsCarousel: true, defaultCarousel: false, defaultRandomization: true },
 ];
 
 export default function ZonesManager() {
@@ -176,7 +176,7 @@ export default function ZonesManager() {
       }
       await zQ.fetchAll();
       console.log("Zone saved successfully:", updates);
-      addToast('Zone settings saved successfully', 'success');
+      addToast('Changes saved successfully', 'success');
     } catch (err) {
       console.error("Unexpected error saving zone:", err);
       addToast("An unexpected error occurred while saving", 'error');
