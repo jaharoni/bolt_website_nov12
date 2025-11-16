@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { resolveBackgroundsForPage } from '../../lib/bg/resolveBackgrounds';
 import { backgroundService } from '../../lib/bg/BackgroundService';
+import { supabase, isSupabaseConfigured } from '../../lib/supabase';
 
 export function BackgroundRoot() {
   const location = useLocation();
@@ -17,8 +18,8 @@ export function BackgroundRoot() {
   const isSlideshowRef = useRef<boolean>(false);
   const isLoadingRef = useRef<boolean>(false);
   const selectedImageRef = useRef<string>('');
-  const pageImageCacheRef = useRef<Map<string, string>>(new Map());
   const navTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const carouselIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const instantSwapImage = (url: string) => {
     if (url === currentImage) return;
@@ -73,10 +74,6 @@ export function BackgroundRoot() {
     const pageKey = location.pathname.slice(1) || 'home';
     const pageName = pageKey.split('/')[0];
 
-    if (pageName === currentPageRef.current && selectedImageRef.current) {
-      return;
-    }
-
     if (navTimeoutRef.current) {
       clearTimeout(navTimeoutRef.current);
     }
@@ -85,31 +82,12 @@ export function BackgroundRoot() {
       return;
     }
 
+    const pageChanged = pageName !== currentPageRef.current;
     currentPageRef.current = pageName;
     isLoadingRef.current = true;
 
     const loadPageBackground = async () => {
       try {
-        const cachedImage = pageImageCacheRef.current.get(pageName);
-        if (cachedImage) {
-          selectedImageRef.current = cachedImage;
-
-          if (cachedImage === currentImage) {
-            isLoadingRef.current = false;
-            return;
-          }
-
-          if (!currentImage) {
-            setCurrentImage(cachedImage);
-            setImageLoaded(true);
-          } else {
-            instantSwapImage(cachedImage);
-          }
-
-          isLoadingRef.current = false;
-          return;
-        }
-
           const resolved = await resolveBackgroundsForPage(pageName);
 
           if (resolved.urls.length === 0) {
@@ -120,25 +98,13 @@ export function BackgroundRoot() {
           currentUrlsRef.current = resolved.urls;
           isSlideshowRef.current = resolved.slideshow;
 
-          let selectedUrl: string;
-
-          if (resolved.randomizationEnabled) {
-            const randomIndex = Math.floor(Math.random() * resolved.urls.length);
-            currentIndexRef.current = randomIndex;
-            selectedUrl = resolved.urls[randomIndex];
-          } else if (selectedImageRef.current && resolved.urls.includes(selectedImageRef.current)) {
-            selectedUrl = selectedImageRef.current;
-            currentIndexRef.current = resolved.urls.indexOf(selectedUrl);
-          } else {
-            const randomIndex = Math.floor(Math.random() * resolved.urls.length);
-            currentIndexRef.current = randomIndex;
-            selectedUrl = resolved.urls[randomIndex];
-          }
+          const randomIndex = Math.floor(Math.random() * resolved.urls.length);
+          currentIndexRef.current = randomIndex;
+          const selectedUrl = resolved.urls[randomIndex];
 
           selectedImageRef.current = selectedUrl;
-          pageImageCacheRef.current.set(pageName, selectedUrl);
 
-          if (selectedUrl === currentImage) {
+          if (selectedUrl === currentImage && !pageChanged) {
             isLoadingRef.current = false;
             return;
           }
@@ -179,6 +145,30 @@ export function BackgroundRoot() {
             }, resolved.intervalMs);
           }
 
+          if (carouselIntervalRef.current) {
+            clearInterval(carouselIntervalRef.current);
+            carouselIntervalRef.current = null;
+          }
+
+          if (pageName === 'home' && isSupabaseConfigured) {
+            const { data: zone } = await supabase
+              .from('site_zones')
+              .select('carousel_enabled, carousel_interval_ms')
+              .eq('key', 'home.background')
+              .maybeSingle();
+
+            if (zone?.carousel_enabled && resolved.urls.length > 1) {
+              const carouselInterval = zone.carousel_interval_ms || 8000;
+
+              carouselIntervalRef.current = setInterval(() => {
+                currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
+                const nextUrl = currentUrlsRef.current[currentIndexRef.current];
+                selectedImageRef.current = nextUrl;
+                instantSwapImage(nextUrl);
+              }, carouselInterval);
+            }
+          }
+
           isLoadingRef.current = false;
         } catch (error) {
           console.error('[BackgroundRoot] Error loading background:', error);
@@ -196,6 +186,10 @@ export function BackgroundRoot() {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
+      }
+      if (carouselIntervalRef.current) {
+        clearInterval(carouselIntervalRef.current);
+        carouselIntervalRef.current = null;
       }
     };
   }, [location.pathname, currentImage]);
