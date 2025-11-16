@@ -19,13 +19,15 @@ export function BackgroundRoot() {
   const carouselIntervalMsRef = useRef<number>(7000);
   const abortControllerRef = useRef<AbortController | null>(null);
 
-  const transitionToImage = async (url: string) => {
+  const transitionToImage = (url: string) => {
     if (url === currentImage || url === nextImage) return;
 
-    await backgroundService.preload(url).catch(() => {});
+    // Preload in background without blocking transition
+    backgroundService.preload(url).catch(() => {});
 
     if (abortControllerRef.current?.signal.aborted) return;
 
+    // Start transition immediately
     setNextImage(url);
     setIsTransitioning(true);
   };
@@ -49,7 +51,7 @@ export function BackgroundRoot() {
     currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
     const nextUrl = currentUrlsRef.current[currentIndexRef.current];
 
-    await transitionToImage(nextUrl);
+    transitionToImage(nextUrl);
 
     if (carouselEnabledRef.current) {
       startCarousel();
@@ -67,7 +69,7 @@ export function BackgroundRoot() {
     currentIndexRef.current = (currentIndexRef.current - 1 + currentUrlsRef.current.length) % currentUrlsRef.current.length;
     const prevUrl = currentUrlsRef.current[currentIndexRef.current];
 
-    await transitionToImage(prevUrl);
+    transitionToImage(prevUrl);
 
     if (carouselEnabledRef.current) {
       startCarousel();
@@ -97,7 +99,7 @@ export function BackgroundRoot() {
       currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
       const nextUrl = currentUrlsRef.current[currentIndexRef.current];
 
-      await transitionToImage(nextUrl);
+      transitionToImage(nextUrl);
       preloadCarouselImages();
     }, carouselIntervalMsRef.current);
   };
@@ -156,22 +158,21 @@ export function BackgroundRoot() {
         currentIndexRef.current = randomIndex;
         const selectedUrl = resolved.urls[randomIndex];
 
+        // Skip if same image and not a page change
         if (selectedUrl === currentImage && !pageChanged) {
           return;
         }
 
         if (!currentImage || pageChanged) {
-          setIsLoading(true);
-          await backgroundService.preload(selectedUrl);
-
-          if (abortControllerRef.current?.signal.aborted) {
-            return;
-          }
-
+          // Set image immediately on page changes
           setCurrentImage(selectedUrl);
           setIsLoading(false);
+
+          // Preload in background for better caching
+          backgroundService.preload(selectedUrl).catch(() => {});
         } else {
-          await transitionToImage(selectedUrl);
+          // Same page, different image - use transition
+          transitionToImage(selectedUrl);
         }
 
         if (resolved.urls.length > 1) {
