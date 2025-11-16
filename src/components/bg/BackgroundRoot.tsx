@@ -9,6 +9,7 @@ export function BackgroundRoot() {
   const [nextImage, setNextImage] = useState<string>('');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const currentPageRef = useRef<string>('');
   const currentUrlsRef = useRef<string[]>([]);
@@ -18,20 +19,26 @@ export function BackgroundRoot() {
   const carouselIntervalMsRef = useRef<number>(7000);
   const abortControllerRef = useRef<AbortController | null>(null);
 
-  const transitionToImage = (url: string) => {
+  const transitionToImage = async (url: string) => {
     if (url === currentImage || url === nextImage) return;
+
+    await backgroundService.preload(url).catch(() => {});
+
+    if (abortControllerRef.current?.signal.aborted) return;
 
     setNextImage(url);
     setIsTransitioning(true);
-
-    setTimeout(() => {
-      setCurrentImage(url);
-      setIsTransitioning(false);
-      setNextImage('');
-    }, 600);
   };
 
-  const navigateToNext = () => {
+  const handleTransitionEnd = () => {
+    if (isTransitioning && nextImage) {
+      setCurrentImage(nextImage);
+      setIsTransitioning(false);
+      setNextImage('');
+    }
+  };
+
+  const navigateToNext = async () => {
     if (currentUrlsRef.current.length <= 1) return;
 
     if (carouselIntervalRef.current) {
@@ -42,14 +49,14 @@ export function BackgroundRoot() {
     currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
     const nextUrl = currentUrlsRef.current[currentIndexRef.current];
 
-    transitionToImage(nextUrl);
+    await transitionToImage(nextUrl);
 
     if (carouselEnabledRef.current) {
       startCarousel();
     }
   };
 
-  const navigateToPrev = () => {
+  const navigateToPrev = async () => {
     if (currentUrlsRef.current.length <= 1) return;
 
     if (carouselIntervalRef.current) {
@@ -60,7 +67,7 @@ export function BackgroundRoot() {
     currentIndexRef.current = (currentIndexRef.current - 1 + currentUrlsRef.current.length) % currentUrlsRef.current.length;
     const prevUrl = currentUrlsRef.current[currentIndexRef.current];
 
-    transitionToImage(prevUrl);
+    await transitionToImage(prevUrl);
 
     if (carouselEnabledRef.current) {
       startCarousel();
@@ -84,13 +91,13 @@ export function BackgroundRoot() {
 
     preloadCarouselImages();
 
-    carouselIntervalRef.current = setInterval(() => {
+    carouselIntervalRef.current = setInterval(async () => {
       if (currentUrlsRef.current.length <= 1) return;
 
       currentIndexRef.current = (currentIndexRef.current + 1) % currentUrlsRef.current.length;
       const nextUrl = currentUrlsRef.current[currentIndexRef.current];
 
-      transitionToImage(nextUrl);
+      await transitionToImage(nextUrl);
       preloadCarouselImages();
     }, carouselIntervalMsRef.current);
   };
@@ -154,14 +161,21 @@ export function BackgroundRoot() {
         }
 
         if (!currentImage || pageChanged) {
+          setIsLoading(true);
+          await backgroundService.preload(selectedUrl);
+
+          if (abortControllerRef.current?.signal.aborted) {
+            return;
+          }
+
           setCurrentImage(selectedUrl);
-          backgroundService.preload(selectedUrl).catch(() => {});
+          setIsLoading(false);
         } else {
-          transitionToImage(selectedUrl);
+          await transitionToImage(selectedUrl);
         }
 
         if (resolved.urls.length > 1) {
-          backgroundService.preloadMultiple(resolved.urls.slice(0, 8));
+          backgroundService.preloadMultiple(resolved.urls.slice(0, 3));
         }
 
         if (resolved.carouselEnabled && resolved.urls.length > 1) {
@@ -169,7 +183,7 @@ export function BackgroundRoot() {
             if (!abortControllerRef.current?.signal.aborted) {
               startCarousel();
             }
-          }, 100);
+          }, 1500);
         }
       } catch (error) {
         if (abortControllerRef.current?.signal.aborted) {
@@ -193,9 +207,25 @@ export function BackgroundRoot() {
     };
   }, [location.pathname]);
 
+  const handleImageError = (url: string) => {
+    console.error('[BackgroundRoot] Failed to load image:', url);
+    if (currentUrlsRef.current.length > 1) {
+      navigateToNext();
+    }
+  };
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
   if (!currentImage && !nextImage) {
     return (
       <div className="fixed inset-0 -z-10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {isLoading && (
+          <div className="fixed inset-0 flex items-center justify-center">
+            <div className="w-8 h-8 border-4 border-white/20 border-t-white/80 rounded-full animate-spin" />
+          </div>
+        )}
         {hasError && (
           <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-red-900/50 text-white px-4 py-2 rounded-lg text-sm z-50">
             No background images configured. Check console for details.
@@ -207,6 +237,11 @@ export function BackgroundRoot() {
 
   return (
     <div className="fixed inset-0 -z-10">
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+          <div className="w-8 h-8 border-4 border-white/20 border-t-white/80 rounded-full animate-spin" />
+        </div>
+      )}
       {currentImage && (
         <img
           src={currentImage}
@@ -214,9 +249,11 @@ export function BackgroundRoot() {
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out"
           style={{
             opacity: isTransitioning ? 0 : 1,
-            willChange: 'opacity',
+            willChange: isTransitioning ? 'opacity' : 'auto',
             transform: 'translateZ(0)',
           }}
+          onLoad={handleImageLoad}
+          onError={() => handleImageError(currentImage)}
           loading="eager"
           decoding="async"
         />
@@ -228,9 +265,11 @@ export function BackgroundRoot() {
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out"
           style={{
             opacity: isTransitioning ? 1 : 0,
-            willChange: 'opacity',
+            willChange: isTransitioning ? 'opacity' : 'auto',
             transform: 'translateZ(0)',
           }}
+          onTransitionEnd={handleTransitionEnd}
+          onError={() => handleImageError(nextImage)}
           loading="eager"
           decoding="async"
         />

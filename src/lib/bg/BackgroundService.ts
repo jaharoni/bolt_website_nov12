@@ -91,10 +91,16 @@ class BackgroundService {
   }
 
   async preloadMultiple(urls: string[]): Promise<void> {
-    const promises = urls.slice(0, 8).map(url =>
-      this.preload(url).catch(err => {})
-    );
-    await Promise.all(promises);
+    for (let i = 0; i < Math.min(urls.length, 3); i++) {
+      await this.preload(urls[i]).catch(() => {});
+    }
+
+    const remaining = urls.slice(3);
+    if (remaining.length > 0) {
+      setTimeout(() => {
+        remaining.forEach(url => this.preload(url).catch(() => {}));
+      }, 2000);
+    }
   }
 
   isPreloaded(url: string): boolean {
