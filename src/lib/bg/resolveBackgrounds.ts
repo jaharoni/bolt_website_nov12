@@ -111,5 +111,20 @@ async function resolveUrls(pageKey: string, configJson: any): Promise<string[]> 
     }
   }
 
+  if (imageList.length === 0) {
+    console.warn('[resolveBackgrounds] No images found in configured folders, trying any active images');
+    const { data: anyImages } = await supabase
+      .from('media_items')
+      .select('public_url')
+      .eq('is_active', true)
+      .eq('media_type', 'image')
+      .order('created_at')
+      .limit(20);
+
+    if (anyImages && anyImages.length > 0) {
+      imageList.push(...anyImages.map(m => m.public_url));
+    }
+  }
+
   return imageList;
 }

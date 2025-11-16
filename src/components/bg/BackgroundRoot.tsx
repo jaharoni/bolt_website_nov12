@@ -8,6 +8,7 @@ export function BackgroundRoot() {
   const [currentImage, setCurrentImage] = useState<string>('');
   const [nextImage, setNextImage] = useState<string>('');
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const currentPageRef = useRef<string>('');
   const currentUrlsRef = useRef<string[]>([]);
@@ -128,9 +129,13 @@ export function BackgroundRoot() {
         const resolved = await resolveBackgroundsForPage(pageName);
 
         if (resolved.urls.length === 0) {
+          console.warn('[BackgroundRoot] No background images found for page:', pageName);
+          setHasError(true);
           isLoadingRef.current = false;
           return;
         }
+
+        setHasError(false);
 
         currentUrlsRef.current = resolved.urls;
         carouselEnabledRef.current = resolved.carouselEnabled;
@@ -164,6 +169,7 @@ export function BackgroundRoot() {
         isLoadingRef.current = false;
       } catch (error) {
         console.error('[BackgroundRoot] Error loading background:', error);
+        setHasError(true);
         isLoadingRef.current = false;
       }
     };
@@ -180,7 +186,13 @@ export function BackgroundRoot() {
 
   if (!currentImage && !nextImage) {
     return (
-      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      <div className="fixed inset-0 -z-10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {hasError && (
+          <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-red-900/50 text-white px-4 py-2 rounded-lg text-sm z-50">
+            No background images configured. Check console for details.
+          </div>
+        )}
+      </div>
     );
   }
 
