@@ -1,178 +1,181 @@
-import React, { useEffect, useState } from 'react';
-import { Camera, Film, Palette, Award, MapPin, Calendar } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import SEO from '../components/SEO';
-import { getBrandLogos, BrandLogo } from '../lib/brandLogos';
-import { createPersonSchema, createWebPageSchema } from '../lib/structuredData';
+import React, { useEffect, useState } from "react";
+import { AlertTriangle, Book, CalendarRange, Compass, Cpu, MapPin, ShieldCheck, Users } from "lucide-react";
+import SEO from "../components/SEO";
+
+const playbook = [
+  {
+    title: "Translate government speak",
+    description:
+      "Every agenda item, memo, and FOIL response gets rewritten in plain English with the what, who, and why for east-of-105 neighbors.",
+    icon: <Book className="w-6 h-6" />,
+  },
+  {
+    title: "Track the timeline",
+    description: "Hearings, comment windows, site walks, and decisions live on a single calendar with prep tasks attached.",
+    icon: <CalendarRange className="w-6 h-6" />,
+  },
+  {
+    title: "Collect evidence",
+    description: "Photos, parcel documents, and resident observations feed an organized library so anyone can cite facts fast.",
+    icon: <ShieldCheck className="w-6 h-6" />,
+  },
+  {
+    title: "Mobilize quickly",
+    description: "Templates, contact lists, and call-to-action buttons make it simple to show up, email, or testify with confidence.",
+    icon: <Compass className="w-6 h-6" />,
+  },
+];
+
+const coverage = [
+  "Parcel spotlight: SCTM 0600-068-00-04-00-002-000 and nearby lots east of Route 105",
+  "Traffic, groundwater, noise, and lighting impacts reported by neighbors",
+  "Town Board, Planning Board, and Zoning Board activity tied to the parcel",
+  "A repeatable civic stack that other communities can fork for their own parcels",
+];
+
+const buildTracks = [
+  {
+    label: "Data & intake",
+    detail: "Supabase-backed submissions for documents, observations, and questions with tagging for quick triage.",
+    icon: <Cpu className="w-6 h-6" />,
+  },
+  {
+    label: "Notifications",
+    detail: "Role-based digests (resident, business, reporter) across email/SMS keyed to agendas and document drops.",
+    icon: <Users className="w-6 h-6" />,
+  },
+  {
+    label: "Action kits",
+    detail: "Reusable issue briefs, comment templates, and one-click contact sheets for decision makers.",
+    icon: <Compass className="w-6 h-6" />,
+  },
+];
 
 const About: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [brandLogos, setBrandLogos] = useState<BrandLogo[]>([]);
+  const siteUrl = typeof window !== "undefined" ? window.location.origin : "https://riverhead-east-watch.local";
 
   useEffect(() => {
     setIsVisible(true);
-    setBrandLogos(getBrandLogos());
   }, []);
 
-  const skills = [
-    {
-      icon: <Camera className="w-6 h-6" />,
-      title: "Photography",
-      description: "Commercial, live event, and artistic photography"
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Local Government for Dummies — About",
+    description: "How the Local Government for Dummies pilot in Riverhead east of Route 105 works and where it is headed.",
+    url: `${siteUrl}/about`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Local Government for Dummies — Riverhead East",
+      url: siteUrl,
     },
-    {
-      icon: <Film className="w-6 h-6" />,
-      title: "Video Production",
-      description: "From concept to final cut, creating compelling visual narratives"
-    },
-    {
-      icon: <Palette className="w-6 h-6" />,
-      title: "Digital Media",
-      description: "Motion graphics, VFX, and cutting-edge visual experimentation"
-    }
-  ];
-
-  const experience = [
-    {
-      year: "2024",
-      title: "Creative Director",
-      company: "Independent Practice",
-      description: "Full-service visual storytelling for brands and individuals"
-    },
-    {
-      year: "2020-2023",
-      title: "Senior Visual Producer",
-      company: "Various Agencies",
-      description: "Led creative campaigns for major brands and cultural institutions"
-    },
-    {
-      year: "2015-2020",
-      title: "Photographer & Filmmaker",
-      company: "Freelance",
-      description: "Built reputation through documentary work and commercial projects"
-    }
-  ];
-
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://justinaharoni.com';
+    inLanguage: "en-US",
+  };
 
   return (
     <div className="relative min-h-screen pb-32 px-4 pt-32">
       <SEO
-        title="About Justin Aharoni"
-        description="Visual storyteller and professional photographer based in North Fork, Long Island. Specializing in commercial, event, and personal photography with a focus on authentic storytelling and human connection."
-        keywords={['about Justin Aharoni', 'photographer bio', 'visual storyteller', 'North Fork photographer', 'Long Island photographer', 'professional photographer NYC']}
+        title="About the Local Government for Dummies pilot"
+        description="Why we are building a plain-language civic stack for Riverhead east of Route 105 and how it will serve neighbors."
+        keywords={["Riverhead", "Route 105", "civic tech", "local government for dummies", "public hearings"]}
         url={`${siteUrl}/about`}
-        structuredData={createWebPageSchema(
-          'About Justin Aharoni - Visual Storyteller',
-          'Learn about Justin Aharoni, a professional photographer and filmmaker specializing in commercial, event, and artistic photography.',
-          `${siteUrl}/about`,
-          [
-            { name: 'Home', url: siteUrl },
-            { name: 'About', url: `${siteUrl}/about` }
-          ]
-        )}
+        structuredData={structuredData}
       />
-      <div className="relative z-10 max-w-4xl mx-auto">
-        {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
-          <h1 className="text-section-title text-white/98 mb-6 text-smart-contrast">
-            About
-          </h1>
+
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <div
+          className={`text-center mb-12 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h1 className="text-section-title text-white/98 mb-4 text-smart-contrast">The pilot</h1>
+          <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+            Riverhead east of Route 105 is our first deployment of a “Local Government for Dummies” stack. It centers on parcel SCTM 0600-068-00-04-00-002-000 and the neighbors who will live with the outcomes.
+          </p>
         </div>
 
-        {/* Bio Section */}
-        <div className={`glass-card p-8 mb-12 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`} style={{ transitionDelay: '200ms' }}>
-          <div className="prose prose-invert max-w-none">
-            <p className="font-display text-lg text-white/95 mb-6 leading-relaxed tracking-wide">
-              I believe in the power of visual storytelling to connect, inspire, and transform. Whether capturing a quiet moment or orchestrating a full production, I approach every project with the same commitment to finding and elevating the authentic story within each frame.
-            </p>
-            <p className="font-display text-lg text-white/95 mb-6 leading-relaxed tracking-wide">
-              My approach combines technical expertise with genuine curiosity about the human experience. Whether I'm capturing live events, developing a brand campaign, or experimenting with digital media, I'm always looking for the story that wants to be told.
-            </p>
-            <p className="font-display text-lg text-white/95 leading-relaxed tracking-wide">
-              Recently relocated to the North Fork of Long Island, I've found that the clarity of mind this area provides—while still being in close proximity to NYC—has become essential to my creative process. The balance between peaceful surroundings and urban energy shapes how I see and capture the world.
-            </p>
+        <div
+          className={`glass-card p-8 md:p-10 mb-10 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="flex items-start gap-4 mb-6">
+            <ShieldCheck className="w-7 h-7 text-yellow-200" />
+            <div>
+              <h2 className="text-2xl text-white/95 mb-2">What it solves</h2>
+              <p className="text-white/80 leading-relaxed">
+                Residents shouldn’t need to decode legal notices to protect their neighborhood. This project centralizes every decision point, translates the jargon, and gives people east of 105 an actionable path to participate.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <AlertTriangle className="w-7 h-7 text-yellow-200" />
+            <div>
+              <h3 className="text-xl text-white/90 mb-2">Where we focus first</h3>
+              <p className="text-white/80 leading-relaxed">
+                The parcel APN/SCTM 0600-068-00-04-00-002-000 and any linked lots east of Route 105. Traffic, groundwater, and neighborhood character are the core concerns we track.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Skills */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {skills.map((skill, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {playbook.map((item, index) => (
             <div
-              key={skill.title}
-              className={`glass-card p-6 glass-hover card-hover transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              key={item.title}
+              className={`glass-card p-6 glass-hover transition-all duration-700 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
-              style={{ transitionDelay: `${600 + index * 100}ms` }}
+              style={{ transitionDelay: `${150 + index * 80}ms` }}
             >
-              <div className="text-yellow-200/90 mb-4">
-                {skill.icon}
-              </div>
-              <h3 className="text-card-title text-white/98 mb-2">
-                {skill.title}
-              </h3>
-              <p className="text-body text-white/90">
-                {skill.description}
-              </p>
+              <div className="text-yellow-200 mb-4">{item.icon}</div>
+              <h3 className="text-lg text-white/95 mb-2">{item.title}</h3>
+              <p className="text-white/80 leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Brand Collaborators */}
-        <div className={`border-t border-white/10 pt-12 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`} style={{ transitionDelay: '700ms' }}>
-          <h2 className="text-card-title text-white/98 mb-12 text-center">Past Collaborators</h2>
-
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-8 items-center justify-items-center mb-8 max-w-4xl mx-auto">
-            {brandLogos.map((brand, index) => (
-              <div
-                key={brand.name}
-                className="group relative w-32 h-20 glass-card flex items-center justify-center hover:bg-white/5 transition-all duration-500 hover:scale-110 p-4"
-                style={{
-                  transitionDelay: `${800 + index * 50}ms`,
-                  backgroundColor: `${brand.fallbackColor}20`
-                }}
-                title={brand.name}
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white/80 group-hover:text-white transition-colors duration-300 mb-1">
-                    {brand.initials}
-                  </div>
-                  <div className="text-xs text-white/50 group-hover:text-white/70 transition-colors duration-300">
-                    {brand.name}
-                  </div>
-                </div>
-              </div>
-            ))}
+        <div
+          className={`glass-card p-8 md:p-10 mb-12 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <MapPin className="w-6 h-6 text-yellow-200" />
+            <h3 className="text-xl text-white/90">Scope</h3>
           </div>
-
+          <ul className="space-y-3 text-white/80">
+            {coverage.map((item) => (
+              <li key={item} className="flex items-start gap-2">
+                <span className="mt-1 h-2 w-2 rounded-full bg-yellow-200/80" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Contact CTA */}
-        <div className={`glass-card p-8 text-center mt-12 mb-24 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`} style={{ transitionDelay: '1100ms' }}>
-          <p className="text-body-large text-white/95 mb-6">
-            Ready to create something together?
-          </p>
-          <div className="flex justify-center space-x-6">
-            <Link
-              to="/contact"
-              className="btn-section glass-button-enhanced"
-            >
-              Get In Touch
-            </Link>
-            <Link
-              to="/shop"
-              className="btn-section glass-button-enhanced"
-            >
-              Browse Prints
-            </Link>
+        <div
+          className={`glass-card p-8 md:p-10 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <Users className="w-6 h-6 text-yellow-200" />
+            <h3 className="text-xl text-white/90">Build plan</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {buildTracks.map((item, index) => (
+              <div
+                key={item.label}
+                className="glass-card p-6 border border-white/10"
+                style={{ transitionDelay: `${150 + index * 80}ms` }}
+              >
+                <div className="flex items-center gap-2 mb-2 text-yellow-200">{item.icon}</div>
+                <p className="text-lg text-white/95 font-semibold mb-2">{item.label}</p>
+                <p className="text-white/75 leading-relaxed text-sm">{item.detail}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

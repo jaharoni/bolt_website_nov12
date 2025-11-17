@@ -1,128 +1,121 @@
 import React, { useEffect, useState } from "react";
-import { Mail, Phone, MapPin, Send, Clock, Users, Award, Briefcase } from "lucide-react";
-import { Link } from "react-router-dom";
+import { AlertTriangle, ClipboardList, Link as LinkIcon, Mail, MapPin, Send, Users, Waves } from "lucide-react";
 import SEO from "../components/SEO";
-import { createWebPageSchema } from "../lib/structuredData";
+
+const helpPaths = [
+  {
+    title: "Meeting prep",
+    detail: "Need a quick brief or talking points before a Town or Planning Board meeting? We’ll draft it in plain language.",
+  },
+  {
+    title: "Document intake",
+    detail: "Send FOIL responses, PDFs, or screenshots tied to the parcel. We’ll tag, summarize, and add them to the library.",
+  },
+  {
+    title: "On-the-ground reports",
+    detail: "Truck traffic, tree clearing, lighting, odors — tell us what you’re seeing east of 105 so we can track impacts.",
+  },
+];
+
+const quickLinks = [
+  {
+    label: "Riverhead Town site",
+    href: "https://www.townofriverheadny.gov/",
+    description: "Agendas, public notices, and meeting calendar",
+  },
+  {
+    label: "Parcel ID",
+    href: "https://www.townofriverheadny.gov/",
+    description: "SCTM 0600-068-00-04-00-002-000 (focus parcel)",
+  },
+];
 
 function Contact() {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    project: '',
-    message: ''
+    name: "",
+    email: "",
+    role: "resident",
+    topic: "updates",
+    message: "",
   });
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setStatus("idle");
+    setError("");
+
+    if (!formData.name.trim() || !formData.email.trim()) {
+      setError("Name and email are required.");
+      setStatus("error");
+      return;
+    }
+
+    const emailValid = /[^\s@]+@[^\s@]+\.[^\s@]+/.test(formData.email);
+    if (!emailValid) {
+      setError("Enter a valid email address.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("success");
+    setFormData({ name: "", email: "", role: "resident", topic: "updates", message: "" });
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      detail: "contact@jaharoni.com",
-      action: "mailto:contact@jaharoni.com"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      detail: "646.683.3939",
-      action: "tel:+16466833939"
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      detail: "Anywhere your story needs telling",
-      action: null
-    }
-  ];
-
-  const stats = [
-    { icon: <Clock className="w-8 h-8" />, value: "24h", label: "Response Time" },
-    { icon: <Users className="w-8 h-8" />, value: "500+", label: "Happy Clients" },
-    { icon: <Award className="w-8 h-8" />, value: "Published", label: "Print & TV Media" },
-    { icon: <Briefcase className="w-8 h-8" />, value: "Pro", label: "Experience" },
-  ];
-
-  const processSteps = [
-    {
-      number: "01",
-      title: "Initial Consultation",
-      description: "We'll discuss your vision, goals, and project requirements in a free consultation."
-    },
-    {
-      number: "02",
-      title: "Proposal & Planning",
-      description: "Receive a detailed proposal with timeline, deliverables, and custom pricing."
-    },
-    {
-      number: "03",
-      title: "Production",
-      description: "Professional execution with regular updates and collaborative feedback loops."
-    },
-    {
-      number: "04",
-      title: "Delivery & Support",
-      description: "High-quality final deliverables with post-project support and revisions."
-    }
-  ];
-
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://justinaharoni.com';
+  const siteUrl = typeof window !== "undefined" ? window.location.origin : "https://riverhead-east-watch.local";
 
   return (
     <div className="relative min-h-screen pb-32 px-4 pt-32">
       <SEO
-        title="Contact"
-        description="Get in touch with Justin Aharoni for photography and filmmaking services. Available for commercial projects, event coverage, weddings, and custom commissions."
-        keywords={['contact photographer', 'hire photographer', 'photography services', 'book photographer', 'commercial photography inquiry', 'wedding photographer contact']}
+        title="Participate in the Riverhead pilot"
+        description="Send observations, documents, or requests to the Local Government for Dummies team building the east-of-105 hub."
+        keywords={["Riverhead", "Route 105", "contact", "civic tech", "alerts"]}
         url={`${siteUrl}/contact`}
-        structuredData={createWebPageSchema(
-          'Contact Justin Aharoni - Photography Services',
-          'Get in touch for commercial photography, event coverage, and custom projects.',
-          `${siteUrl}/contact`,
-          [
-            { name: 'Home', url: siteUrl },
-            { name: 'Contact', url: `${siteUrl}/contact` }
-          ]
-        )}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          url: `${siteUrl}/contact`,
+          name: "Participate in the Local Government for Dummies pilot",
+          description:
+            "Get in touch to share observations, ask for briefs, or contribute documents about SCTM 0600-068-00-04-00-002-000.",
+        }}
       />
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
-          <h1 className="text-section-title text-white mb-6">
-            Let's Connect
-          </h1>
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <h1 className="text-section-title text-white mb-6">Participate</h1>
           <p className="text-lg text-white/70 max-w-3xl mx-auto">
-            <span className="font-display text-xl text-white/90 tracking-wide">Got a vision that needs bringing to life?</span>
-            <br />
-            <span className="text-white/60 font-body text-base">Let's turn your wildest creative dreams into reality — because ordinary is not in my vocabulary.</span>
+            Tell us what you’re seeing, send documents, or request meeting prep. This hub is built to make Riverhead’s process easy to follow for everyone east of Route 105.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-          {/* Contact Form */}
           <div
             className={`glass-card p-8 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`} style={{ transitionDelay: '200ms' }}>
-            <h2 className="text-card-title text-white mb-6">Start a Conversation</h2>
-            
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+            style={{ transitionDelay: "200ms" }}
+          >
+            <h2 className="text-card-title text-white mb-6">Send a note</h2>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-nav text-white/80 mb-2">
@@ -134,7 +127,7 @@ function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full glass-input glass-input-enhanced px-4 py-3 text-body text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
+                  className="w-full glass-input glass-input-enhanced px-4 py-3 text-body text-white placeholder-white/60"
                   placeholder="Enter your name"
                   required
                 />
@@ -150,37 +143,53 @@ function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full glass-input glass-input-enhanced px-4 py-3 text-body text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
-                  placeholder="your@email.com"
+                  className="w-full glass-input glass-input-enhanced px-4 py-3 text-body text-white placeholder-white/60"
+                  placeholder="you@example.com"
                   required
                 />
               </div>
 
-              <div>
-                <label htmlFor="project" className="block text-nav text-white/80 mb-2">
-                  Project Type
-                </label>
-                <select
-                  id="project"
-                  name="project"
-                  value={formData.project}
-                  onChange={handleInputChange}
-                  className="w-full select-glass-dark px-4 py-3 text-body text-white focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
-                  required
-                >
-                  <option value="">Select a project type</option>
-                  <option value="commercial">Commercial Photography</option>
-                  <option value="events">Event Documentation</option>
-                  <option value="essays">Photo Essays</option>
-                  <option value="digital">Digital Media</option>
-                  <option value="prints">Print Shop / Gallery</option>
-                  <option value="other">Other</option>
-                </select>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="role" className="block text-nav text-white/80 mb-2">
+                    I’m a…
+                  </label>
+                  <select
+                    id="role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleInputChange}
+                    className="w-full select-glass-dark px-4 py-3 text-body text-white"
+                  >
+                    <option value="resident">Neighbor east of 105</option>
+                    <option value="business">Local business</option>
+                    <option value="reporter">Reporter / blogger</option>
+                    <option value="official">Town stakeholder</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="topic" className="block text-nav text-white/80 mb-2">
+                    What do you need?
+                  </label>
+                  <select
+                    id="topic"
+                    name="topic"
+                    value={formData.topic}
+                    onChange={handleInputChange}
+                    className="w-full select-glass-dark px-4 py-3 text-body text-white"
+                    required
+                  >
+                    <option value="updates">Add me to alerts</option>
+                    <option value="brief">Meeting prep / talking points</option>
+                    <option value="documents">Share or request documents</option>
+                    <option value="observation">Report an observation</option>
+                  </select>
+                </div>
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-nav text-white/80 mb-2">
-                  Tell me about your project
+                  Details
                 </label>
                 <textarea
                   id="message"
@@ -189,141 +198,118 @@ function Contact() {
                   onChange={handleInputChange}
                   rows={5}
                   className="w-full glass-input glass-input-enhanced px-4 py-3 text-body text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all resize-none"
-                  placeholder="Share your vision, timeline, and any specific requirements..."
-                  required
+                  placeholder="Share what you’re seeing, the meeting date you’re prepping for, or the document link."
                 />
               </div>
+
+              {error && <p className="text-sm text-red-200">{error}</p>}
+              {status === "success" && <p className="text-sm text-emerald-200">Thanks. We’ll follow up shortly.</p>}
 
               <button
                 type="submit"
                 className="w-full btn-primary glass-button-enhanced flash-on-hover py-4 flex items-center justify-center space-x-2"
               >
                 <Send className="w-5 h-5" />
-                <span>Send Message</span>
+                <span>Send</span>
               </button>
             </form>
           </div>
 
-          {/* Contact Information */}
           <div className="space-y-8">
-            {/* Contact Details */}
-            <div className={`glass-card p-8 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`} style={{ transitionDelay: '400ms' }}>
-              <h2 className="text-card-title text-white mb-6">Get In Touch</h2>
-              
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <div key={info.title} className="flex items-start space-x-4">
-                    <div className="text-white/80 mt-1">
-                      {info.icon}
-                    </div>
+            <div
+              className={`glass-card p-8 transition-all duration-1000 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
+              <h2 className="text-card-title text-white mb-6">How we help</h2>
+
+              <div className="space-y-6 text-white/80">
+                {helpPaths.map((item) => (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <ClipboardList className="w-5 h-5 text-yellow-200 mt-1" />
                     <div>
-                      <h3 className="text-nav text-white mb-1">{info.title}</h3>
-                      {info.action ? (
-                        <a 
-                          href={info.action}
-                          className="text-body text-white/70 hover:text-white transition-colors"
-                        >
-                          {info.detail}
-                        </a>
-                      ) : (
-                        <p className="text-body text-white/70">{info.detail}</p>
-                      )}
+                      <p className="text-white/90 font-semibold">{item.title}</p>
+                      <p className="text-sm">{item.detail}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Response Time */}
-            <div className={`glass-card p-8 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`} style={{ transitionDelay: '600ms' }}>
-              <h3 className="text-card-title text-white mb-4">What to Expect</h3>
-              <div className="space-y-4 font-display text-base text-white/75 leading-relaxed">
-                <p>• Response within 24 hours</p>
-                <p>• Free initial consultation</p>
-                <p>• Custom project proposals</p>
-                <p>• Flexible scheduling options</p>
+            <div
+              className={`glass-card p-8 transition-all duration-1000 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "500ms" }}
+            >
+              <h2 className="text-card-title text-white mb-4">Quick references</h2>
+              <div className="space-y-4">
+                {quickLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 text-white/85 hover:text-white"
+                  >
+                    <LinkIcon className="w-4 h-4 text-yellow-200" />
+                    <div>
+                      <p className="font-semibold text-white/95">{link.label}</p>
+                      <p className="text-sm text-white/70">{link.description}</p>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* Social Proof */}
-            <div className={`glass-card p-8 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`} style={{ transitionDelay: '800ms' }}>
-              <h3 className="text-card-title text-white mb-4">Why Work With Me?</h3>
-              <div className="space-y-3 font-display text-base text-white/75 leading-relaxed">
-                <p>✓ Professional experience</p>
-                <p>✓ Collaborative approach</p>
-                <p>✓ Attention to detail</p>
-                <p>✓ Swift execution that never compromises the vision</p>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-yellow-400/20">
-                <Link to="/shop" className="cta-subtle hover:underline">
-                  Browse available prints while you're here →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Process Section */}
-        <div
-          className={`mt-20 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-          }`}
-          style={{ transitionDelay: '200ms' }}
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-section-title text-white mb-4">How We Work Together</h2>
-            <p className="text-white/70 font-display text-lg">A simple, collaborative process from start to finish</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
-              <div
-                key={step.number}
-                className={`glass-card p-6 glass-hover card-hover transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{
-                  transitionDelay: `${400 + index * 150}ms`
-                }}
-              >
-                <div className="text-yellow-400/40 text-5xl font-display font-bold mb-4">
-                  {step.number}
+            <div
+              className={`glass-card p-8 transition-all duration-1000 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "600ms" }}
+            >
+              <h2 className="text-card-title text-white mb-4">What we’re tracking</h2>
+              <div className="space-y-3 text-white/80 text-sm">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-4 h-4 text-yellow-200 mt-1" />
+                  <p>Parcel SCTM 0600-068-00-04-00-002-000 and any linked lots east of Route 105.</p>
                 </div>
-                <h3 className="text-card-title text-white mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-body text-white/75 leading-relaxed">
-                  {step.description}
-                </p>
+                <div className="flex items-start gap-3">
+                  <Users className="w-4 h-4 text-yellow-200 mt-1" />
+                  <p>Meeting agendas and public hearings that need turnout or comment submissions.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Waves className="w-4 h-4 text-yellow-200 mt-1" />
+                  <p>Groundwater, traffic, and noise observations that neighbors report so we can log patterns.</p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
 
-        {/* Final CTA */}
-        <div className={`glass-card p-12 text-center mt-20 mb-24 transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`} style={{ transitionDelay: '1000ms' }}>
-          <h2 className="text-section-title text-white mb-6">
-            Ready to Create Something Amazing?
-          </h2>
-          <p className="text-body-large text-white/80 mb-8 max-w-2xl mx-auto">
-            Let's collaborate and bring your creative vision to life. Whether it's a commercial project, personal milestone, or artistic endeavor, I'm here to make it extraordinary.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#top" className="btn-primary glass-button-enhanced">
-              Send a Message
-            </a>
-            <Link to="/gallery" className="btn-secondary glass-button-enhanced">
-              View My Work
-            </Link>
+            <div
+              className={`glass-card p-8 transition-all duration-1000 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "700ms" }}
+            >
+              <h2 className="text-card-title text-white mb-4">Where to reach us</h2>
+              <div className="space-y-4 text-white/80">
+                <div className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-yellow-200 mt-1" />
+                  <div>
+                    <p className="font-semibold text-white/90">Email</p>
+                    <p className="text-sm">updates@riverheadeastwatch.org</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-yellow-200 mt-1" />
+                  <div>
+                    <p className="font-semibold text-white/90">Focus area</p>
+                    <p className="text-sm">East of Route 105, Riverhead — parcel SCTM 0600-068-00-04-00-002-000</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
