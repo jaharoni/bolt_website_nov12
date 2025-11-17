@@ -16,7 +16,7 @@ function Navbar() {
   const [selectedNavItem, setSelectedNavItem] = useState<string | null>(null);
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const navBrandName = useTextBlock("nav.brand", "Justin Aharoni");
+  const navBrandName = useTextBlock("nav.brand", "Riverhead East Watch");
   const prefetchBackground = usePrefetchOnHover();
 
   // Top 50 world languages with weighted USA frequency
@@ -217,11 +217,9 @@ function Navbar() {
   }, [menuTimeout]);
 
   const navItems = [
-    { path: "/about", label: "About", key: "about" },
-    { path: "/gallery", label: "Gallery", key: "gallery" },
-    { path: "/essays", label: "Essays", key: "essays" },
-    { path: "/shop", label: "Shop", key: "shop" },
-    { path: "/contact", label: "Contact", key: "contact" },
+    { path: "/", label: "Overview", key: "home" },
+    { path: "/about", label: "Playbook", key: "about" },
+    { path: "/contact", label: "Participate", key: "contact" },
   ];
 
   // Handle nav item click: scroll to top and close menu immediately
