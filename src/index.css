@@ -111,7 +111,6 @@ select:focus-visible,
   outline: 2px solid rgba(255, 193, 7, 0.6);
   outline-offset: 2px;
 }
-}
 
 @layer components {
 

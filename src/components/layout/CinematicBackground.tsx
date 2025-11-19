@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useStudioStore } from '../../store/studioStore';
 import { supabase } from '../../lib/supabase';
-import { clsx } from 'clsx';
 
 export function CinematicBackground() {
     const location = useLocation();
@@ -87,10 +86,9 @@ export function CinematicBackground() {
         <div className="fixed inset-0 w-full h-full z-[-50] bg-black overflow-hidden">
             {/* Current Background */}
             <div
-                className={clsx(
-                    "absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out",
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
                     isTransitioning ? "opacity-0" : "opacity-100"
-                )}
+                }`}
             >
                 {currentBg && (
                     <img
@@ -105,10 +103,9 @@ export function CinematicBackground() {
 
             {/* Next Background (Double Buffer) */}
             <div
-                className={clsx(
-                    "absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out",
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
                     isTransitioning ? "opacity-100" : "opacity-0"
-                )}
+                }`}
             >
                 {nextBg && (
                     <img
