@@ -162,12 +162,16 @@ export function BackgroundRoot() {
         }
 
         if (!currentImage || pageChanged) {
-          // Set image immediately on page changes
+          // Eagerly preload the image first, then display
+          try {
+            await backgroundService.preload(selectedUrl);
+          } catch (error) {
+            console.warn('[BackgroundRoot] Preload failed, displaying anyway:', error);
+          }
+
+          // Set image after preload completes (or fails)
           setCurrentImage(selectedUrl);
           setIsLoading(false);
-
-          // Preload in background for better caching
-          backgroundService.preload(selectedUrl).catch(() => {});
         } else {
           // Same page, different image - use transition
           transitionToImage(selectedUrl);

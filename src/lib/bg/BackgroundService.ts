@@ -120,6 +120,14 @@ class BackgroundService {
     await this.preload(imageUrl);
     this.notify(pageKey, imageUrl);
   }
+
+  async prefetchForPage(urls: string[]): Promise<void> {
+    if (urls.length === 0) return;
+
+    // Preload the first 3 images eagerly
+    const priorityUrls = urls.slice(0, 3);
+    Promise.all(priorityUrls.map(url => this.preload(url).catch(() => {})));
+  }
 }
 
 export const backgroundService = new BackgroundService();

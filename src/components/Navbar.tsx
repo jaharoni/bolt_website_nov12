@@ -4,6 +4,7 @@ import SearchBar from "./SearchBarNew";
 import WeatherDisplay from "./WeatherDisplay";
 import NewsTicker from "./NewsTicker";
 import { useTextBlock } from "../hooks/useTextBlock";
+import { prefetchBackgroundsForPage } from "../lib/bg/resolveBackgrounds";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -234,6 +235,12 @@ function Navbar() {
     window.scrollTo(0, 0);
   };
 
+  // Prefetch backgrounds on hover
+  const handleNavHover = (path: string) => {
+    const pageKey = path.slice(1) || 'home';
+    prefetchBackgroundsForPage(pageKey).catch(() => {});
+  };
+
   return (
     <>
       {/* Main Navigation - FIXED TO VIEWPORT */}
@@ -252,6 +259,7 @@ function Navbar() {
                     <Link
                       to="/"
                       onClick={handleLogoClick}
+                      onMouseEnter={() => handleNavHover('/')}
                      className="font-display text-2xl hover:text-yellow-300 transition-all duration-300 cursor-pointer hover:scale-105 tracking-tight uppercase"
                     >
                       {isHome ? welcomeText : navBrandName}
@@ -296,6 +304,7 @@ function Navbar() {
                     <Link
                       to="/"
                       onClick={handleLogoClick}
+                      onMouseEnter={() => handleNavHover('/')}
                       className="font-display text-3xl text-smart-contrast hover:text-yellow-300 transition-all duration-300 cursor-pointer hover:scale-105 tracking-tight"
                     >
                       <span
@@ -338,6 +347,7 @@ function Navbar() {
                   key={item.path}
                   to={item.path}
                   onClick={() => handleNavClick(item.path)}
+                  onMouseEnter={() => handleNavHover(item.path)}
                   className={`block glass-button px-6 py-4 text-center transition-all duration-200 hover:scale-105 text-white ${
                     location.pathname === item.path
                       ? 'glass-yellow !text-yellow-100'

@@ -1,4 +1,5 @@
 import { supabase, isSupabaseConfigured } from '../supabase';
+import { backgroundService } from './BackgroundService';
 
 export type ResolvedBackground = {
   urls: string[];
@@ -125,4 +126,16 @@ async function resolveUrls(pageKey: string, configJson: any): Promise<string[]> 
 
 export function clearBackgroundCache() {
   configCache.clear();
+}
+
+export async function prefetchBackgroundsForPage(pageKey: string): Promise<void> {
+  try {
+    const resolved = await resolveBackgroundsForPage(pageKey);
+
+    if (resolved.urls.length > 0) {
+      await backgroundService.prefetchForPage(resolved.urls);
+    }
+  } catch (error) {
+    console.warn('[prefetchBackgrounds] Failed to prefetch for page:', pageKey, error);
+  }
 }
