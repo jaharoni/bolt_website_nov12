@@ -5,6 +5,7 @@ import { searchManager } from "../lib/searchManager";
 import { secureChatService, ChatMessage, ChatServiceError } from '../lib/secureChatService';
 import { useTurnstile } from '../hooks/useTurnstile';
 import ConversationBubble from './ConversationBubble';
+import { useStudioStore } from '../store/studioStore';
 
 interface SearchBarProps {
   compact?: boolean;
@@ -169,39 +170,56 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
 
       const lowerContent = response.message.content.toLowerCase();
       if (lowerContent.includes("couldn't find") ||
-          lowerContent.includes("not available on") ||
-          lowerContent.includes("don't have information")) {
+        lowerContent.includes("not available on") ||
+        lowerContent.includes("don't have information")) {
         setShowExternalSearch(true);
       }
 
-      } catch (err) {
-        console.error('Chat error:', err);
+    } catch (err) {
+      console.error('Chat error:', err);
 
-        if (err instanceof ChatServiceError) {
-          setError(err.getUserFriendlyMessage());
-        } else {
-          setError("AI assistant unavailable. Using basic search...");
-          setTimeout(async () => {
-            try {
-              const searchResult = await searchManager.search(messageText);
-              navigate(searchResult.suggestedRoute);
-              setMessages([]);
-              setIsExpanded(false);
-            } catch {
-              navigate('/gallery');
-            }
-          }, 1500);
-        }
-
-        resetTurnstile();
-      } finally {
-        setIsLoading(false);
+      if (err instanceof ChatServiceError) {
+        setError(err.getUserFriendlyMessage());
+      } else {
+        setError("AI assistant unavailable. Using basic search...");
+        setTimeout(async () => {
+          try {
+            const searchResult = await searchManager.search(messageText);
+            navigate(searchResult.suggestedRoute);
+            setMessages([]);
+            setIsExpanded(false);
+          } catch {
+            navigate('/gallery');
+          }
+        }, 1500);
       }
+
+      resetTurnstile();
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  const { searchMappings, fetchSearchMappings } = useStudioStore();
+
+  useEffect(() => {
+    fetchSearchMappings();
+  }, []);
 
   const executeSearch = async () => {
     if (!query.trim()) return;
     setIsSparkle(true);
+
+    // 1. Check Dynamic Mappings (Service Agent Logic)
+    const lowerQuery = query.toLowerCase().trim();
+    const mapping = searchMappings.find(m => m.keyword.toLowerCase() === lowerQuery);
+
+    if (mapping) {
+      navigate(mapping.target_route);
+      setQuery("");
+      setIsSparkle(false);
+      return;
+    }
 
     try {
       if (isAIConfigured && isConversationalQuery(query)) {
@@ -404,11 +422,11 @@ const SearchBarNew: React.FC<SearchBarProps> = ({ compact = false }) => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyPress={handleKeyPress}
-              onFocus={() => {
-                if (messages.length > 0 && isMinimized) {
-                  handleExpand();
-                }
-              }}
+            onFocus={() => {
+              if (messages.length > 0 && isMinimized) {
+                handleExpand();
+              }
+            }}
             className="flex-1 text-white text-lg font-display placeholder-white/60 focus:outline-none"
             style={{
               background: 'none',

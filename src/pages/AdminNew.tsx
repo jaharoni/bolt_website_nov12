@@ -15,6 +15,7 @@ const GalleryProjectsManager = lazy(() => import("../components/admin/GalleryPro
 const ZonesManager = lazy(() => import("../components/admin/ZonesManager"));
 const TextBlocksManager = lazy(() => import("../components/admin/TextBlocksManager"));
 const SettingsManager = lazy(() => import("../components/admin/SettingsManager"));
+const SearchMappingsManager = lazy(() => import("../components/admin/SearchMappingsManager"));
 
 const ADMIN_EMAILS = (import.meta.env.VITE_ADMIN_EMAILS ?? "")
   .split(",")
@@ -261,130 +262,141 @@ export default function AdminNew() {
         <ErrorBoundary>
           <SelectionProvider>
             <AdminShell
-            sections={[
-            {
-              key: "dashboard",
-              label: "Dashboard",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <Dashboard />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "media",
-              label: "Media",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <MediaLibraryPro />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "essays",
-              label: "Essays",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <EssaysManager />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "pages",
-              label: "Pages",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <PagesManager />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "galleries",
-              label: "Galleries",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <GalleriesManager />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "projects",
-              label: "Projects",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <GalleryProjectsManager />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "shop",
-              label: "Shop",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <ShopManagerNew />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "lto",
-              label: "LTO",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <LTOCampaignManager />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "zones",
-              label: "Zones",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <ZonesManager />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "text",
-              label: "Text",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <TextBlocksManager />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-            {
-              key: "settings",
-              label: "Settings",
-              element: (
-                <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>
-                    <SettingsManager />
-                  </Suspense>
-                </ErrorBoundary>
-              ),
-            },
-          ]}
-          defaultKey="dashboard"
+              sections={[
+                {
+                  key: "dashboard",
+                  label: "Dashboard",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <Dashboard />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "media",
+                  label: "Media",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <MediaLibraryPro />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "essays",
+                  label: "Essays",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <EssaysManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "pages",
+                  label: "Pages",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <PagesManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "galleries",
+                  label: "Galleries",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <GalleriesManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "projects",
+                  label: "Projects",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <GalleryProjectsManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "shop",
+                  label: "Shop",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <ShopManagerNew />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "lto",
+                  label: "LTO",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <LTOCampaignManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "zones",
+                  label: "Zones",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <ZonesManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "text",
+                  label: "Text",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <TextBlocksManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "settings",
+                  label: "Settings",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <SettingsManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+                {
+                  key: "search",
+                  label: "Search Logic",
+                  element: (
+                    <ErrorBoundary>
+                      <Suspense fallback={<Loading />}>
+                        <SearchMappingsManager />
+                      </Suspense>
+                    </ErrorBoundary>
+                  ),
+                },
+              ]}
+              defaultKey="dashboard"
             />
           </SelectionProvider>
         </ErrorBoundary>
