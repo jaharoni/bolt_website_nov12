@@ -127,8 +127,6 @@ export function BackgroundRoot() {
     }
     abortControllerRef.current = new AbortController();
 
-    currentPageRef.current = pageName;
-
     const loadPageBackground = async () => {
       try {
         if (carouselIntervalRef.current) {
@@ -192,6 +190,8 @@ export function BackgroundRoot() {
         }
         console.error('[BackgroundRoot] Error loading background:', error);
         setHasError(true);
+      } finally {
+        currentPageRef.current = pageName;
       }
     };
 
