@@ -162,16 +162,26 @@ export function BackgroundRoot() {
         }
 
         if (!currentImage || pageChanged) {
-          // Eagerly preload the image first, then display
-          try {
-            await backgroundService.preload(selectedUrl);
-          } catch (error) {
-            console.warn('[BackgroundRoot] Preload failed, displaying anyway:', error);
-          }
+          // Check if image is already preloaded
+          const isPreloaded = backgroundService.isPreloaded(selectedUrl);
 
-          // Set image after preload completes (or fails)
-          setCurrentImage(selectedUrl);
-          setIsLoading(false);
+          if (isPreloaded) {
+            // If already cached, set immediately
+            setCurrentImage(selectedUrl);
+            setIsLoading(false);
+          } else {
+            // Start preload and use transition for smoother effect
+            backgroundService.preload(selectedUrl).catch(() => {});
+
+            // Use transition to the new image
+            if (currentImage) {
+              transitionToImage(selectedUrl);
+            } else {
+              // First load - set immediately and let browser load
+              setCurrentImage(selectedUrl);
+              setIsLoading(false);
+            }
+          }
         } else {
           // Same page, different image - use transition
           transitionToImage(selectedUrl);
@@ -251,7 +261,7 @@ export function BackgroundRoot() {
         <img
           src={currentImage}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out"
           style={{
             opacity: isTransitioning ? 0 : 1,
             willChange: isTransitioning ? 'opacity' : 'auto',
@@ -267,7 +277,7 @@ export function BackgroundRoot() {
         <img
           src={nextImage}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-600 ease-in-out"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out"
           style={{
             opacity: isTransitioning ? 1 : 0,
             willChange: isTransitioning ? 'opacity' : 'auto',

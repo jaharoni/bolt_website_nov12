@@ -88,10 +88,10 @@ const Home = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row justify-center gap-6 pt-6 border-t border-white/10">
-                <Link to="/contact" className="btn-ghost">
+                <Link to="/contact" className="btn-section glass-button-enhanced">
                   Ready to work together?
                 </Link>
-                <Link to="/shop" className="btn-ghost">
+                <Link to="/shop" className="btn-section glass-button-enhanced">
                   Browse prints & downloads
                 </Link>
               </div>
